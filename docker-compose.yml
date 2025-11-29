@@ -1,0 +1,40 @@
+services:
+  cs2:
+    image: ghcr.io/kus/cs2-modded-server:latest
+    container_name: cs2-server
+    restart: unless-stopped
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+      - "27020:27020/udp"
+    environment:
+      - SRCDS_TOKEN=${CS2_GSLT_TOKEN}
+      - SRCDS_PW=${CS2_PASSWORD}
+      - SRCDS_RCONPW=${RCON_PASSWORD}
+      - RCON_PASSWORD=${RCON_PASSWORD}
+      - SRCDS_HOSTNAME=${CS2_SERVERNAME}
+      - STEAM_API_KEY=${STEAM_API_KEY}
+    volumes:
+      - ./cs2-data:/home/steam/cs2/
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
+
+  bot:
+    build: ./bot
+    container_name: cs2-bot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - ALLOWED_USER_ID=${ALLOWED_USER_ID}
+      - RCON_HOST=cs2
+      - RCON_PORT=27015
+      - RCON_PASSWORD=${RCON_PASSWORD}
+      - CS2_PASSWORD=${CS2_PASSWORD}
+      - CS2_SERVERNAME=${CS2_SERVERNAME}
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    volumes:
+      - ./bot:/app
+    depends_on:
+      - cs2
