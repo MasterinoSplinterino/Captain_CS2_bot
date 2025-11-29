@@ -1,102 +1,72 @@
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 import bot_config as config
 
-def get_maps_keyboard(page: int = 1, game_mode: str = None):
-    keyboard = []
+def get_maps_keyboard(mode, page=0):
+    if mode in config.MODE_MAPS:
+        all_maps = config.MODE_MAPS[mode]
+    else:
+        # Fallback to all maps (values of MAPS dict)
+        all_maps = list(config.MAPS.values())
+        
+    # Build lookup dictionaries
+    NAME_TO_CODE = {**config.MAPS, **config.WORKSHOP_MAPS}
+    CODE_TO_NAME = {v: k for k, v in NAME_TO_CODE.items()}
     
-    # Filter maps if game_mode is provided
-    if game_mode and game_mode in config.MODE_MAPS:
-        allowed_maps = set(config.MODE_MAPS[game_mode])
-        current_maps = {k: v for k, v in config.MAPS.items() if v in allowed_maps}
-        current_workshop = {k: v for k, v in config.WORKSHOP_MAPS.items() if k in allowed_maps}
-    else:
-        current_maps = config.MAPS
-        current_workshop = config.WORKSHOP_MAPS
 
-    # Page 1: Main Maps (or Workshop if no Main Maps)
-    if page == 1:
-        row = []
-        # If we have standard maps, show them
-        if current_maps:
-            for name, code in current_maps.items():
-                row.append(InlineKeyboardButton(text=name, callback_data=f"map:{code}"))
-                if len(row) == 2:
-                    keyboard.append(row)
-                    row = []
-            if row: keyboard.append(row)
-            
-            # Navigation to Workshop maps (only if there are any)
-            if current_workshop:
-                keyboard.append([InlineKeyboardButton(text="Next (Workshop) ➡️", callback_data=f"map_page:2:{game_mode}" if game_mode else "map_page:2")])
-        
-        # If NO standard maps but we HAVE workshop maps, show first page of workshop maps immediately
-        elif current_workshop:
-            # Sort workshop maps by name
-            sorted_workshop = sorted(current_workshop.items(), key=lambda x: x[0])
-            items_per_page = 10
-            current_items = sorted_workshop[:items_per_page]
-            
-            for name, code in current_items:
-                # Truncate name if too long
-                display_name = name[:20] + "..." if len(name) > 20 else name
-                row.append(InlineKeyboardButton(text=display_name, callback_data=f"map:{code}"))
-                if len(row) == 2:
-                    keyboard.append(row)
-                    row = []
-            if row: keyboard.append(row)
-            
-            # Navigation for Workshop maps (if more than 1 page)
-            if len(sorted_workshop) > items_per_page:
-                cb_data = f"map_page:2:{game_mode}" if game_mode else "map_page:2"
-                keyboard.append([InlineKeyboardButton(text="Next ➡️", callback_data=cb_data)])
-
-    else:
-        # Workshop Maps Pagination (Page 2+)
-        # Sort workshop maps by name
-        sorted_workshop = sorted(current_workshop.items(), key=lambda x: x[0])
-        
-        items_per_page = 10
-        
-        # If we started showing workshop maps on Page 1 (because no standard maps), 
-        # then Page 2 is actually the 2nd page of workshop maps (index 1).
-        # If we showed standard maps on Page 1, then Page 2 is the 1st page of workshop maps (index 0).
-        
-        if not current_maps and current_workshop:
-            # Workshop maps started on Page 1
-            workshop_page_index = page - 1
+    # Custom pagination for Competitive/Random Rounds
+    if mode in ["Competitive", "🎲 Random Rounds"]:
+        if page == 0:
+            start = 0
+            end = 8
         else:
-            # Workshop maps start on Page 2
-            workshop_page_index = page - 2 
+            # Page 1 starts after the first 8 maps
+            # Page 1: 8 to 8+18=26
+            # Page 2: 26 to 26+18=44
+            start = 8 + (page - 1) * 18
+            end = start + 18
+    else:
+        PAGE_SIZE = 18
+        start = page * PAGE_SIZE
+        end = start + PAGE_SIZE
+        
+    current_maps = all_maps[start:end]
+    
+    keyboard = []
+    row = []
+    for item in current_maps:
+        # Determine Name and Code
+        if item in NAME_TO_CODE:
+            # Item is a Name
+            map_name = item
+            map_code = NAME_TO_CODE[item]
+        elif item in CODE_TO_NAME:
+            # Item is a Code
+            map_name = CODE_TO_NAME[item]
+            map_code = item
+        else:
+            # Fallback
+            map_name = item
+            map_code = item
             
-        start_idx = workshop_page_index * items_per_page
-        end_idx = start_idx + items_per_page
+        # Truncate name
+        display_name = map_name[:20] + "..." if len(map_name) > 20 else map_name
         
-        current_items = sorted_workshop[start_idx:end_idx]
+        row.append(InlineKeyboardButton(text=display_name, callback_data=f"map:{map_code}"))
+        if len(row) == 2:
+            keyboard.append(row)
+            row = []
+    if row: keyboard.append(row)
+    
+    # Navigation
+    nav_row = []
+    if page > 0:
+        nav_row.append(InlineKeyboardButton(text="⬅️ Prev", callback_data=f"maps:page:{page-1}:{mode}"))
+    if end < len(all_maps):
+        nav_row.append(InlineKeyboardButton(text="Next ➡️", callback_data=f"maps:page:{page+1}:{mode}"))
+    
+    if nav_row:
+        keyboard.append(nav_row)
         
-        row = []
-        for name, code in current_items:
-            # Truncate name if too long
-            display_name = name[:20] + "..." if len(name) > 20 else name
-            row.append(InlineKeyboardButton(text=display_name, callback_data=f"map:{code}"))
-            if len(row) == 2:
-                keyboard.append(row)
-                row = []
-        if row: keyboard.append(row)
-        
-        # Navigation
-        nav_row = []
-        if page > 1:
-            prev_page = page - 1
-            cb_data = f"map_page:{prev_page}:{game_mode}" if game_mode else f"map_page:{prev_page}"
-            nav_row.append(InlineKeyboardButton(text="⬅️ Prev", callback_data=cb_data))
-        
-        if end_idx < len(sorted_workshop):
-            next_page = page + 1
-            cb_data = f"map_page:{next_page}:{game_mode}" if game_mode else f"map_page:{next_page}"
-            nav_row.append(InlineKeyboardButton(text="Next ➡️", callback_data=cb_data))
-            
-        if nav_row: keyboard.append(nav_row)
-
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
 def get_modes_keyboard():
@@ -108,16 +78,32 @@ def get_modes_keyboard():
             keyboard.append(row)
             row = []
     if row: keyboard.append(row)
+    
+    # Add RR On/Off buttons at the bottom
+    keyboard.append([
+        InlineKeyboardButton(text="🎲 RR On", callback_data="menu:enable_rr"),
+        InlineKeyboardButton(text="🎲 RR Off", callback_data="menu:disable_rr")
+    ])
+    
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
 def get_main_keyboard():
     keyboard = [
-        [InlineKeyboardButton(text="🗺 Change Map", callback_data="menu:map"),
-         InlineKeyboardButton(text="🎮 Change Mode", callback_data="menu:mode")],
-        [InlineKeyboardButton(text="🔄 Restart Match", callback_data="menu:restart")],
-        [InlineKeyboardButton(text="🤖 Add T Bot", callback_data="menu:addt"),
-         InlineKeyboardButton(text="🤖 Add CT Bot", callback_data="menu:addct")],
-        [InlineKeyboardButton(text="🚫 Remove Bots", callback_data="menu:removebots")],
-        [InlineKeyboardButton(text="📊 Status", callback_data="menu:status")]
+        [InlineKeyboardButton(text="📊 Status", callback_data="menu:status"),
+         InlineKeyboardButton(text="📂 Logs", callback_data="menu:logs")],
+        [InlineKeyboardButton(text="🎮 Change Mode", callback_data="menu:mode"),
+         InlineKeyboardButton(text="🗺 Change Map", callback_data="menu:map")],
+        [InlineKeyboardButton(text="🔄 Restart", callback_data="menu:restart"),
+         InlineKeyboardButton(text="⏳ Warmup On", callback_data="menu:warmup_start"),
+         InlineKeyboardButton(text="🔥 Warmup Off", callback_data="menu:warmup_end")],
+        [InlineKeyboardButton(text="🤖 Add T", callback_data="menu:addt"),
+         InlineKeyboardButton(text="🤖 Add CT", callback_data="menu:addct"),
+         InlineKeyboardButton(text="🚫 Clear Bots", callback_data="menu:removebots")]
     ]
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
+
+def get_reply_keyboard():
+    keyboard = [
+        [KeyboardButton(text="☰ Menu")]
+    ]
+    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)

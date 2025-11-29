@@ -30,10 +30,10 @@ Each game mode has a hand full of maps preset so you are ready to go and it's [e
 - Battle Royale ([Steam API key](#playing-workshop-mapscollections) required)
 - [Soccer](https://www.youtube.com/watch?v=yfltZoMH2Ts) ([Steam API key](#playing-workshop-mapscollections) required)
 - Battle Ball ([Steam API key](#playing-workshop-mapscollections) required)
+- [Random Rounds](https://www.youtube.com/watch?v=OQQBUFB56Iw) - CS2, but every round is a SURPRISE.
 
 You can also enable modifiers in game modes from the `!settings` menu in chat i.e. Competitive with random rounds like [NadeKings video](https://www.youtube.com/watch?v=OQQBUFB56Iw).
 
-- [Random Rounds](https://www.youtube.com/watch?v=OQQBUFB56Iw) - CS2, but every round is a SURPRISE.
 - [WarcraftMod](https://www.youtube.com/watch?v=Z9HdF47zPss) - An open-source Warcraft mod for CS2 featuring a fully-fledged RPG system.
 - Roll The Dice - Roll the dice to get either a positive or negative effect for the current round.
 - Bunny hopping

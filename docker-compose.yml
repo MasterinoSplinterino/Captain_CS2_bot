@@ -36,5 +36,6 @@ services:
       - 1.1.1.1
     volumes:
       - ./bot:/app
+      - ./cs2-data:/cs2-data
     depends_on:
       - cs2
