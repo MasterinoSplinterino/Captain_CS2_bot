@@ -66,3 +66,5 @@ cs2-data/
 poetry.lock
 Pipfile.lock
 requirements.txt.lock
+
+.gitignore
