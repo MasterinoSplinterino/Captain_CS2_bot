@@ -6,7 +6,8 @@ load_dotenv()
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-ALLOWED_USER_ID = int(os.getenv("ALLOWED_USER_ID", 0))
+raw_ids = os.getenv("ALLOWED_USER_ID", "0")
+ALLOWED_USER_IDS = [int(x.strip()) for x in raw_ids.split(",") if x.strip().isdigit()]
 
 RCON_HOST = os.getenv("RCON_HOST", "cs2")
 RCON_PORT = int(os.getenv("RCON_PORT", 27015))

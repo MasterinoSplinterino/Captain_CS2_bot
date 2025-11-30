@@ -17,7 +17,7 @@ rcon = RCONClient()
 def is_admin(message: types.Message):
     # Handle both Message and CallbackQuery
     user_id = message.from_user.id
-    return user_id == config.ALLOWED_USER_ID
+    return user_id in config.ALLOWED_USER_IDS
 
 def get_current_mode_name():
     try:
