@@ -1,0 +1,99 @@
+2025-11-30T12:27:24.268Z [39;49m[37m12:27:24[39;49m[39;49m[30m [[39;49m[39;49m[37m[39;49m[37m[41mEROR[39;49m[39;49m[30m] (cssharp:[39;49m[39;49m[37mCore[39;49m[39;49m[30m) [39;49m[39;49m[37mError invoking callback[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37mSystem.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37m ---> System.NullReferenceException: Object reference not set to an instance of an object.[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.AutoStartGame()[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.<Load>b__29_0()[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37m   at InvokeStub_Action.Invoke(Object, Object, IntPtr*)[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37m   --- End of inner exception stack trace ---[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37m   at System.Delegate.DynamicInvokeImpl(Object[] args)[39;49m
+2025-11-30T12:27:24.269Z [39;49m[37m   at CounterStrikeSharp.API.Core.FunctionReference.<CreateWrappedCallback>b__18_0(fxScriptContext* context) in /home/runner/work/CounterStrikeSharp/CounterStrikeSharp/managed/CounterStrikeSharp.API/Core/FunctionReference.cs:line 101[39;49m
+2025-11-30T12:27:25.268Z [39;49m[37m12:27:25[39;49m[39;49m[30m [[39;49m[39;49m[37m[39;49m[37m[41mEROR[39;49m[39;49m[30m] (cssharp:[39;49m[39;49m[37mCore[39;49m[39;49m[30m) [39;49m[39;49m[37mError invoking callback[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37mSystem.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37m ---> System.NullReferenceException: Object reference not set to an instance of an object.[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.AutoStartGame()[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.<Load>b__29_0()[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37m   at InvokeStub_Action.Invoke(Object, Object, IntPtr*)[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37m   --- End of inner exception stack trace ---[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37m   at System.Delegate.DynamicInvokeImpl(Object[] args)[39;49m
+2025-11-30T12:27:25.269Z [39;49m[37m   at CounterStrikeSharp.API.Core.FunctionReference.<CreateWrappedCallback>b__18_0(fxScriptContext* context) in /home/runner/work/CounterStrikeSharp/CounterStrikeSharp/managed/CounterStrikeSharp.API/Core/FunctionReference.cs:line 101[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m12:27:26[39;49m[39;49m[30m [[39;49m[39;49m[37m[39;49m[37m[41mEROR[39;49m[39;49m[30m] (cssharp:[39;49m[39;49m[37mCore[39;49m[39;49m[30m) [39;49m[39;49m[37mError invoking callback[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37mSystem.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m ---> System.NullReferenceException: Object reference not set to an instance of an object.[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.AutoStartGame()[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.<Load>b__29_0()[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m   at InvokeStub_Action.Invoke(Object, Object, IntPtr*)[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m   --- End of inner exception stack trace ---[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m   at System.Delegate.DynamicInvokeImpl(Object[] args)[39;49m
+2025-11-30T12:27:26.269Z [39;49m[37m   at CounterStrikeSharp.API.Core.FunctionReference.<CreateWrappedCallback>b__18_0(fxScriptContext* context) in /home/runner/work/CounterStrikeSharp/CounterStrikeSharp/managed/CounterStrikeSharp.API/Core/FunctionReference.cs:line 101[39;49m
+2025-11-30T12:27:27.268Z [39;49m[37m12:27:27[39;49m[39;49m[30m [[39;49m[39;49m[37m[39;49m[37m[41mEROR[39;49m[39;49m[30m] (cssharp:[39;49m[39;49m[37mCore[39;49m[39;49m[30m) [39;49m[39;49m[37mError invoking callback[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37mSystem.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37m ---> System.NullReferenceException: Object reference not set to an instance of an object.[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.AutoStartGame()[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.<Load>b__29_0()[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37m   at InvokeStub_Action.Invoke(Object, Object, IntPtr*)[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37m   --- End of inner exception stack trace ---[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37m   at System.Delegate.DynamicInvokeImpl(Object[] args)[39;49m
+2025-11-30T12:27:27.269Z [39;49m[37m   at CounterStrikeSharp.API.Core.FunctionReference.<CreateWrappedCallback>b__18_0(fxScriptContext* context) in /home/runner/work/CounterStrikeSharp/CounterStrikeSharp/managed/CounterStrikeSharp.API/Core/FunctionReference.cs:line 101[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m12:27:28[39;49m[39;49m[30m [[39;49m[39;49m[37m[39;49m[37m[41mEROR[39;49m[39;49m[30m] (cssharp:[39;49m[39;49m[37mCore[39;49m[39;49m[30m) [39;49m[39;49m[37mError invoking callback[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37mSystem.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m ---> System.NullReferenceException: Object reference not set to an instance of an object.[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.AutoStartGame()[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.<Load>b__29_0()[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m   at InvokeStub_Action.Invoke(Object, Object, IntPtr*)[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m   --- End of inner exception stack trace ---[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m   at System.Delegate.DynamicInvokeImpl(Object[] args)[39;49m
+2025-11-30T12:27:28.269Z [39;49m[37m   at CounterStrikeSharp.API.Core.FunctionReference.<CreateWrappedCallback>b__18_0(fxScriptContext* context) in /home/runner/work/CounterStrikeSharp/CounterStrikeSharp/managed/CounterStrikeSharp.API/Core/FunctionReference.cs:line 101[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m12:27:29[39;49m[39;49m[30m [[39;49m[39;49m[37m[39;49m[37m[41mEROR[39;49m[39;49m[30m] (cssharp:[39;49m[39;49m[37mCore[39;49m[39;49m[30m) [39;49m[39;49m[37mError invoking callback[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37mSystem.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m ---> System.NullReferenceException: Object reference not set to an instance of an object.[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.AutoStartGame()[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.<Load>b__29_0()[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m   at InvokeStub_Action.Invoke(Object, Object, IntPtr*)[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m   --- End of inner exception stack trace ---[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m   at System.Delegate.DynamicInvokeImpl(Object[] args)[39;49m
+2025-11-30T12:27:29.269Z [39;49m[37m   at CounterStrikeSharp.API.Core.FunctionReference.<CreateWrappedCallback>b__18_0(fxScriptContext* context) in /home/runner/work/CounterStrikeSharp/CounterStrikeSharp/managed/CounterStrikeSharp.API/Core/FunctionReference.cs:line 101[39;49m
+2025-11-30T12:27:30.268Z [39;49m[37m12:27:30[39;49m[39;49m[30m [[39;49m[39;49m[37m[39;49m[37m[41mEROR[39;49m[39;49m[30m] (cssharp:[39;49m[39;49m[37mCore[39;49m[39;49m[30m) [39;49m[39;49m[37mError invoking callback[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37mSystem.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37m ---> System.NullReferenceException: Object reference not set to an instance of an object.[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.AutoStartGame()[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.<Load>b__29_0()[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37m   at InvokeStub_Action.Invoke(Object, Object, IntPtr*)[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37m   --- End of inner exception stack trace ---[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37m   at System.Delegate.DynamicInvokeImpl(Object[] args)[39;49m
+2025-11-30T12:27:30.269Z [39;49m[37m   at CounterStrikeSharp.API.Core.FunctionReference.<CreateWrappedCallback>b__18_0(fxScriptContext* context) in /home/runner/work/CounterStrikeSharp/CounterStrikeSharp/managed/CounterStrikeSharp.API/Core/FunctionReference.cs:line 101[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m12:27:31[39;49m[39;49m[30m [[39;49m[39;49m[37m[39;49m[37m[41mEROR[39;49m[39;49m[30m] (cssharp:[39;49m[39;49m[37mCore[39;49m[39;49m[30m) [39;49m[39;49m[37mError invoking callback[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37mSystem.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m ---> System.NullReferenceException: Object reference not set to an instance of an object.[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.AutoStartGame()[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.<Load>b__29_0()[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m   at InvokeStub_Action.Invoke(Object, Object, IntPtr*)[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m   --- End of inner exception stack trace ---[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m   at System.Delegate.DynamicInvokeImpl(Object[] args)[39;49m
+2025-11-30T12:27:31.269Z [39;49m[37m   at CounterStrikeSharp.API.Core.FunctionReference.<CreateWrappedCallback>b__18_0(fxScriptContext* context) in /home/runner/work/CounterStrikeSharp/CounterStrikeSharp/managed/CounterStrikeSharp.API/Core/FunctionReference.cs:line 101[39;49m
+2025-11-30T12:27:32.268Z [39;49m[37m12:27:32[39;49m[39;49m[30m [[39;49m[39;49m[37m[39;49m[37m[41mEROR[39;49m[39;49m[30m] (cssharp:[39;49m[39;49m[37mCore[39;49m[39;49m[30m) [39;49m[39;49m[37mError invoking callback[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37mSystem.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37m ---> System.NullReferenceException: Object reference not set to an instance of an object.[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.AutoStartGame()[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37m   at SLAYER_Football.SLAYER_Football.<Load>b__29_0()[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37m   at InvokeStub_Action.Invoke(Object, Object, IntPtr*)[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37m   --- End of inner exception stack trace ---[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37m   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37m   at System.Delegate.DynamicInvokeImpl(Object[] args)[39;49m
+2025-11-30T12:27:32.269Z [39;49m[37m   at CounterStrikeSharp.API.Core.FunctionReference.<CreateWrappedCallback>b__18_0(fxScriptContext* context) in /home/runner/work/CounterStrikeSharp/CounterStrikeSharp/managed/CounterStrikeSharp.API/Core/FunctionReference.cs:line 101[39;49m

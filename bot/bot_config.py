@@ -213,7 +213,7 @@ GAME_MODES = {
     "KZ": "exec kz.cfg",
     "Practice": "exec practice.cfg",
     "ScoutzKnivez": "exec scoutzknivez.cfg",
-    "Soccer": "exec soccer.cfg",
+
     "Mini Games": "exec minigames.cfg",
     "One In The Chamber": "exec oitc.cfg",
     "Hide n Seek": "exec hns.cfg",
@@ -533,9 +533,7 @@ MODE_MAPS = {
         "de_vertigo_prophunt",
         "de_mirage_prophunt",
     ],
-    "Soccer": [
-        "field",
-    ],
+
     "AWP": [
         "awp_bhop_rocket",
     ],
