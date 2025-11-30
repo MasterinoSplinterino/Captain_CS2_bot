@@ -52,11 +52,11 @@ services:
   # 3. Copy the claim URL and visit it in your browser.
   # 4. Create a UDP tunnel pointing to: cs2:27015
   playit:
-    image: playit/playit:latest
+    image: ghcr.io/playit-cloud/playit-agent:latest
     container_name: cs2-playit
     restart: unless-stopped
     environment:
-      - PLAYIT_SECRET=${PLAYIT_SECRET} # Optional: Add this to Dokploy env vars AFTER you claim the agent to persist it easily
+      - SECRET_KEY=${PLAYIT_SECRET} # Optional: Add this to Dokploy env vars AFTER you claim the agent to persist it easily
     volumes:
       - playit-data:/etc/playit # Persist configuration
     depends_on:
