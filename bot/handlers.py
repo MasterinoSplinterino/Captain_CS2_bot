@@ -176,7 +176,7 @@ async def send_status(message: types.Message):
         if hostname_match: hostname = hostname_match.group(1).strip()
         if hostname == "Counter-Strike 2" or hostname == "Unknown": hostname = config.CS2_SERVERNAME
         
-        ip = config.SERVER_IP
+
         # ip_match = re.search(r"udp/ip\s*:\s*(.*)", status_text)
         # if ip_match: 
         #     full_ip_str = ip_match.group(1).strip()
