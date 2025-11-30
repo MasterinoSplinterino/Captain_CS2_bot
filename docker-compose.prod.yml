@@ -18,6 +18,8 @@ services:
     volumes:
       # Mount the data from the host path where you copied the USB files
       - /opt/cs2-data:/home/steam/cs2/
+      # Mount custom config for friendly fire
+      - ./config/custom_competitive.cfg:/home/steam/cs2/custom_files/cfg/custom_competitive.cfg
     stdin_open: true
     tty: true
 
@@ -37,6 +39,8 @@ services:
       - RCON_PASSWORD=${RCON_PASSWORD}
       - CS2_PASSWORD=${CS2_PASSWORD}
       - CS2_SERVERNAME=${CS2_SERVERNAME}
+      - CS2_IP=${CS2_IP}
+      - CS2_DOMAIN=${CS2_DOMAIN}
     dns:
       - 8.8.8.8
       - 1.1.1.1
@@ -61,19 +65,16 @@ services:
       - playit-data:/etc/playit # Persist configuration
     depends_on:
       - cs2
-
   # Optional: Cloudflare Tunnel for SSH/Management access
   # This does NOT tunnel the game UDP traffic for players, but allows you to SSH into the container/host
   # or access internal web services if you add them.
-  tunnel:
-    image: cloudflare/cloudflared:latest
-    container_name: cs2-tunnel
-    restart: unless-stopped
-    command: tunnel run
-    environment:
-      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+  # tunnel:
+  #   image: cloudflare/cloudflared:latest
+  #   container_name: cs2-tunnel
+  #   restart: unless-stopped
+  #   command: tunnel run
+  #   environment:
+  #     - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
 
 volumes:
   playit-data:
-
-

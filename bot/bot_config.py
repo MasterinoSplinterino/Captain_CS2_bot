@@ -13,6 +13,8 @@ RCON_PORT = int(os.getenv("RCON_PORT", 27015))
 RCON_PASSWORD = os.getenv("RCON_PASSWORD")
 CS2_PASSWORD = os.getenv("CS2_PASSWORD", "Unknown")
 CS2_SERVERNAME = os.getenv("CS2_SERVERNAME", "Counter-Strike 2")
+CS2_IP = os.getenv("CS2_IP", "")
+CS2_DOMAIN = os.getenv("CS2_DOMAIN", "")
 
 if not RCON_PASSWORD:
     print("WARNING: RCON_PASSWORD is not set! RCON commands will fail.")
@@ -119,7 +121,7 @@ MAPS = {
     "de_shortdust": "workshop/3070612859/de_shortdust",
     "de_survivor_classic_m": "workshop/3217247541/de_survivor_classic_m",
     "de_thera": "workshop/3121217565/de_thera",
-    "de_train": "workshop/3070284539/de_train",
+    "de_train": "de_train",
     "de_train_twyxe": "workshop/3406937162/de_train_twyxe",
     "de_vertigo": "de_vertigo",
     "de_vertigo_45": "workshop/3276886893/de_vertigo_45",

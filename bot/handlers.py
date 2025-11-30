@@ -176,17 +176,17 @@ async def send_status(message: types.Message):
         if hostname_match: hostname = hostname_match.group(1).strip()
         if hostname == "Counter-Strike 2" or hostname == "Unknown": hostname = config.CS2_SERVERNAME
         
-        ip = "Unknown"
-        ip_match = re.search(r"udp/ip\s*:\s*(.*)", status_text)
-        if ip_match: 
-            full_ip_str = ip_match.group(1).strip()
-            # Try to extract public IP
-            public_match = re.search(r"\(public\s+([^\)]+)\)", full_ip_str)
-            if public_match:
-                ip = public_match.group(1)
-            else:
-                # Fallback to the first part (usually local IP)
-                ip = full_ip_str.split()[0]
+        ip = config.SERVER_IP
+        # ip_match = re.search(r"udp/ip\s*:\s*(.*)", status_text)
+        # if ip_match: 
+        #     full_ip_str = ip_match.group(1).strip()
+        #     # Try to extract public IP
+        #     public_match = re.search(r"\(public\s+([^\)]+)\)", full_ip_str)
+        #     if public_match:
+        #         ip = public_match.group(1)
+        #     else:
+        #         # Fallback to the first part (usually local IP)
+        #         ip = full_ip_str.split()[0]
         
         map_name = "Unknown"
         map_match = re.search(r"loaded spawngroup\(\s*1\)\s*:\s*SV:\s*\[\d+:\s*([^|]+)\s*\|", status_text)
@@ -224,20 +224,30 @@ async def send_status(message: types.Message):
             f"🔑 **Password:** `{password}`\n"
             f"🗺 **Map:** `{map_name}`\n"
             f"🎮 **Mode:** `{mode_name}`\n"
-            f"🌐 **IP:** `{ip}`\n\n"
-            f"👥 **Players ({player_count}):**\n"
         )
+        
+        if config.CS2_IP:
+            msg += f"🌐 **IP:** `{config.CS2_IP}`\n"
+        if config.CS2_DOMAIN:
+            msg += f"🔗 **Domain:** `{config.CS2_DOMAIN}`\n"
+            
+        msg += f"\n👥 **Players ({player_count}):**\n"
+
         if players:
             for p in players: msg += f"- {p}\n"
         else:
             msg += "- No players online"
 
         # Quick Connect Command
-        connect_cmd = f"connect {ip}"
-        if password and password != "None":
-            connect_cmd += f"; password {password}"
-            
-        msg += f"\n\n🚀 **Quick Connect:**\n`{connect_cmd}`"
+        # Prioritize Domain, then IP, then auto-detected IP (if we were still doing that, but we aren't really)
+        connect_address = config.CS2_DOMAIN if config.CS2_DOMAIN else config.CS2_IP
+        
+        if connect_address:
+            connect_cmd = f"connect {connect_address}"
+            if password and password != "None":
+                connect_cmd += f"; password {password}"
+                
+            msg += f"\n\n🚀 **Quick Connect:**\n`{connect_cmd}`"
 
         await message.answer(msg, parse_mode="Markdown")
     except Exception as e:
