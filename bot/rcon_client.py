@@ -15,10 +15,10 @@ class RCONClient:
         self.password = RCON_PASSWORD
         self.timeout = 5
 
-    def _create_packet(self, id, type, body):
+    def _create_packet(self, id, pkt_type, body):
         body_encoded = body.encode('utf-8')
         size = 4 + 4 + len(body_encoded) + 1 + 1
-        return struct.pack(f'<iii{len(body_encoded)}scc', size, id, type, body_encoded, b'\x00', b'\x00')
+        return struct.pack(f'<iii{len(body_encoded)}scc', size, id, pkt_type, body_encoded, b'\x00', b'\x00')
 
     def _read_packet(self, sock):
         try:
@@ -35,9 +35,9 @@ class RCONClient:
             
             if len(data) < size: return None
 
-            id, type = struct.unpack('<ii', data[:8])
+            id, pkt_type = struct.unpack('<ii', data[:8])
             body = data[8:-2].decode('utf-8', errors='replace')
-            return id, type, body
+            return id, pkt_type, body
         except socket.timeout:
             return None
 
@@ -56,7 +56,7 @@ class RCONClient:
             if not auth_resp:
                 return "Error: No auth response from server."
             
-            id, type, body = auth_resp
+            id, pkt_type, body = auth_resp
             if id == -1:
                 return "Error: RCON Authentication Failed (Wrong Password)."
             
