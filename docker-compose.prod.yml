@@ -1,0 +1,79 @@
+services:
+  cs2:
+    image: ghcr.io/kus/cs2-modded-server:latest
+    container_name: cs2-server
+    restart: unless-stopped
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+      - "27020:27020/udp"
+    environment:
+      - SRCDS_TOKEN=${CS2_GSLT_TOKEN}
+      - SRCDS_PW=${CS2_PASSWORD}
+      - SRCDS_RCONPW=${RCON_PASSWORD}
+      - RCON_PASSWORD=${RCON_PASSWORD}
+      - SRCDS_HOSTNAME=${CS2_SERVERNAME}
+      - STEAM_API_KEY=${STEAM_API_KEY}
+      - LAN=0
+    volumes:
+      # Mount the data from the host path where you copied the USB files
+      - /opt/cs2-data:/home/steam/cs2/
+    stdin_open: true
+    tty: true
+
+  bot:
+    # In Dokploy, you might need to build this from a git repo or push the image to a registry.
+    # If using "docker-compose" build type in Dokploy, it can build from context if the repo is connected.
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: cs2-bot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - ALLOWED_USER_ID=${ALLOWED_USER_ID}
+      - RCON_HOST=cs2
+      - RCON_PORT=27015
+      - RCON_PASSWORD=${RCON_PASSWORD}
+      - CS2_PASSWORD=${CS2_PASSWORD}
+      - CS2_SERVERNAME=${CS2_SERVERNAME}
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    volumes:
+      # Mount the same data volume so the bot can access logs/files if needed
+      - /opt/cs2-data:/cs2-data
+    depends_on:
+      - cs2
+
+  # Playit.gg Tunnel for Game Traffic (UDP)
+  # 1. Start the stack.
+  # 2. Check logs: docker logs cs2-playit
+  # 3. Copy the claim URL and visit it in your browser.
+  # 4. Create a UDP tunnel pointing to: cs2:27015
+  playit:
+    image: playit/playit:latest
+    container_name: cs2-playit
+    restart: unless-stopped
+    environment:
+      - PLAYIT_SECRET=${PLAYIT_SECRET} # Optional: Add this to Dokploy env vars AFTER you claim the agent to persist it easily
+    volumes:
+      - playit-data:/etc/playit # Persist configuration
+    depends_on:
+      - cs2
+
+  # Optional: Cloudflare Tunnel for SSH/Management access
+  # This does NOT tunnel the game UDP traffic for players, but allows you to SSH into the container/host
+  # or access internal web services if you add them.
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cs2-tunnel
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+
+volumes:
+  playit-data:
+
+
