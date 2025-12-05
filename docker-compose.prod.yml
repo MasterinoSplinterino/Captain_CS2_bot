@@ -16,6 +16,7 @@ services:
       - PORT=27015
       - SRCDS_IP=0.0.0.0
       - SRCDS_PORT=27015
+      - PUBLIC_IP=${PUBLIC_IP:-auto}
       - PUBLIC_IP_FETCH=0
       # Friendly Fire Settings
       - CS2_CFG_mp_friendlyfire=1
