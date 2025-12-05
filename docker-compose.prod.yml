@@ -29,6 +29,9 @@ services:
       dockerfile: Dockerfile
     container_name: cs2-bot
     restart: unless-stopped
+    entrypoint:
+      - /bin/bash
+      - /app/entrypoint.sh
     env_file:
       - .env
     environment:
