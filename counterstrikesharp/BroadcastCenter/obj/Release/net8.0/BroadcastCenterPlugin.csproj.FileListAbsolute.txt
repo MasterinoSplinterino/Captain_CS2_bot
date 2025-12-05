@@ -1,0 +1,12 @@
+/workspace/counterstrikesharp/BroadcastCenter/obj/Release/net8.0/BroadcastCenterPlugin.csproj.AssemblyReference.cache
+/workspace/counterstrikesharp/BroadcastCenter/obj/Release/net8.0/BroadcastCenterPlugin.GeneratedMSBuildEditorConfig.editorconfig
+/workspace/counterstrikesharp/BroadcastCenter/obj/Release/net8.0/BroadcastCenterPlugin.AssemblyInfoInputs.cache
+/workspace/counterstrikesharp/BroadcastCenter/obj/Release/net8.0/BroadcastCenterPlugin.AssemblyInfo.cs
+/workspace/counterstrikesharp/BroadcastCenter/obj/Release/net8.0/BroadcastCenterPlugin.csproj.CoreCompileInputs.cache
+/workspace/counterstrikesharp/BroadcastCenter/bin/Release/net8.0/BroadcastCenterPlugin.deps.json
+/workspace/counterstrikesharp/BroadcastCenter/bin/Release/net8.0/BroadcastCenterPlugin.dll
+/workspace/counterstrikesharp/BroadcastCenter/bin/Release/net8.0/BroadcastCenterPlugin.pdb
+/workspace/counterstrikesharp/BroadcastCenter/obj/Release/net8.0/BroadcastCenterPlugin.dll
+/workspace/counterstrikesharp/BroadcastCenter/obj/Release/net8.0/refint/BroadcastCenterPlugin.dll
+/workspace/counterstrikesharp/BroadcastCenter/obj/Release/net8.0/BroadcastCenterPlugin.pdb
+/workspace/counterstrikesharp/BroadcastCenter/obj/Release/net8.0/ref/BroadcastCenterPlugin.dll

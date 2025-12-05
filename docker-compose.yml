@@ -8,12 +8,7 @@ services:
     volumes:
       - ./counterstrikesharp:/workspace/counterstrikesharp
       - cs2-volume:/cs2-data
-    command: >
-      /bin/bash -c "set -euo pipefail && \
-      dotnet build -c Release && \
-      mkdir -p /cs2-data/cs2-dedicated/game/csgo/addons/counterstrikesharp/plugins && \
-      cp bin/Release/net8.0/BroadcastCenterPlugin.dll \
-        /cs2-data/cs2-dedicated/game/csgo/addons/counterstrikesharp/plugins/BroadcastCenterPlugin.dll"
+    command: /bin/bash -c "set -euo pipefail && dotnet build -c Release && mkdir -p /cs2-data/cs2-dedicated/game/csgo/addons/counterstrikesharp/plugins && cp bin/Release/net8.0/BroadcastCenterPlugin.dll /cs2-data/cs2-dedicated/game/csgo/addons/counterstrikesharp/plugins/BroadcastCenterPlugin.dll"
   cs2_modded_server:
     image: ghcr.io/kus/cs2-modded-server:latest
     container_name: cs2-modded-server
