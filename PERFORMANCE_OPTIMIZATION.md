@@ -8,24 +8,20 @@
 - `network_mode: host` - контейнер работает в сети хоста напрямую
 - Убирает прослойку Docker NAT для минимальных задержек
 - Сервер работает с сетью напрямую, без виртуализации
+- **Важно:** Сетевые параметры (BBR, буферы) настраиваются через [optimize_system.sh](optimize_system.sh) на хосте
 
-#### CPU оптимизация
-- `cpu_count: 4` - выделено 4 CPU ядра для сервера
-- `cpuset_cpus: "0-3"` - привязка к конкретным ядрам для снижения переключения контекста
-- `SYS_NICE` capability - возможность изменять приоритет процессов
-- `SYS_RESOURCE` capability - возможность изменять лимиты ресурсов
+#### Capabilities
+- `SYS_NICE` - возможность изменять приоритет процессов
+- `SYS_RESOURCE` - возможность изменять лимиты ресурсов
 
 #### Память
-- `mem_limit: 4g` - максимум 4GB RAM
-- `mem_reservation: 2g` - гарантированно 2GB RAM
+- `memory: 4g` (limit) - максимум 4GB RAM
+- `memory: 2g` (reservation) - гарантированно 2GB RAM
 - Предотвращает OOM (Out of Memory) убийство процесса
 
-#### Сеть
-- `net.core.rmem_max=16777216` - максимальный буфер приема (16MB)
-- `net.core.wmem_max=16777216` - максимальный буфер отправки (16MB)
-- `net.ipv4.tcp_congestion_control=bbr` - BBR алгоритм контроля перегрузки
-- `net.core.netdev_max_backlog=30000` - увеличенная очередь пакетов
-- `net.ipv4.tcp_max_syn_backlog=8096` - больше одновременных подключений
+#### CPU
+- `cpus: '4'` (limit) - максимум 4 CPU ядра
+- `cpus: '2'` (reservation) - гарантированно 2 CPU ядра
 
 #### Безопасность и производительность
 - `seccomp:unconfined` - отключение seccomp для минимальных задержек
@@ -157,19 +153,27 @@ docker logs cs2-server -f | grep -i "prediction\|unexpected"
 Измените в [docker-compose.prod.yml](docker-compose.prod.yml):
 
 ```yaml
-cpu_count: 2
-cpuset_cpus: "0-1"
-mem_limit: 2g
-mem_reservation: 1g
+deploy:
+  resources:
+    limits:
+      cpus: '2'
+      memory: 2g
+    reservations:
+      cpus: '1'
+      memory: 1g
 ```
 
 ### Если у вас 8+ CPU ядер (мощный VPS)
 
 ```yaml
-cpu_count: 6
-cpuset_cpus: "0-5"
-mem_limit: 6g
-mem_reservation: 4g
+deploy:
+  resources:
+    limits:
+      cpus: '6'
+      memory: 6g
+    reservations:
+      cpus: '4'
+      memory: 4g
 ```
 
 ### Изменение tickrate сервера
