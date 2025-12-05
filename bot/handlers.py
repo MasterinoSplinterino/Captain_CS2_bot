@@ -302,10 +302,15 @@ async def handle_broadcast_message(message: types.Message, state: FSMContext):
     response = rcon.broadcast_center(text)
     await state.clear()
 
-    if response.startswith("Error"):
+    if not response:
+        await message.answer("❌ Сервер ничего не ответил. Проверь плагин и повтори попытку.")
+        return
+
+    normalized = response.lower()
+    if response.startswith("Error") or "unknown command" in normalized or "usage:" in normalized:
         await message.answer(f"❌ Не удалось отправить сообщение.\nRCON: `{response}`", parse_mode="Markdown")
     else:
-        await message.answer("✅ Сообщение показано всем игрокам." )
+        await message.answer(f"✅ Сообщение показано всем игрокам.\nRCON: `{response}`")
 
 async def send_logs(message: types.Message):
     # Search for logs in /cs2-data/game/csgo and /cs2-data/game/csgo/logs
