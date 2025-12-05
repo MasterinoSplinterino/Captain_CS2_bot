@@ -1,0 +1,1074 @@
+2025-12-05T20:48:14.625Z Starting on Steam Runtime: 3...
+2025-12-05T20:48:14.627Z With   40 Gb free space...
+2025-12-05T20:48:14.707Z Checking steam user exists...
+2025-12-05T20:48:14.764Z Checking steamcmd exists...
+2025-12-05T20:48:14.767Z --2025-12-05 20:48:14--  https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+2025-12-05T20:48:14.823Z Resolving steamcdn-a.akamaihd.net (steamcdn-a.akamaihd.net)... 23.32.238.243, 23.32.238.233
+2025-12-05T20:48:14.844Z Connecting to steamcdn-a.akamaihd.net (steamcdn-a.akamaihd.net)|23.32.238.243|:443... connected.
+2025-12-05T20:48:14.942Z HTTP request sent, awaiting response... 200 OK
+2025-12-05T20:48:14.942Z Length: 2428561 (2.3M) [application/octet-stream]
+2025-12-05T20:48:14.943Z Saving to: 'steamcmd_linux.tar.gz'
+2025-12-05T20:48:14.962Z 0K .......... .......... .......... .......... ..........  2% 2.53M 1s
+2025-12-05T20:48:14.969Z 50K .......... .......... .......... .......... ..........  4% 6.80M 1s
+2025-12-05T20:48:14.988Z 100K .......... .......... .......... .......... ..........  6% 2.59M 1s
+2025-12-05T20:48:14.993Z 150K .......... .......... .......... .......... ..........  8% 10.2M 1s
+2025-12-05T20:48:15.000Z 200K .......... .......... .......... .......... .......... 10% 6.60M 0s
+2025-12-05T20:48:15.010Z 250K .......... .......... .......... .......... .......... 12% 5.11M 0s
+2025-12-05T20:48:15.013Z 300K .......... .......... .......... .......... .......... 14% 12.7M 0s
+2025-12-05T20:48:15.017Z 350K .......... .......... .......... .......... .......... 16% 12.1M 0s
+2025-12-05T20:48:15.022Z 400K .......... .......... .......... .......... .......... 18% 10.2M 0s
+2025-12-05T20:48:15.025Z 450K .......... .......... .......... .......... .......... 21% 18.6M 0s
+2025-12-05T20:48:15.029Z 500K .......... .......... .......... .......... .......... 23% 13.2M 0s
+2025-12-05T20:48:15.031Z 550K .......... .......... .......... .......... .......... 25% 19.7M 0s
+2025-12-05T20:48:15.033Z 600K .......... .......... .......... .......... .......... 27% 26.9M 0s
+2025-12-05T20:48:15.036Z 650K .......... .......... .......... .......... .......... 29% 16.8M 0s
+2025-12-05T20:48:15.038Z 700K .......... .......... .......... .......... .......... 31% 18.2M 0s
+2025-12-05T20:48:15.040Z 750K .......... .......... .......... .......... .......... 33% 37.5M 0s
+2025-12-05T20:48:15.042Z 800K .......... .......... .......... .......... .......... 35% 17.5M 0s
+2025-12-05T20:48:15.044Z 850K .......... .......... .......... .......... .......... 37% 30.4M 0s
+2025-12-05T20:48:15.046Z 900K .......... .......... .......... .......... .......... 40% 25.7M 0s
+2025-12-05T20:48:15.048Z 950K .......... .......... .......... .......... .......... 42% 22.8M 0s
+2025-12-05T20:48:15.050Z 1000K .......... .......... .......... .......... .......... 44% 30.9M 0s
+2025-12-05T20:48:15.052Z 1050K .......... .......... .......... .......... .......... 46% 25.4M 0s
+2025-12-05T20:48:15.054Z 1100K .......... .......... .......... .......... .......... 48% 25.7M 0s
+2025-12-05T20:48:15.055Z 1150K .......... .......... .......... .......... .......... 50% 37.3M 0s
+2025-12-05T20:48:15.057Z 1200K .......... .......... .......... .......... .......... 52% 29.3M 0s
+2025-12-05T20:48:15.057Z 1250K .......... .......... .......... .......... .......... 54% 59.7M 0s
+2025-12-05T20:48:15.059Z 1300K .......... .......... .......... .......... .......... 56% 36.3M 0s
+2025-12-05T20:48:15.060Z 1350K .......... .......... .......... .......... .......... 59% 51.5M 0s
+2025-12-05T20:48:15.061Z 1400K .......... .......... .......... .......... .......... 61% 41.5M 0s
+2025-12-05T20:48:15.062Z 1450K .......... .......... .......... .......... .......... 63% 45.5M 0s
+2025-12-05T20:48:15.063Z 1500K .......... .......... .......... .......... .......... 65% 47.0M 0s
+2025-12-05T20:48:15.064Z 1550K .......... .......... .......... .......... .......... 67% 43.4M 0s
+2025-12-05T20:48:15.065Z 1600K .......... .......... .......... .......... .......... 69% 53.1M 0s
+2025-12-05T20:48:15.066Z 1650K .......... .......... .......... .......... .......... 71% 69.5M 0s
+2025-12-05T20:48:15.067Z 1700K .......... .......... .......... .......... .......... 73% 45.7M 0s
+2025-12-05T20:48:15.068Z 1750K .......... .......... .......... .......... .......... 75% 50.9M 0s
+2025-12-05T20:48:15.069Z 1800K .......... .......... .......... .......... .......... 78% 53.1M 0s
+2025-12-05T20:48:15.070Z 1850K .......... .......... .......... .......... .......... 80% 40.1M 0s
+2025-12-05T20:48:15.070Z 1900K .......... .......... .......... .......... .......... 82%  148M 0s
+2025-12-05T20:48:15.080Z 1950K .......... .......... .......... .......... .......... 84% 4.75M 0s
+2025-12-05T20:48:15.081Z 2000K .......... .......... .......... .......... .......... 86% 72.7M 0s
+2025-12-05T20:48:15.095Z steamcmd.sh
+2025-12-05T20:48:15.095Z linux32/steamcmd
+2025-12-05T20:48:15.124Z linux32/steamerrorreporter
+2025-12-05T20:48:15.125Z linux32/libstdc++.so.6
+2025-12-05T20:48:15.130Z linux32/crashhandler.so
+2025-12-05T20:48:15.085Z 2050K .......... .......... .......... .......... .......... 88% 12.8M 0s
+2025-12-05T20:48:15.085Z 2100K .......... .......... .......... .......... .......... 90%  128M 0s
+2025-12-05T20:48:15.086Z 2150K .......... .......... .......... .......... .......... 92% 85.0M 0s
+2025-12-05T20:48:15.087Z 2200K .......... .......... .......... .......... .......... 94% 37.8M 0s
+2025-12-05T20:48:15.088Z 2250K .......... .......... .......... .......... .......... 96% 84.9M 0s
+2025-12-05T20:48:15.088Z 2300K .......... .......... .......... .......... .......... 99%  100M 0s
+2025-12-05T20:48:15.089Z 2350K .......... .......... .                               100% 19.2M=0.1s
+2025-12-05T20:48:15.089Z 2025-12-05 20:48:15 (15.8 MB/s) - 'steamcmd_linux.tar.gz' saved [2428561/2428561]
+2025-12-05T20:48:35.453Z Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
+2025-12-05T20:48:35.453Z ILocalize::AddFile() failed to load file "public/steambootstrapper_english.txt".
+2025-12-05T20:48:35.453Z [  0%] Checking for available update...
+2025-12-05T20:48:35.453Z [----] Downloading update (0 of 52679 KB)...
+2025-12-05T20:48:35.453Z [  0%] Downloading update (0 of 52679 KB)...
+2025-12-05T20:48:35.453Z [  0%] Downloading update (0 of 52679 KB)...
+2025-12-05T20:48:35.453Z [  0%] Downloading update (0 of 52679 KB)...
+2025-12-05T20:48:35.453Z [  0%] Downloading update (1385 of 52679 KB)...
+2025-12-05T20:48:35.453Z [  2%] Downloading update (3283 of 52679 KB)...
+2025-12-05T20:48:35.453Z [  6%] Downloading update (5141 of 52679 KB)...
+2025-12-05T20:48:35.453Z [  9%] Downloading update (7170 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 13%] Downloading update (9021 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 17%] Downloading update (10875 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 20%] Downloading update (12710 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 24%] Downloading update (14287 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 27%] Downloading update (15872 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 30%] Downloading update (17299 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 32%] Downloading update (18856 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 35%] Downloading update (20267 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 38%] Downloading update (21669 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 41%] Downloading update (23092 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 43%] Downloading update (24513 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 46%] Downloading update (26115 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 49%] Downloading update (27535 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 52%] Downloading update (28981 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 55%] Downloading update (30385 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 57%] Downloading update (31919 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 60%] Downloading update (33335 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 63%] Downloading update (34429 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 65%] Downloading update (34823 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 66%] Downloading update (35217 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 66%] Downloading update (35612 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 67%] Downloading update (36040 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 68%] Downloading update (36437 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 69%] Downloading update (36832 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 69%] Downloading update (37260 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 70%] Downloading update (37655 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 71%] Downloading update (38045 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 72%] Downloading update (38480 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 73%] Downloading update (38864 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 73%] Downloading update (39263 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 74%] Downloading update (39700 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 75%] Downloading update (40087 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 76%] Downloading update (40483 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 76%] Downloading update (40877 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 77%] Downloading update (41314 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 78%] Downloading update (41702 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 79%] Downloading update (41817 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 79%] Downloading update (42176 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 80%] Downloading update (42560 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 80%] Downloading update (42949 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 81%] Downloading update (43382 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 82%] Downloading update (43772 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 83%] Downloading update (44160 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 83%] Downloading update (44555 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 84%] Downloading update (44992 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 85%] Downloading update (45375 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 86%] Downloading update (45772 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 86%] Downloading update (46209 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 87%] Downloading update (46602 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 88%] Downloading update (46989 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 89%] Downloading update (47426 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 90%] Downloading update (47822 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 90%] Downloading update (48204 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 91%] Downloading update (48600 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 92%] Downloading update (49039 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 93%] Downloading update (49432 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 93%] Downloading update (49817 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 94%] Downloading update (50252 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 95%] Downloading update (50646 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 96%] Downloading update (51027 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 96%] Downloading update (51457 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 97%] Downloading update (51855 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 98%] Downloading update (52252 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 99%] Downloading update (52638 of 52679 KB)...
+2025-12-05T20:48:35.453Z [ 99%] Downloading update (52679 of 52679 KB)...
+2025-12-05T20:48:35.453Z [100%] Download Complete.
+2025-12-05T20:48:35.453Z [----] Applying update...
+2025-12-05T20:48:35.453Z [----] Extracting package...
+2025-12-05T20:48:35.453Z [----] Extracting package...
+2025-12-05T20:48:35.453Z [----] Extracting package...
+2025-12-05T20:48:35.453Z [----] Extracting package...
+2025-12-05T20:48:35.453Z [----] Installing update...
+2025-12-05T20:48:35.453Z [----] Installing update...
+2025-12-05T20:48:35.453Z [----] Installing update...
+2025-12-05T20:48:35.453Z [----] Installing update...
+2025-12-05T20:48:35.453Z [----] Installing update...
+2025-12-05T20:48:35.453Z [----] Installing update...
+2025-12-05T20:48:35.576Z [----] Installing update...
+2025-12-05T20:48:35.576Z [----] Installing update...
+2025-12-05T20:48:35.576Z [----] Installing update...
+2025-12-05T20:48:35.576Z [----] Cleaning up...
+2025-12-05T20:48:35.576Z [----] Update complete, launching...
+2025-12-05T20:48:38.644Z Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
+2025-12-05T20:48:38.644Z Logging directory: '/home/steam/Steam/logs'
+2025-12-05T20:48:38.644Z [  0%] Checking for available updates...
+2025-12-05T20:48:38.644Z [----] Verifying installation...
+2025-12-05T20:48:38.644Z [  0%] Downloading update...
+2025-12-05T20:48:38.644Z [  0%] Checking for available updates...
+2025-12-05T20:48:38.644Z [----] Download complete.
+2025-12-05T20:48:38.644Z [----] Extracting package...
+2025-12-05T20:48:38.644Z [----] Extracting package...
+2025-12-05T20:48:38.644Z [----] Extracting package...
+2025-12-05T20:48:38.644Z [----] Extracting package...
+2025-12-05T20:48:38.644Z [----] Installing update...
+2025-12-05T20:48:38.644Z [----] Installing update...
+2025-12-05T20:48:38.644Z [----] Installing update...
+2025-12-05T20:48:38.644Z [----] Installing update...
+2025-12-05T20:48:38.644Z [----] Installing update...
+2025-12-05T20:48:38.644Z [----] Installing update...
+2025-12-05T20:48:38.644Z [----] Installing update...
+2025-12-05T20:48:38.644Z [----] Installing update...
+2025-12-05T20:48:38.644Z [----] Installing update...
+2025-12-05T20:48:38.644Z [----] Cleaning up...
+2025-12-05T20:48:38.644Z [----] Update complete, launching Steamcmd...
+2025-12-05T20:48:38.644Z UpdateUI: skip show logo
+2025-12-05T20:48:39.558Z Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
+2025-12-05T20:48:39.558Z Logging directory: '/home/steam/Steam/logs'
+2025-12-05T20:48:39.558Z [  0%] Checking for available updates...
+2025-12-05T20:48:39.558Z [----] Verifying installation...
+2025-12-05T20:48:38.647Z steamcmd.sh[28]: Restarting steamcmd by request...
+2025-12-05T20:48:39.558Z UpdateUI: skip show logo
+2025-12-05T20:48:39.558Z Steam Console Client (c) Valve Corporation - version 1763795194
+2025-12-05T20:48:39.558Z -- type 'quit' to exit --
+2025-12-05T20:48:41.963Z Loading Steam API...[0mOK
+2025-12-05T20:48:42.016Z [0mLogging set (enabled/verbose).
+2025-12-05T20:48:42.041Z [0m"@sSteamCmdForcePlatformType" = "linux"
+2025-12-05T20:48:42.066Z [0m"@sSteamCmdForcePlatformBitness" = "64"
+2025-12-05T20:48:42.118Z [0m
+2025-12-05T20:48:43.329Z Connecting anonymously to Steam Public...[0mOK
+2025-12-05T20:48:44.313Z [0mWaiting for client config...[0mOK
+2025-12-05T20:48:44.314Z [0mWaiting for user info...[0mOK
+2025-12-05T20:48:44.769Z [0mSuccess! App '730' already up to date.
+2025-12-05T20:48:45.066Z [0mUnloading Steam API...[0mOK
+2025-12-05T20:48:45.300Z [0m'/steamcmd/linux32/steamclient.so' -> '/home/steam/.steam/sdk32/steamclient.so'
+2025-12-05T20:48:45.406Z '/steamcmd/linux64/steamclient.so' -> '/home/steam/.steam/sdk64/steamclient.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libanimationsystem.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libanimationsystem.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libcairo.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libcairo.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libengine2.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libengine2.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libfilesystem_stdio.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libfilesystem_stdio.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libinputsystem.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libinputsystem.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/liblocalize.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/liblocalize.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libmaterialsystem2.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libmaterialsystem2.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libmeshsystem.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libmeshsystem.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libnetworksystem.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libnetworksystem.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libpanorama.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libpanorama.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libpanorama_text_pango.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libpanorama_text_pango.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libpanoramauiclient.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libpanoramauiclient.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libparticles.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libparticles.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libphonon.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libphonon.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libpulse_system.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libpulse_system.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/librendersystemempty.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/librendersystemempty.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/librendersystemvulkan.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/librendersystemvulkan.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libresourcesystem.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libresourcesystem.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libscenefilecache.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libscenefilecache.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libscenesystem.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libscenesystem.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libschemasystem.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libschemasystem.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libsoundsystem.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libsoundsystem.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libsteam_api.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libsteam_api.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libsteamaudio.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libsteamaudio.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libsteamnetworkingsockets.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libsteamnetworkingsockets.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libtier0.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libtier0.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libv8.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libv8.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libv8_icui18n.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libv8_icui18n.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libv8_icuuc.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libv8_icuuc.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libv8_libbase.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libv8_libbase.so'
+2025-12-05T20:48:45.966Z '/home/steam/cs2/game/bin/linuxsteamrt64/libv8_libcpp.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libv8_libcpp.so'
+2025-12-05T20:48:46.014Z '/home/steam/cs2/game/bin/linuxsteamrt64/libv8_libplatform.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libv8_libplatform.so'
+2025-12-05T20:48:46.014Z '/home/steam/cs2/game/bin/linuxsteamrt64/libv8_zlib.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libv8_zlib.so'
+2025-12-05T20:48:46.014Z '/home/steam/cs2/game/bin/linuxsteamrt64/libv8system.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libv8system.so'
+2025-12-05T20:48:46.014Z '/home/steam/cs2/game/bin/linuxsteamrt64/libvconcomm.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libvconcomm.so'
+2025-12-05T20:48:46.014Z '/home/steam/cs2/game/bin/linuxsteamrt64/libvideo.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libvideo.so'
+2025-12-05T20:48:46.014Z '/home/steam/cs2/game/bin/linuxsteamrt64/libvphysics2.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libvphysics2.so'
+2025-12-05T20:48:46.014Z '/home/steam/cs2/game/bin/linuxsteamrt64/libvscript.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libvscript.so'
+2025-12-05T20:48:46.014Z '/home/steam/cs2/game/bin/linuxsteamrt64/libworldrenderer.so' -> '/home/steam/cs2/game/csgo/bin/linuxsteamrt64/libworldrenderer.so'
+2025-12-05T20:48:46.014Z Installing mods
+2025-12-05T20:48:47.956Z Merging in custom files
+2025-12-05T20:48:48.008Z game/csgo/gameinfo.gi already patched for Metamod.
+2025-12-05T20:48:48.008Z Starting server on 79.137.206.223:
+2025-12-05T20:48:48.008Z ./game/bin/linuxsteamrt64/cs2 -dedicated -console -usercon -autoupdate -tickrate 128 -port +map de_dust2 +sv_visiblemaxplayers 24 -authkey +sv_setsteamaccount +game_type 0 +game_mode 0 +mapgroup mg_active +sv_lan 0 +sv_password +rcon_password rconcs2captainbot +exec
+2025-12-05T20:48:48.027Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libengine2.so, got 0x58da88242140
+2025-12-05T20:48:48.028Z Using breakpad crash handler
+2025-12-05T20:48:48.028Z Setting breakpad minidump AppID = 2347773
+2025-12-05T20:48:48.028Z Forcing breakpad minidump interfaces to load
+2025-12-05T20:48:50.962Z Looking up breakpad interfaces from steamclient
+2025-12-05T20:48:50.962Z Calling BreakpadMiniDumpSystemInit
+2025-12-05T20:48:50.963Z Console initialized.
+2025-12-05T20:48:50.963Z Steam AppId(730), BreakpadId(2347771)
+2025-12-05T20:48:50.963Z InitSteamLogin_Internal: Initializing breakpad.
+2025-12-05T20:48:50.963Z Steam Universe is invalid, possibly asking before Steam was successfully initialized.
+2025-12-05T20:48:50.963Z ResetBreakpadAppId: Universe is 0 (k_EUniverseInvalid)
+2025-12-05T20:48:50.963Z ResetBreakpadAppId: Setting dedicated server app id: 2347773
+2025-12-05T20:48:50.963Z Loaded libSDL3.so.0, got 0x58da883555e0
+2025-12-05T20:48:50.964Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libtier0.so, got 0x58da8822b7b0
+2025-12-05T20:48:50.966Z Visibility enabled.
+2025-12-05T20:48:50.966Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libfilesystem_stdio.so, got 0x58da88355aa0
+2025-12-05T20:48:50.987Z USRLOCAL path not found!
+2025-12-05T20:48:50.987Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/liblocalize.so, got 0x58da883683c0
+2025-12-05T20:48:50.992Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/librendersystemempty.so, got 0x58da8837a8b0
+2025-12-05T20:48:50.993Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libresourcesystem.so, got 0x58da8838d1d0
+2025-12-05T20:48:50.993Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libschemasystem.so, got 0x58da8839faf0
+2025-12-05T20:48:51.000Z Trying to set dxlevel (111) which is higher than the card can support (110)!
+2025-12-05T20:48:51.000Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libmaterialsystem2.so, got 0x58da883b1ff0
+2025-12-05T20:48:51.341Z ---------------
+2025-12-05T20:48:51.341Z Path ID:             File Path:
+2025-12-05T20:48:51.341Z ADDONS               "/home/steam/cs2/game/csgo_addons/"
+2025-12-05T20:48:51.341Z CONTENT              "/home/steam/cs2/content/csgo/addons/metamod/"
+2025-12-05T20:48:51.341Z CONTENT              "/home/steam/cs2/content/csgo/"
+2025-12-05T20:48:51.341Z CONTENT              "/home/steam/cs2/content/csgo_imported/"
+2025-12-05T20:48:51.341Z CONTENT              "/home/steam/cs2/content/csgo_core/"
+2025-12-05T20:48:51.341Z CONTENT              "/home/steam/cs2/content/core/"
+2025-12-05T20:48:51.341Z CONTENTADDONS        "/home/steam/cs2/content/csgo_addons/"
+2025-12-05T20:48:51.341Z CONTENTROOT          "/home/steam/cs2/content/"
+2025-12-05T20:48:51.341Z DEFAULT_WRITE_PATH   "/home/steam/cs2/game/csgo/addons/metamod/"
+2025-12-05T20:48:51.341Z EXECUTABLE_PATH      "/home/steam/cs2/game/bin/linuxsteamrt64/"
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/csgo/pak01.vpk" (vpk) /home/steam/cs2/game/csgo/pak01.vpk
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/csgo_imported/pak01.vpk" (vpk) /home/steam/cs2/game/csgo_imported/pak01.vpk
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/csgo_core/pak01.vpk" (vpk) /home/steam/cs2/game/csgo_core/pak01.vpk
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/core/pak01.vpk" (vpk) /home/steam/cs2/game/core/pak01.vpk
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/csgo/shaders_vulkan.vpk" (vpk) /home/steam/cs2/game/csgo/shaders_vulkan.vpk
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/csgo_core/shaders_vulkan.vpk" (vpk) /home/steam/cs2/game/csgo_core/shaders_vulkan.vpk
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/core/shaders_vulkan.vpk" (vpk) /home/steam/cs2/game/core/shaders_vulkan.vpk
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/csgo/addons/metamod/"
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/csgo/"
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/csgo_imported/"
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/csgo_core/"
+2025-12-05T20:48:51.341Z GAME                 "/home/steam/cs2/game/core/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/csgo/addons/metamod/bin/linuxsteamrt64/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/csgo/addons/metamod/bin/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/csgo/bin/linuxsteamrt64/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/csgo/bin/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/csgo_imported/bin/linuxsteamrt64/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/csgo_imported/bin/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/csgo_core/bin/linuxsteamrt64/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/csgo_core/bin/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/core/bin/linuxsteamrt64/"
+2025-12-05T20:48:51.341Z GAMEBIN              "/home/steam/cs2/game/core/bin/"
+2025-12-05T20:48:51.341Z GAMEROOT             "/home/steam/cs2/game/"
+2025-12-05T20:48:51.341Z MOD                  "/home/steam/cs2/game/csgo/pak01.vpk" (vpk) /home/steam/cs2/game/csgo/pak01.vpk
+2025-12-05T20:48:51.341Z MOD                  "/home/steam/cs2/game/csgo_imported/pak01.vpk" (vpk) /home/steam/cs2/game/csgo_imported/pak01.vpk
+2025-12-05T20:48:51.341Z MOD                  "/home/steam/cs2/game/csgo_core/pak01.vpk" (vpk) /home/steam/cs2/game/csgo_core/pak01.vpk
+2025-12-05T20:48:51.341Z MOD                  "/home/steam/cs2/game/csgo/"
+2025-12-05T20:48:51.341Z MOD                  "/home/steam/cs2/game/csgo_imported/"
+2025-12-05T20:48:51.341Z MOD                  "/home/steam/cs2/game/csgo_core/"
+2025-12-05T20:48:51.341Z OFFICIAL_ADDONS      "/home/steam/cs2/game/csgo_community_addons/"
+2025-12-05T20:48:51.341Z PLATFORM             "/home/steam/cs2/game/core/pak01.vpk" (vpk) /home/steam/cs2/game/core/pak01.vpk
+2025-12-05T20:48:51.341Z PLATFORM             "/home/steam/cs2/game/core/"
+2025-12-05T20:48:51.341Z SHADER_SOURCE        "/home/steam/cs2/src/shaders/csgo/addons/metamod/"
+2025-12-05T20:48:51.341Z SHADER_SOURCE        "/home/steam/cs2/src/shaders/csgo/"
+2025-12-05T20:48:51.341Z SHADER_SOURCE        "/home/steam/cs2/src/shaders/csgo_imported/"
+2025-12-05T20:48:51.341Z SHADER_SOURCE        "/home/steam/cs2/src/shaders/csgo_core/"
+2025-12-05T20:48:51.341Z SHADER_SOURCE        "/home/steam/cs2/src/shaders/core/"
+2025-12-05T20:48:51.341Z SHADER_SOURCE        "/home/steam/cs2/src/shaders/csgo_community_addons/"
+2025-12-05T20:48:51.341Z SHADER_SOURCE_MOD    "/home/steam/cs2/src/shaders/csgo/addons/metamod/"
+2025-12-05T20:48:51.341Z SHADER_SOURCE_ROOT   "/home/steam/cs2/src/shaders/"
+2025-12-05T20:48:51.341Z command line arguments:
+2025-12-05T20:48:51.341Z -dedicated -console -usercon -autoupdate -tickrate 128 -port +map de_dust2 +sv_visiblemaxplayers 24 -authkey +sv_setsteamaccount +game_type 0 +game_mode 0 +mapgroup mg_active +sv_lan 0 +exec
+2025-12-05T20:48:51.341Z protected command line arguments (stripped from above):
+2025-12-05T20:48:51.341Z +sv_password <protected> +rcon_password <protected>
+2025-12-05T20:48:51.341Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libmeshsystem.so, got 0x58da883c4d30
+2025-12-05T20:48:51.343Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libworldrenderer.so, got 0x58da883d7650
+2025-12-05T20:48:51.344Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libpulse_system.so, got 0x58da883ea390
+2025-12-05T20:48:51.345Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libvscript.so, got 0x58da883fc890
+2025-12-05T20:48:51.347Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libnetworksystem.so, got 0x58da8840f1a0
+2025-12-05T20:48:51.350Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libanimationsystem.so, got 0x58da88423bc0
+2025-12-05T20:48:51.351Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libvphysics2.so, got 0x58da8843b340
+2025-12-05T20:48:51.353Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libsoundsystem.so, got 0x58da8844dc50
+2025-12-05T20:48:51.355Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libscenesystem.so, got 0x58da88464b90
+2025-12-05T20:48:51.371Z Network System Initialized
+2025-12-05T20:48:51.371Z MOD desires lightbinner GPU but is unsupported by HW (SupportsCompute=0 CubeMapArrays=0)
+2025-12-05T20:48:51.371Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libserver_valve.so, got (nil)
+2025-12-05T20:48:51.371Z Loaded libserver_valve.so, got (nil)
+2025-12-05T20:48:51.371Z Loaded /home/steam/cs2/game/csgo/addons/metamod/bin/linuxsteamrt64/libserver.so, got 0x58da8847bad0
+2025-12-05T20:48:51.400Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libengine2.so, got 0x58da88242140
+2025-12-05T20:48:51.410Z Physics Console Communications is not initialized
+2025-12-05T20:48:51.410Z Loaded /home/steam/cs2/game/csgo/bin/linuxsteamrt64/libhost.so, got 0x58da884aef90
+2025-12-05T20:48:51.411Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libscenefilecache.so, got 0x58da884c2500
+2025-12-05T20:48:51.413Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libparticles.so, got 0x58da884d4e20
+2025-12-05T20:48:51.415Z Loaded /home/steam/cs2/game/csgo/bin/linuxsteamrt64/libmatchmaking.so, got 0x58da884e8bd0
+2025-12-05T20:48:51.415Z Loaded /home/steam/cs2/game/bin/linuxsteamrt64/libv8system.so, got 0x58da884fd1d0
+2025-12-05T20:48:51.439Z [20:48:51.438] CSSharp: Initializing with command line: "/home/steam/cs2/game/bin/linuxsteamrt64/cs2" ./game/bin/linuxsteamrt64/cs2 -dedicated -console -usercon -autoupdate -tickrate 128 -port +map de_dust2 +sv_visiblemaxplayers 24 -authkey +sv_setsteamaccount +game_type 0 +game_mode 0 +mapgroup mg_active +sv_lan 0 +sv_password +rcon_password rconcs2captainbot +exec
+2025-12-05T20:48:51.439Z [20:48:51.439] CSSharp: Current root directory: /home/steam/cs2/game/csgo/addons/counterstrikesharp
+2025-12-05T20:48:51.439Z [20:48:51.439] CSSharp: CoreConfig loaded.
+2025-12-05T20:48:51.469Z [20:48:51.469] CSSharp: Copying bytes from disk for /home/steam/cs2/game/bin/linuxsteamrt64/libengine2.so
+2025-12-05T20:48:51.585Z [20:48:51.585] CSSharp: Copying bytes from disk for /home/steam/cs2/game/bin/linuxsteamrt64/../../csgo/bin/linuxsteamrt64//libserver.so
+2025-12-05T20:48:51.670Z [20:48:51.670] CSSharp: Globals loaded.
+2025-12-05T20:48:51.704Z [20:48:51.704] CSSharp: Initialized GameSystem.
+2025-12-05T20:48:51.704Z [20:48:51.704] CSSharp: Loading .NET runtime...
+2025-12-05T20:48:51.704Z [20:48:51.704] CSSharp: Loading hostfxr from /home/steam/cs2/game/csgo/addons/counterstrikesharp/dotnet/host/fxr/8.0.3/libhostfxr.so
+2025-12-05T20:48:51.704Z [20:48:51.704] CSSharp: .NET Runtime Initialised.
+2025-12-05T20:48:51.704Z [20:48:51.704] CSSharp: Loading CSS API, Runtime Config: /home/steam/cs2/game/csgo/addons/counterstrikesharp/api/CounterStrikeSharp.API.runtimeconfig.json
+2025-12-05T20:48:51.705Z No .vcds loaded or no scenes/scenes.vrman
+2025-12-05T20:48:51.705Z GameTypes: missing nameID entry for game type/mode (classic/deathmatch).
+2025-12-05T20:48:51.705Z GameTypes: missing descID entry for game type/mode (classic/deathmatch).
+2025-12-05T20:48:51.705Z GameTypes: missing mapgroupsSP entry for game type/mode (classic/deathmatch).
+2025-12-05T20:48:51.705Z GameTypes: missing mapgroupsSP entry for game type/mode (custom/custom).
+2025-12-05T20:48:51.705Z GameTypes: missing mapgroupsSP entry for game type/mode (cooperative/cooperative).
+2025-12-05T20:48:51.705Z GameTypes: missing mapgroupsSP entry for game type/mode (cooperative/coopmission).
+2025-12-05T20:48:51.938Z 20:48:51 [INFO] (cssharp:Core) CounterStrikeSharp is starting up...
+2025-12-05T20:48:51.976Z 20:48:51 [INFO] (cssharp:CoreConfig) Successfully loaded core configuration
+2025-12-05T20:48:51.982Z 20:48:51 [INFO] (cssharp:GameDataProvider) Successfully loaded 2 game data entries from /home/steam/cs2/game/csgo/addons/counterstrikesharp/gamedata/FixRandomSpawn.json
+2025-12-05T20:48:51.983Z 20:48:51 [INFO] (cssharp:GameDataProvider) Successfully loaded 1 game data entries from /home/steam/cs2/game/csgo/addons/counterstrikesharp/gamedata/RetakesAllocator.json
+2025-12-05T20:48:51.983Z 20:48:51 [INFO] (cssharp:GameDataProvider) Successfully loaded 7 game data entries from /home/steam/cs2/game/csgo/addons/counterstrikesharp/gamedata/inventory-simulator.json
+2025-12-05T20:48:51.983Z 20:48:51 [INFO] (cssharp:GameDataProvider) Successfully loaded 5 game data entries from /home/steam/cs2/game/csgo/addons/counterstrikesharp/gamedata/stgamedata.json
+2025-12-05T20:48:51.983Z 20:48:51 [INFO] (cssharp:GameDataProvider) Successfully loaded 1 game data entries from /home/steam/cs2/game/csgo/addons/counterstrikesharp/gamedata/always-weapon-skins.json
+2025-12-05T20:48:51.983Z 20:48:51 [INFO] (cssharp:GameDataProvider) Successfully loaded 2 game data entries from /home/steam/cs2/game/csgo/addons/counterstrikesharp/gamedata/Deathmatch.json
+2025-12-05T20:48:51.983Z 20:48:51 [INFO] (cssharp:GameDataProvider) Successfully loaded 7 game data entries from /home/steam/cs2/game/csgo/addons/counterstrikesharp/gamedata/cssharpfixes.json
+2025-12-05T20:48:51.983Z 20:48:51 [WARN] (cssharp:GameDataProvider) GameData Method "GetCSWeaponDataFromKey" loaded a duplicate entry from /home/steam/cs2/game/csgo/addons/counterstrikesharp/gamedata/gamedata.json.
+2025-12-05T20:48:51.984Z 20:48:51 [INFO] (cssharp:GameDataProvider) Successfully loaded 44 game data entries from /home/steam/cs2/game/csgo/addons/counterstrikesharp/gamedata/gamedata.json
+2025-12-05T20:48:51.984Z 20:48:51 [INFO] (cssharp:Core) Loading Admins from /home/steam/cs2/game/csgo/addons/counterstrikesharp/configs/admins.json
+2025-12-05T20:48:51.989Z 20:48:51 [INFO] (cssharp:AdminManager) Loaded admin data with 8 admins.
+2025-12-05T20:48:51.989Z 20:48:51 [INFO] (cssharp:Core) Loading Admin Groups from /home/steam/cs2/game/csgo/addons/counterstrikesharp/configs/admin_groups.json
+2025-12-05T20:48:51.990Z Loaded 2 admin groups.
+2025-12-05T20:48:51.991Z 20:48:51 [INFO] (cssharp:Core) Loading Admin Command Overrides from /home/steam/cs2/game/csgo/addons/counterstrikesharp/configs/admin_overrides.json
+2025-12-05T20:48:51.992Z Loaded 0 admin command overrides.
+2025-12-05T20:48:52.152Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin CS2_ExecAfter
+2025-12-05T20:48:52.160Z [CS2_ExecAfter] Plugin: CS2_ExecAfter - Version: 1.0.0 by Kus (https://github.com/kus)
+2025-12-05T20:48:52.160Z [CS2_ExecAfter] Executes a command after server event or a delay. exec_after for help
+2025-12-05T20:48:52.161Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin CS2_ExecAfter
+2025-12-05T20:48:52.193Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin GameModeManager
+2025-12-05T20:48:52.229Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping movement_restore.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping movement_unlock.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping no_drop_weapons.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping bots_dm.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping map_voting.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping alltalk_on.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping course.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping no_warmup.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping bots_dont_buy.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping no_buying.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping bhop_on.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping one_round.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.233Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping no_bots.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping quake_sounds.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping surf_off.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping bots_ar.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping random_spawns.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping bhop_off.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping logging.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping kz_on.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping inventory_simulator.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping bots_buy.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.234Z 20:48:52 [WARN] (plugin:GameModeManager) Skipping surf_on.cfg because its missing the correct prefix.
+2025-12-05T20:48:52.237Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin GameModeManager
+2025-12-05T20:48:52.244Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin WASDMenuAPI
+2025-12-05T20:48:52.245Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin WASDMenuAPI
+2025-12-05T20:48:52.250Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin BotAI
+2025-12-05T20:48:52.252Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Bot AI Patches loading...
+2025-12-05T20:48:52.257Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Using Linux patch definitions
+2025-12-05T20:48:52.261Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Patch 'HasVisitedEnemySpawn': original bytes validated successfully
+2025-12-05T20:48:52.262Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Patch 'HasVisitedEnemySpawn' applied at 0x706F8A661DD1 (7 bytes)
+2025-12-05T20:48:52.262Z 20:48:52 [INFO] (plugin:Patches - Bot AI) HasVisitedEnemySpawn patch applied successfully!
+2025-12-05T20:48:52.264Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Patch 'GameState_Reset': original bytes validated successfully
+2025-12-05T20:48:52.264Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Patch 'GameState_Reset' applied at 0x706F8A63D43A (11 bytes)
+2025-12-05T20:48:52.264Z 20:48:52 [INFO] (plugin:Patches - Bot AI) GameState_Reset patch applied successfully!
+2025-12-05T20:48:52.266Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Patch 'Idle_IsSafeAlwaysFalse': original bytes validated successfully
+2025-12-05T20:48:52.266Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Patch 'Idle_IsSafeAlwaysFalse' applied at 0x706F8A6CEE00 (2 bytes)
+2025-12-05T20:48:52.266Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Idle_IsSafeAlwaysFalse patch applied successfully!
+2025-12-05T20:48:52.268Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Patch 'EscapeFromFlames_OnEnter_NoEquipKnife': original bytes validated successfully
+2025-12-05T20:48:52.268Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Patch 'EscapeFromFlames_OnEnter_NoEquipKnife' applied at 0x706F8A6D9943 (5 bytes)
+2025-12-05T20:48:52.268Z 20:48:52 [INFO] (plugin:Patches - Bot AI) EscapeFromFlames_OnEnter_NoEquipKnife patch applied successfully!
+2025-12-05T20:48:52.269Z 20:48:52 [INFO] (plugin:Patches - Bot AI) Applied 4/4 patches.
+2025-12-05T20:48:52.269Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin Patches - Bot AI
+2025-12-05T20:48:52.274Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin CS2Rcon
+2025-12-05T20:48:52.276Z [CS2Rcon] Plugin: CS2Rcon - Version: 1.2.0 by LordFetznschaedl
+2025-12-05T20:48:52.276Z [CS2Rcon] Allows for server commands to be executed from the client using !rcon
+2025-12-05T20:48:52.276Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin CS2Rcon
+2025-12-05T20:48:52.282Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin CS2AnnouncementBroadcaster
+2025-12-05T20:48:52.294Z [CS2 Announcement Broadcaster] 33 messages have been loaded.
+2025-12-05T20:48:52.294Z [CS2 Announcement Broadcaster] Loaded configuration have been successfully parsed.
+2025-12-05T20:48:52.294Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin CS2 Announcement Broadcaster
+2025-12-05T20:48:52.301Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin FixRandomSpawn
+2025-12-05T20:48:52.307Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin FixRandomSpawn
+2025-12-05T20:48:52.313Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin MapConfigurator
+2025-12-05T20:48:52.314Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin [Custom] Map Configurator
+2025-12-05T20:48:52.321Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin SimpleAdmin
+2025-12-05T20:48:52.367Z 20:48:52 [INFO] (plugin:SimpleAdmin) Database initialized successfully.
+2025-12-05T20:48:52.376Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin SimpleAdmin
+2025-12-05T20:48:52.385Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin InventorySimulator
+2025-12-05T20:48:52.501Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin InventorySimulator
+2025-12-05T20:48:52.509Z 20:48:52 [INFO] (cssharp:PluginContext) Loading plugin CS2-CustomVotes
+2025-12-05T20:48:52.523Z 20:48:52 [WARN] (plugin:Custom Votes) [CustomVotes] Vote null must have at least 2 options
+2025-12-05T20:48:52.531Z warn: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.531Z [CustomVotes] Vote (null) must have at least 2 options
+2025-12-05T20:48:52.532Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Registering custom vote API
+2025-12-05T20:48:52.532Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Registering event handlers
+2025-12-05T20:48:52.532Z 20:48:52 [INFO] (cssharp:PluginContext) Finished loading plugin Custom Votes
+2025-12-05T20:48:52.532Z info: CS2_CustomVotes.CustomVotes[0]
+2025-12-05T20:48:52.532Z [CustomVotes] Registering custom vote API
+2025-12-05T20:48:52.532Z info: CS2_CustomVotes.CustomVotes[0]
+2025-12-05T20:48:52.532Z [CustomVotes] Registering event handlers
+2025-12-05T20:48:52.537Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote gg added
+2025-12-05T20:48:52.537Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.537Z [CustomVotes] Vote gg added
+2025-12-05T20:48:52.538Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote deathmatch added
+2025-12-05T20:48:52.538Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.538Z [CustomVotes] Vote deathmatch added
+2025-12-05T20:48:52.538Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote comp added
+2025-12-05T20:48:52.538Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.538Z [CustomVotes] Vote comp added
+2025-12-05T20:48:52.538Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote wingman added
+2025-12-05T20:48:52.538Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.538Z [CustomVotes] Vote wingman added
+2025-12-05T20:48:52.538Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote prac added
+2025-12-05T20:48:52.538Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.538Z [CustomVotes] Vote prac added
+2025-12-05T20:48:52.538Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote prefire added
+2025-12-05T20:48:52.538Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.538Z [CustomVotes] Vote prefire added
+2025-12-05T20:48:52.539Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote retake added
+2025-12-05T20:48:52.539Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.539Z [CustomVotes] Vote retake added
+2025-12-05T20:48:52.539Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote executes added
+2025-12-05T20:48:52.539Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.539Z [CustomVotes] Vote executes added
+2025-12-05T20:48:52.539Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote awp added
+2025-12-05T20:48:52.539Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.539Z [CustomVotes] Vote awp added
+2025-12-05T20:48:52.539Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote 1v1 added
+2025-12-05T20:48:52.539Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.539Z [CustomVotes] Vote 1v1 added
+2025-12-05T20:48:52.539Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote aim added
+2025-12-05T20:48:52.539Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.539Z [CustomVotes] Vote aim added
+2025-12-05T20:48:52.539Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote bhop added
+2025-12-05T20:48:52.539Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.539Z [CustomVotes] Vote bhop added
+2025-12-05T20:48:52.539Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote surf added
+2025-12-05T20:48:52.539Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.539Z [CustomVotes] Vote surf added
+2025-12-05T20:48:52.539Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote kz added
+2025-12-05T20:48:52.539Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.539Z [CustomVotes] Vote kz added
+2025-12-05T20:48:52.540Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote ctf added
+2025-12-05T20:48:52.540Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.540Z [CustomVotes] Vote ctf added
+2025-12-05T20:48:52.540Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote hns added
+2025-12-05T20:48:52.540Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.540Z [CustomVotes] Vote hns added
+2025-12-05T20:48:52.540Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote soccer added
+2025-12-05T20:48:52.540Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.540Z [CustomVotes] Vote soccer added
+2025-12-05T20:48:52.540Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote course added
+2025-12-05T20:48:52.540Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.540Z [CustomVotes] Vote course added
+2025-12-05T20:48:52.540Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote deathrun added
+2025-12-05T20:48:52.540Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.540Z [CustomVotes] Vote deathrun added
+2025-12-05T20:48:52.540Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote minigames added
+2025-12-05T20:48:52.540Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.540Z [CustomVotes] Vote minigames added
+2025-12-05T20:48:52.540Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote scoutzknivez added
+2025-12-05T20:48:52.540Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.540Z [CustomVotes] Vote scoutzknivez added
+2025-12-05T20:48:52.541Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote oitc added
+2025-12-05T20:48:52.541Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.541Z [CustomVotes] Vote oitc added
+2025-12-05T20:48:52.541Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote battle added
+2025-12-05T20:48:52.541Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.541Z [CustomVotes] Vote battle added
+2025-12-05T20:48:52.541Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote br added
+2025-12-05T20:48:52.541Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.541Z [CustomVotes] Vote br added
+2025-12-05T20:48:52.541Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote casual added
+2025-12-05T20:48:52.541Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.541Z [CustomVotes] Vote casual added
+2025-12-05T20:48:52.541Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote casual-1.6 added
+2025-12-05T20:48:52.541Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.541Z [CustomVotes] Vote casual-1.6 added
+2025-12-05T20:48:52.542Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote valve-competitive added
+2025-12-05T20:48:52.542Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.542Z [CustomVotes] Vote valve-competitive added
+2025-12-05T20:48:52.542Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote valve-deathmatch-freeforall added
+2025-12-05T20:48:52.542Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.542Z [CustomVotes] Vote valve-deathmatch-freeforall added
+2025-12-05T20:48:52.542Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote valve-armsrace added
+2025-12-05T20:48:52.542Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.542Z [CustomVotes] Vote valve-armsrace added
+2025-12-05T20:48:52.542Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote valve-wingman added
+2025-12-05T20:48:52.542Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.542Z [CustomVotes] Vote valve-wingman added
+2025-12-05T20:48:52.542Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote valve-retake added
+2025-12-05T20:48:52.542Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.542Z [CustomVotes] Vote valve-retake added
+2025-12-05T20:48:52.542Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote 45 added
+2025-12-05T20:48:52.542Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.542Z [CustomVotes] Vote 45 added
+2025-12-05T20:48:52.542Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote changemode added
+2025-12-05T20:48:52.542Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.542Z [CustomVotes] Vote changemode added
+2025-12-05T20:48:52.543Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_ancient added
+2025-12-05T20:48:52.543Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.543Z [CustomVotes] Vote de_ancient added
+2025-12-05T20:48:52.543Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_anubis added
+2025-12-05T20:48:52.543Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.543Z [CustomVotes] Vote de_anubis added
+2025-12-05T20:48:52.543Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_inferno added
+2025-12-05T20:48:52.543Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.543Z [CustomVotes] Vote de_inferno added
+2025-12-05T20:48:52.543Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_mirage added
+2025-12-05T20:48:52.543Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.543Z [CustomVotes] Vote de_mirage added
+2025-12-05T20:48:52.543Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_nuke added
+2025-12-05T20:48:52.543Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.543Z [CustomVotes] Vote de_nuke added
+2025-12-05T20:48:52.543Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_dust2 added
+2025-12-05T20:48:52.543Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.543Z [CustomVotes] Vote de_dust2 added
+2025-12-05T20:48:52.544Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_train added
+2025-12-05T20:48:52.544Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.544Z [CustomVotes] Vote de_train added
+2025-12-05T20:48:52.544Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_ancient_night added
+2025-12-05T20:48:52.544Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.544Z [CustomVotes] Vote de_ancient_night added
+2025-12-05T20:48:52.544Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_overpass added
+2025-12-05T20:48:52.544Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.544Z [CustomVotes] Vote de_overpass added
+2025-12-05T20:48:52.544Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_vertigo added
+2025-12-05T20:48:52.544Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.544Z [CustomVotes] Vote de_vertigo added
+2025-12-05T20:48:52.544Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_palacio added
+2025-12-05T20:48:52.545Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.545Z [CustomVotes] Vote de_palacio added
+2025-12-05T20:48:52.545Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_golden added
+2025-12-05T20:48:52.545Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.545Z [CustomVotes] Vote de_golden added
+2025-12-05T20:48:52.545Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote cs_agency added
+2025-12-05T20:48:52.545Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.545Z [CustomVotes] Vote cs_agency added
+2025-12-05T20:48:52.545Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote cs_office added
+2025-12-05T20:48:52.545Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.545Z [CustomVotes] Vote cs_office added
+2025-12-05T20:48:52.545Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote cs_italy added
+2025-12-05T20:48:52.545Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.545Z [CustomVotes] Vote cs_italy added
+2025-12-05T20:48:52.545Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_basalt added
+2025-12-05T20:48:52.546Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.546Z [CustomVotes] Vote de_basalt added
+2025-12-05T20:48:52.546Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_edin added
+2025-12-05T20:48:52.546Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.546Z [CustomVotes] Vote de_edin added
+2025-12-05T20:48:52.546Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_assembly added
+2025-12-05T20:48:52.546Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.546Z [CustomVotes] Vote de_assembly added
+2025-12-05T20:48:52.546Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_cbble added
+2025-12-05T20:48:52.546Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.546Z [CustomVotes] Vote de_cbble added
+2025-12-05T20:48:52.546Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_cache added
+2025-12-05T20:48:52.546Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.546Z [CustomVotes] Vote de_cache added
+2025-12-05T20:48:52.546Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_pipeline added
+2025-12-05T20:48:52.547Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.547Z [CustomVotes] Vote de_pipeline added
+2025-12-05T20:48:52.547Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_biome added
+2025-12-05T20:48:52.547Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.547Z [CustomVotes] Vote de_biome added
+2025-12-05T20:48:52.547Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote mp_raid added
+2025-12-05T20:48:52.547Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.547Z [CustomVotes] Vote mp_raid added
+2025-12-05T20:48:52.547Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_mutiny added
+2025-12-05T20:48:52.547Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.547Z [CustomVotes] Vote de_mutiny added
+2025-12-05T20:48:52.547Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote cs_assault added
+2025-12-05T20:48:52.547Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.547Z [CustomVotes] Vote cs_assault added
+2025-12-05T20:48:52.547Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_ruins_d_prefab added
+2025-12-05T20:48:52.547Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.547Z [CustomVotes] Vote de_ruins_d_prefab added
+2025-12-05T20:48:52.548Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote cs_militia added
+2025-12-05T20:48:52.548Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.548Z [CustomVotes] Vote cs_militia added
+2025-12-05T20:48:52.548Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_aztec_hr added
+2025-12-05T20:48:52.548Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.548Z [CustomVotes] Vote de_aztec_hr added
+2025-12-05T20:48:52.548Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_akiba added
+2025-12-05T20:48:52.548Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.548Z [CustomVotes] Vote de_akiba added
+2025-12-05T20:48:52.548Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote cs_insertion2 added
+2025-12-05T20:48:52.548Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.548Z [CustomVotes] Vote cs_insertion2 added
+2025-12-05T20:48:52.548Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_mills added
+2025-12-05T20:48:52.548Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.548Z [CustomVotes] Vote de_mills added
+2025-12-05T20:48:52.549Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_thera added
+2025-12-05T20:48:52.549Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.549Z [CustomVotes] Vote de_thera added
+2025-12-05T20:48:52.549Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_season added
+2025-12-05T20:48:52.549Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.549Z [CustomVotes] Vote de_season added
+2025-12-05T20:48:52.549Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_ema added
+2025-12-05T20:48:52.549Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.549Z [CustomVotes] Vote de_ema added
+2025-12-05T20:48:52.549Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote twofort_cs2 added
+2025-12-05T20:48:52.549Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.549Z [CustomVotes] Vote twofort_cs2 added
+2025-12-05T20:48:52.550Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_rats_remake added
+2025-12-05T20:48:52.550Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.550Z [CustomVotes] Vote de_rats_remake added
+2025-12-05T20:48:52.550Z 20:48:52 [INFO] (plugin:Custom Votes) [CustomVotes] Vote de_mirage_bricks added
+2025-12-05T20:48:52.550Z info: CS2_CustomVotes.Services.VoteManager[0]
+2025-12-05T20:48:52.550Z [CustomVotes] Vote de_mirage_bricks added
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Bounds of relative addresses accessed [0xffffffffffffffff, (nil)]
+2025-12-05T20:48:52.553Z [20:48:52.553] CSSharp: CounterStrikeSharp.API Loaded Successfully.
+2025-12-05T20:48:52.553Z [20:48:52.553] CSSharp: Hooks added.
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Attempting to allocate trampoline within +-2GB range of 0x706f8ac94c20
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Allocated trampoline at 0x70700ac93000 (using 1 attempts)
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Bounds of relative addresses accessed [0xffffffffffffffff, (nil)]
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Attempting to allocate trampoline within +-2GB range of 0x706f8abdd4c0
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Allocated trampoline at 0x70700abdc000 (using 1 attempts)
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Bounds of relative addresses accessed [0xffffffffffffffff, (nil)]
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Attempting to allocate trampoline within +-2GB range of 0x706fac6ad220
+2025-12-05T20:48:53.224Z dlopen failed trying to load:
+2025-12-05T20:48:53.224Z steamclient.so
+2025-12-05T20:48:53.224Z with error:
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Allocated trampoline at 0x70702c6ac000 (using 1 attempts)
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Bounds of relative addresses accessed [0xffffffffffffffff, (nil)]
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Attempting to allocate trampoline within +-2GB range of 0x706fac6ac3c0
+2025-12-05T20:48:53.224Z [Info] - Trampoline - Allocated trampoline at 0x70702c6ab000 (using 1 attempts)
+2025-12-05T20:48:53.224Z [META] Loaded 2 plugins.
+2025-12-05T20:48:53.224Z Event System loaded 94 events from file: vpk:/home/steam/cs2/game/core/pak01.vpk:resource/core.gameevents.
+2025-12-05T20:48:53.224Z Event System loaded 50 events from file: vpk:/home/steam/cs2/game/csgo/pak01.vpk:resource/game.gameevents.
+2025-12-05T20:48:53.224Z Event System loaded 145 events from file: vpk:/home/steam/cs2/game/csgo/pak01.vpk:./resource/mod.gameevents.
+2025-12-05T20:48:53.224Z CEntitySystem::BuildEntityNetworking (parallel build of server) took 39.289 msecs for 206 out of 286 classes
+2025-12-05T20:48:53.224Z [STARTUP] {4.590} server module init ok
+2025-12-05T20:48:53.224Z Failed loading resource "animation/skeletons/egg/pristine_egg_view.vnmskel_c" (ERROR_FILEOPEN: File not found)
+2025-12-05T20:48:53.224Z CHostStateMgr::QueueNewRequest( Idle (console), 1 )
+2025-12-05T20:48:53.224Z Source2Init OK
+2025-12-05T20:48:53.224Z HostStateRequest::Start(HSR_IDLE):  loop(console) id(1) addons() desc(Idle (console))
+2025-12-05T20:48:53.224Z SwitchToLoop console requested:  id [1] addons []
+2025-12-05T20:48:53.224Z Host activate: Idle (console)
+2025-12-05T20:48:53.224Z Loading map "de_dust2"
+2025-12-05T20:48:53.224Z steamclient.so: cannot open shared object file: No such file or directory
+2025-12-05T20:48:53.224Z [S_API] SteamAPI_Init(): Loaded '/home/steam/.steam/sdk64/steamclient.so' OK.  (First tried local 'steamclient.so')
+2025-12-05T20:48:53.224Z CHostStateMgr::QueueNewRequest( Loading (de_dust2), 2 )
+2025-12-05T20:48:53.224Z Usage: sv_setsteamaccount <login_token>
+2025-12-05T20:48:53.224Z Setting mapgroup to 'mg_active'
+2025-12-05T20:48:53.224Z sv_password =
+2025-12-05T20:48:53.224Z exec <filename> [path id]: execute a script file
+2025-12-05T20:48:53.224Z HostStateRequest::Start(HSR_GAME):  loop(levelload) id(2) addons() desc(Loading (de_dust2))
+2025-12-05T20:48:53.224Z SwitchToLoop levelload requested:  id [2] addons []
+2025-12-05T20:48:53.224Z SV:  Level loading started for 'de_dust2'
+2025-12-05T20:48:53.224Z CL:  CLoopModeLevelLoad::MaybeSwitchToGameLoop switching to "game" loopmode with addons ()
+2025-12-05T20:48:53.224Z SwitchToLoop game requested:  id [2] addons []
+2025-12-05T20:48:53.224Z SteamGameServer_Init()
+2025-12-05T20:48:53.311Z Steam Universe valid after having been requested when invalid.  Universe is now 1
+2025-12-05T20:48:53.311Z ResetBreakpadAppId: Universe is 1 (k_EUniversePublic)
+2025-12-05T20:48:53.311Z ResetBreakpadAppId: Setting dedicated server app id: 2347773
+2025-12-05T20:48:53.311Z SteamGameServer_Init() OK, logging on to Steam
+2025-12-05T20:48:53.311Z ****************************************************
+2025-12-05T20:48:53.311Z *                                                  *
+2025-12-05T20:48:53.311Z *  No Steam account token was specified.           *
+2025-12-05T20:48:53.311Z *  Logging into anonymous game server account.     *
+2025-12-05T20:48:53.311Z *  Connections will be restricted to LAN only.     *
+2025-12-05T20:48:53.311Z *                                                  *
+2025-12-05T20:48:53.311Z *  To create a game server account go to           *
+2025-12-05T20:48:53.311Z *  http://steamcommunity.com/dev/managegameservers *
+2025-12-05T20:48:53.247Z Setting breakpad minidump AppID = 730
+2025-12-05T20:48:53.247Z SteamInternal_SetMinidumpSteamID:  Caching Steam ID:  76561197960265728 [API loaded yes]
+2025-12-05T20:48:53.247Z SteamInternal_SetMinidumpSteamID:  Setting Steam ID:  76561197960265728
+2025-12-05T20:48:53.247Z Looking up breakpad interfaces from steamclient
+2025-12-05T20:48:53.247Z Calling BreakpadMiniDumpSystemInit
+2025-12-05T20:48:53.247Z SteamInternal_SetMinidumpSteamID:  Caching Steam ID:  76561197960265728 [API loaded yes]
+2025-12-05T20:48:53.247Z SteamInternal_SetMinidumpSteamID:  Setting Steam ID:  76561197960265728
+2025-12-05T20:48:53.247Z [S_API FAIL] Tried to access Steam interface SteamUtils010 before SteamAPI_Init succeeded.
+2025-12-05T20:48:53.247Z Setting breakpad minidump AppID = 2347773
+2025-12-05T20:48:53.308Z [20:48:53.307] CSSharp: CGameSystem::BuildGameSessionManifest
+2025-12-05T20:48:53.311Z *                                                  *
+2025-12-05T20:48:53.311Z ****************************************************
+2025-12-05T20:48:53.311Z CNetworkSystem::InitGameServer: SteamGameServerNetworking() OK
+2025-12-05T20:48:53.311Z Initialized low level socket/threading support.
+2025-12-05T20:48:53.311Z Set SteamNetworkingSockets P2P_STUN_ServerList to '' as per SteamNetworkingSocketsSerialized
+2025-12-05T20:48:53.311Z CNetworkGameServerBase::SetServerState (ss_dead -> ss_waitingforgamesessionmanifest)
+2025-12-05T20:48:53.311Z SV:  maxplayers set to 64
+2025-12-05T20:48:53.311Z Server is hibernating
+2025-12-05T20:48:53.311Z ResetGameConVarsToDefaults
+2025-12-05T20:48:53.311Z CSource2Server::ApplyGameSettings game settings payload received:
+2025-12-05T20:48:53.311Z ::ExecGameTypeCfg {
+2025-12-05T20:48:53.311Z map {
+2025-12-05T20:48:53.311Z mapname de_dust2
+2025-12-05T20:48:53.311Z }
+2025-12-05T20:48:53.311Z launchoptions {
+2025-12-05T20:48:53.311Z levelname de_dust2
+2025-12-05T20:48:53.311Z mode dedicated
+2025-12-05T20:48:53.311Z loadmap int( 1 = 0x1 )
+2025-12-05T20:48:53.311Z changelevel int( 0 = 0x0 )
+2025-12-05T20:48:53.311Z map de_dust2
+2025-12-05T20:48:53.311Z mapgroup mg_active
+2025-12-05T20:48:53.311Z requires_attr
+2025-12-05T20:48:53.311Z requires_attr_value int( -1 = 0xFFFFFFFF )
+2025-12-05T20:48:53.311Z requires_attr_reward
+2025-12-05T20:48:53.311Z reward_drop_list int( -1 = 0xFFFFFFFF )
+2025-12-05T20:48:53.311Z numSlots int( 64 = 0x40 )
+2025-12-05T20:48:53.311Z c_game_type int( 0 = 0x0 )
+2025-12-05T20:48:53.311Z c_game_mode int( 0 = 0x0 )
+2025-12-05T20:48:53.311Z default_game_type int( 0 = 0x0 )
+2025-12-05T20:48:53.311Z default_game_mode int( 0 = 0x0 )
+2025-12-05T20:48:53.311Z ct_arms models/weapons/ct_arms_idf.vmdl
+2025-12-05T20:48:53.311Z t_arms models/weapons/t_arms.vmdl
+2025-12-05T20:48:53.311Z ct_models {
+2025-12-05T20:48:53.311Z ctm_idf
+2025-12-05T20:48:53.311Z ctm_idf_variantB
+2025-12-05T20:48:53.311Z ctm_idf_variantC
+2025-12-05T20:48:53.311Z ctm_idf_variantD
+2025-12-05T20:48:53.311Z ctm_idf_variantE
+2025-12-05T20:48:53.311Z }
+2025-12-05T20:48:53.311Z t_models {
+2025-12-05T20:48:53.311Z tm_leet_variantA
+2025-12-05T20:48:53.311Z tm_leet_variantB
+2025-12-05T20:48:53.311Z tm_leet_variantC
+2025-12-05T20:48:53.311Z tm_leet_variantD
+2025-12-05T20:48:53.311Z tm_leet_variantE
+2025-12-05T20:48:53.311Z }
+2025-12-05T20:48:53.311Z maplist {
+2025-12-05T20:48:53.311Z de_overpass
+2025-12-05T20:48:53.311Z de_vertigo
+2025-12-05T20:48:53.311Z de_ancient
+2025-12-05T20:48:53.311Z de_anubis
+2025-12-05T20:48:53.311Z de_inferno
+2025-12-05T20:48:53.311Z de_mirage
+2025-12-05T20:48:53.311Z de_nuke
+2025-12-05T20:48:53.311Z de_dust2
+2025-12-05T20:48:53.311Z de_train
+2025-12-05T20:48:53.311Z }
+2025-12-05T20:48:53.311Z }
+2025-12-05T20:48:53.311Z }
+2025-12-05T20:48:53.311Z Created poll group for socket 'server'
+2025-12-05T20:48:53.311Z SDR RelayNetworkStatus:  avail=Attempting  config=Attempting  anyrelay=Not Attempted   (Attempt #1 to fetch config (only-if-cached) from https://api.steampowered.com/ISteamApps/GetSDRConfig/v1?appid=730)
+2025-12-05T20:48:53.311Z AuthStatus (invalid):  Waiting  (Waiting for Steam login)
+2025-12-05T20:48:53.311Z Network socket 'server' opened on port 27015
+2025-12-05T20:48:53.311Z Initializing CSGO VScript Game System
+2025-12-05T20:48:53.311Z SV:  Executing server defaults
+2025-12-05T20:48:53.311Z SV:  Executing dedicated server config file
+2025-12-05T20:48:53.311Z [STARTUP] {5.245} created game rules
+2025-12-05T20:48:53.311Z GameTypes: could not find matching game mode value of "" in any game type.
+2025-12-05T20:48:53.311Z SV:  CGameRulesGameSystem::GameInit installed game rules
+2025-12-05T20:48:53.311Z LoadResponseSystem scripts/talker/response_rules.vrr - Start
+2025-12-05T20:48:53.311Z CResponseSystem:  scripts/talker/response_rules.vrr (7681 rules, 811 criteria, and 7681 responses)
+2025-12-05T20:48:53.311Z LoadResponseSystem scripts/talker/response_rules.vrr - Finish
+2025-12-05T20:48:53.311Z CPlayerVoiceListener::GameInit()
+2025-12-05T20:48:53.311Z Entry player was not found in surfaceproperties_footsteps.txt
+2025-12-05T20:48:53.311Z execing /mapconfigs/prefixes/de_.cfg
+2025-12-05T20:48:53.311Z execing /mapconfigs/de_dust2.cfg
+2025-12-05T20:48:53.311Z execing server_default.cfg
+2025-12-05T20:48:53.311Z execing server.cfg
+2025-12-05T20:48:53.311Z execing gamemode_casual.cfg
+2025-12-05T20:48:53.311Z exec: couldn't exec '{*}cfg/gamemode_casual_server.cfg', unable to read file
+2025-12-05T20:48:53.311Z exec: couldn't exec '{*}cfg/gamemode_casual_last.cfg', unable to read file
+2025-12-05T20:48:53.311Z ""
+2025-12-05T20:48:53.311Z "-----------------------------------"
+2025-12-05T20:48:53.311Z "--- FINISHED EXECUTING: de_.CFG ---"
+2025-12-05T20:48:53.311Z "-----------------------------------"
+2025-12-05T20:48:53.311Z ""
+2025-12-05T20:48:53.311Z ""
+2025-12-05T20:48:53.311Z "----------------------------------------"
+2025-12-05T20:48:53.311Z "--- FINISHED EXECUTING: de_dust2.CFG ---"
+2025-12-05T20:48:53.311Z "----------------------------------------"
+2025-12-05T20:48:53.311Z ""
+2025-12-05T20:48:53.311Z execing env.cfg
+2025-12-05T20:48:53.311Z Unknown command 'sv_downloadurl'!
+2025-12-05T20:48:53.311Z Unknown command 'sv_allowupload'!
+2025-12-05T20:48:53.311Z Unknown command 'sv_allowdownload'!
+2025-12-05T20:48:53.311Z "env.cfg executed"
+2025-12-05T20:48:53.311Z execing settings/logging.cfg
+2025-12-05T20:48:53.311Z Enabling flag 'donotecho' on channel 'stringtables'.
+2025-12-05T20:48:53.311Z Setting channel 'Console' verbosity to 'default'.
+2025-12-05T20:48:53.311Z Setting channel 'General' verbosity to 'default'.
+2025-12-05T20:48:53.311Z Setting channel 'VProf' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'LOADING' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'Assert' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'Developer' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'DeveloperConsole' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'DeveloperVerbose' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'Symbols' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'ToolsStallMonitor' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'VScript' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'VScriptDbg' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'Demo' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'InstantReplay' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'Steam' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'Shooting' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'Server' verbosity to 'default'.
+2025-12-05T20:48:53.311Z Setting channel 'SpawnGroup' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'SignonState' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'Movie' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'ServerLog' verbosity to 'off'.
+2025-12-05T20:48:53.311Z Setting channel 'stringtables' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Server' verbosity to 'default'.
+2025-12-05T20:48:53.312Z Setting channel 'VR' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'InputService' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'NetworkClientService' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'NetworkP2PService' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'NetworkServerService' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'NetworkService' verbosity to 'default'.
+2025-12-05T20:48:53.312Z Setting channel 'RenderService' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'ScreenShot' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SplitScreen' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'DemoFile' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Client' verbosity to 'default'.
+2025-12-05T20:48:53.312Z Setting channel 'CommandLine' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'EngineServiceManager' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'GameEventSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'HostStateManager' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Filesystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'RenderSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'ResourceSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SchemaSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'TypeManager' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Vfx' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'MaterialSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'PostProcessing' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'modellib' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Physics' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'MeshSystem' verbosity to 'max'.
+2025-12-05T20:48:53.312Z Setting channel 'WorldRenderer' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Pulse' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Networking' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Networking' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'NetSteamConn' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SteamNetSockets' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'AnimationGraph' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'BoneSetup' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'AnimationSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'AnimationSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'AnimResource' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Interpolation' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'DualHull' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SoundSystemLowLevel' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SoundOperatorSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SoundSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SndOperators' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'LIGHTBINNER' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'RenderGraph' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SceneSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'CharacterDecalSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'ToneMapping' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'VolumetricFog' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'V8System' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Workshop' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'BodyGameSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SoundOpGameSystem' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'VScriptScripts' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SaveRestore' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SaveRestoreSyncIO' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'Elapsed' verbosity to 'off'.
+2025-12-05T20:48:53.312Z Setting channel 'SaveRestoreIO' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'SaveRestoreIOFiltered' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'ClientMessages' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'GlobalState' verbosity to 'off'.
+2025-12-05T20:48:53.319Z [S_API FAIL] Tried to access Steam interface SteamUser023 before SteamAPI_Init succeeded.
+2025-12-05T20:48:54.912Z flock /sys/devices/virtual/dmi/id/sys_vendor LOCK_SH failed. errno = 13flock /sys/devices/virtual/dmi/id/product_name LOCK_SH failed. errno = 13[S_API FAIL] Tried to access Steam interface SteamUtils010 before SteamAPI_Init succeeded.
+2025-12-05T20:48:55.219Z Setting channel 'WebApi' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'ScenePrint' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'EmitSound' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'SndEmitterSystem' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'Wearable' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'SteamUnifiedMessages' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'GCClient' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'SOCache' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'NavMesh' verbosity to 'max'.
+2025-12-05T20:48:55.219Z Setting channel 'RESPONSE_RULES' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'VNotify' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'Host' verbosity to 'default'.
+2025-12-05T20:48:55.219Z Setting channel 'RESPONSEDOC_LIB' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'SceneFileCache' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'ParticlesLib' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'Particles' verbosity to 'off'.
+2025-12-05T20:48:55.219Z Setting channel 'Matchmaking' verbosity to 'off'.
+2025-12-05T20:48:55.219Z "settings/logging.cfg executed"
+2025-12-05T20:48:55.219Z Server waking up from hibernation
+2025-12-05T20:48:55.219Z Unknown command 'sv_hibernate_ms'!
+2025-12-05T20:48:55.219Z Unknown command 'sv_hibernate_ms_vgui'!
+2025-12-05T20:48:55.219Z Unknown command 'cs_enable_player_physics_box'!
+2025-12-05T20:48:55.219Z Unknown command 'cs_enable_player_physics_box'!
+2025-12-05T20:48:55.219Z Unknown command 'mp_do_warmup_period'!
+2025-12-05T20:48:55.219Z Unknown command 'mp_roundtime_deployment'!
+2025-12-05T20:48:55.219Z Unknown command 'sv_ledge_mantle_helper'!
+2025-12-05T20:48:55.219Z Unknown command 'sv_water_movespeed_multiplier'!
+2025-12-05T20:48:55.219Z Unknown command 'sv_water_swim_mode'!
+2025-12-05T20:48:55.219Z Unknown command 'sv_weapon_encumbrance_per_item'!
+2025-12-05T20:48:55.219Z Unknown command 'sv_weapon_encumbrance_scale'!
+2025-12-05T20:48:55.219Z Unknown command 'sv_clamp_unsafe_velocities'!
+2025-12-05T20:48:55.219Z "settings/movement_restore.cfg executed"
+2025-12-05T20:48:55.219Z "settings/bhop_off.cfg executed"
+2025-12-05T20:48:55.219Z Unknown command 'sv_holiday_mode'!
+2025-12-05T20:48:55.219Z "bots.cfg executed"
+2025-12-05T20:48:55.219Z Writing cfg/banned_user.cfg.
+2025-12-05T20:48:55.219Z Writing cfg/banned_ip.cfg.
+2025-12-05T20:48:55.219Z "settings/map_voting.cfg executed"
+2025-12-05T20:48:55.219Z "server.cfg executed"
+2025-12-05T20:48:55.219Z Unknown command 'mp_weapons_glow_on_ground'!
+2025-12-05T20:48:55.219Z Unknown command 'sv_gameinstructor_enable'!
+2025-12-05T20:48:55.219Z SV:  Spawn Server: de_dust2
+2025-12-05T20:48:55.219Z CSource2Server::ApplyGameSettings game settings payload received:
+2025-12-05T20:48:55.219Z ::ExecGameTypeCfg {
+2025-12-05T20:48:55.219Z map {
+2025-12-05T20:48:55.219Z mapname de_dust2
+2025-12-05T20:48:55.219Z }
+2025-12-05T20:48:55.219Z launchoptions {
+2025-12-05T20:48:55.219Z levelname de_dust2
+2025-12-05T20:48:55.219Z mode dedicated
+2025-12-05T20:48:55.219Z loadmap int( 1 = 0x1 )
+2025-12-05T20:48:55.219Z changelevel int( 0 = 0x0 )
+2025-12-05T20:48:55.219Z map de_dust2
+2025-12-05T20:48:55.219Z mapgroup mg_active
+2025-12-05T20:48:55.219Z requires_attr
+2025-12-05T20:48:55.219Z requires_attr_value int( -1 = 0xFFFFFFFF )
+2025-12-05T20:48:55.219Z requires_attr_reward
+2025-12-05T20:48:55.219Z reward_drop_list int( -1 = 0xFFFFFFFF )
+2025-12-05T20:48:55.219Z numSlots int( 64 = 0x40 )
+2025-12-05T20:48:55.219Z c_game_type int( 0 = 0x0 )
+2025-12-05T20:48:55.219Z c_game_mode int( 0 = 0x0 )
+2025-12-05T20:48:55.219Z default_game_type int( 0 = 0x0 )
+2025-12-05T20:48:55.219Z default_game_mode int( 0 = 0x0 )
+2025-12-05T20:48:55.219Z ct_arms models/weapons/ct_arms_idf.vmdl
+2025-12-05T20:48:55.219Z t_arms models/weapons/t_arms.vmdl
+2025-12-05T20:48:55.219Z ct_models {
+2025-12-05T20:48:55.219Z ctm_idf
+2025-12-05T20:48:55.219Z ctm_idf_variantB
+2025-12-05T20:48:55.219Z ctm_idf_variantC
+2025-12-05T20:48:55.219Z ctm_idf_variantD
+2025-12-05T20:48:55.219Z ctm_idf_variantE
+2025-12-05T20:48:55.219Z }
+2025-12-05T20:48:55.219Z t_models {
+2025-12-05T20:48:55.219Z tm_leet_variantA
+2025-12-05T20:48:55.219Z tm_leet_variantB
+2025-12-05T20:48:55.219Z tm_leet_variantC
+2025-12-05T20:48:55.219Z tm_leet_variantD
+2025-12-05T20:48:55.219Z tm_leet_variantE
+2025-12-05T20:48:55.219Z }
+2025-12-05T20:48:55.219Z maplist {
+2025-12-05T20:48:55.219Z de_overpass
+2025-12-05T20:48:55.219Z de_vertigo
+2025-12-05T20:48:55.219Z de_ancient
+2025-12-05T20:48:55.219Z de_anubis
+2025-12-05T20:48:55.219Z de_inferno
+2025-12-05T20:48:55.219Z de_mirage
+2025-12-05T20:48:55.219Z de_nuke
+2025-12-05T20:48:55.219Z de_dust2
+2025-12-05T20:48:55.219Z de_train
+2025-12-05T20:48:55.219Z }
+2025-12-05T20:48:55.219Z }
+2025-12-05T20:48:55.219Z }
+2025-12-05T20:48:55.219Z CNetworkGameServerBase::SetServerState (ss_waitingforgamesessionmanifest -> ss_loading)
+2025-12-05T20:48:55.219Z SV:  Connection to Steam servers successful.
+2025-12-05T20:48:55.219Z SV:  ServerSteamID=[A:1:2550516761:47944] (90277913009966105).
+2025-12-05T20:48:55.219Z [STARTUP] {6.974} logged on to Steam
+2025-12-05T20:48:55.219Z SV:  VAC secure mode is activated.
+2025-12-05T20:48:55.219Z texturebase.cpp(3471):ResourceHandleToData( maps/de_dust2/lightmaps/direct_light_shadows.vtex ) failed! Falling back to error texture!
+2025-12-05T20:48:55.219Z texturebase.cpp(3471):ResourceHandleToData( maps/de_dust2/lightmaps/irradiance.vtex ) failed! Falling back to error texture!
+2025-12-05T20:48:55.219Z texturebase.cpp(3471):ResourceHandleToData( maps/de_dust2/lightmaps/directional_irradiance.vtex ) failed! Falling back to error texture!
+2025-12-05T20:48:55.219Z texturebase.cpp(3471):ResourceHandleToData( maps/prefabs/de_dust2/de_dust2_skybox/lightmaps/direct_light_shadows.vtex ) failed! Falling back to error texture!
+2025-12-05T20:49:21.669Z texturebase.cpp(3471):ResourceHandleToData( maps/prefabs/de_dust2/de_dust2_skybox/lightmaps/irradiance.vtex ) failed! Falling back to error texture!
+2025-12-05T20:49:21.670Z texturebase.cpp(3471):ResourceHandleToData( maps/prefabs/de_dust2/de_dust2_skybox/lightmaps/directional_irradiance.vtex ) failed! Falling back to error texture!
+2025-12-05T20:49:21.670Z CNetworkGameServerBase::SetServerState (ss_loading -> ss_active)
+2025-12-05T20:49:21.670Z SV:  IGameSystem::LoopActivateAllSystems {
+2025-12-05T20:49:21.670Z HO:  IGameSystem::LoopActivateAllSystems {
+2025-12-05T20:49:21.670Z HO:  } IGameSystem::LoopActivateAllSystems done
+2025-12-05T20:49:21.670Z SV:  } IGameSystem::LoopActivateAllSystems done
+2025-12-05T20:49:21.670Z Created physics for de_dust2
+2025-12-05T20:49:21.670Z CNavGenParams - Nav mesh requests project default generation parameters but actual parameters
+2025-12-05T20:49:21.670Z used during construction differ from defaults. Please re-export the map.
+2025-12-05T20:49:21.670Z CNavGenParams - Nav mesh requests project default generation parameters but actual parameters
+2025-12-05T20:49:21.670Z used during construction differ from defaults. Please re-export the map.
+2025-12-05T20:49:21.670Z CNavGenParams - Nav mesh requests project default generation parameters but actual parameters
+2025-12-05T20:49:21.670Z used during construction differ from defaults. Please re-export the map.
+2025-12-05T20:49:21.670Z CNavGenParams - Nav mesh requests project default generation parameters but actual parameters
+2025-12-05T20:49:21.670Z used during construction differ from defaults. Please re-export the map.
+2025-12-05T20:49:21.670Z SV:  64 player server started
+2025-12-05T20:49:21.670Z CSource2Server::GameServerSteamAPIActivated()
+2025-12-05T20:49:21.670Z GC Connection established for server version 2000685, instance idx 1
+2025-12-05T20:49:21.670Z [STARTUP] {7.420} activated session on GC
+2025-12-05T20:49:21.670Z Using spawn points configuration 0x538621FB
+2025-12-05T20:49:21.670Z Sending S2C_CHALLENGE [0 auth 3] to 95.165.75.217:57609
+2025-12-05T20:49:21.670Z Receiving C2S_CONNECT [protocol 14126 0 auth 3] from 95.165.75.217:57609
+2025-12-05T20:49:21.670Z CNetworkGameServerBase::ConnectClient( name='Masterino Splinterino', remote='95.165.75.217:57609' )
+2025-12-05T20:49:21.670Z Creating NetChan for user 0 'Masterino Splinterino' @ 95.165.75.217:57609
+2025-12-05T20:49:21.670Z CServerSideClientBase::Connect( name='Masterino Splinterino', userid=0, fake=0, connectiontypeflags=4, chan->addr=95.165.75.217:57609 )
+2025-12-05T20:49:21.670Z Sending S2C_CONNECTION to 95.165.75.217:57609 [addons:'']
+2025-12-05T20:49:21.670Z Client #0 "Masterino Splinterino" connected @ 95.165.75.217:57609
+2025-12-05T20:49:21.670Z Sending S2C_CONNECTION to 95.165.75.217:57609 [addons:'']
+2025-12-05T20:49:21.670Z ClientPutInServer create new player controller [Masterino Splinterino]
+2025-12-05T20:49:21.670Z Client 0 'Masterino Splinterino' setting rate to 786432
+2025-12-05T20:49:21.670Z [Masterino Splinterino] cl_interp_ratio='0', LerpTime=0
+2025-12-05T20:49:21.670Z SV:  "Masterino Splinterino<0><[U:1:93133445]><>" STEAM USERID validated
+2025-12-05T20:49:21.670Z SV:  Sending full update to client Masterino Splinterino (reason:  initial update)
+2025-12-05T20:49:21.670Z [Tick 742]['Masterino Splinterino' depth=5 (13..17) ping=73ms, loss in/out = 0.43%/0.43%] CQ bloat: removed 6, max: 4, 1 ticks this frame
+2025-12-05T20:49:21.670Z [Tick 743]['Masterino Splinterino' depth=5 (15..19) ping=72ms, loss in/out = 0.43%/0.43%] CQ bloat: removed 1, max: 4, 1 ticks this frame
+2025-12-05T20:49:21.670Z autokick is disabled for Masterino Splinterino
+2025-12-05T20:49:21.670Z autokick is disabled for Masterino Splinterino
+2025-12-05T20:49:21.670Z autokick is disabled for Masterino Splinterino
+2025-12-05T20:49:21.670Z autokick is disabled for Masterino Splinterino
+2025-12-05T20:49:21.670Z autokick is disabled for Masterino Splinterino
+2025-12-05T20:49:21.670Z [Tick 1024]['Masterino Splinterino' depth=5 (292..296) ping=72ms, loss in/out = 2.57%/2.57%] CQ bloat: removed 1, max: 4, 1 ticks this frame
+2025-12-05T20:49:21.670Z autokick is disabled for Masterino Splinterino
+2025-12-05T20:49:21.670Z "Masterino Splinterino<0><[U:1:93133445]><Unassigned>" ChangeTeam() CTMDBG , team 0, req team 2 willSwitch 0, 27.56
+2025-12-05T20:49:21.670Z ClientPutInServer create new player controller [Imaru]
+2025-12-05T20:49:21.670Z [Imaru] cl_interp_ratio='', LerpTime=0
+2025-12-05T20:49:21.670Z "Imaru<1><BOT><Unassigned>" ChangeTeam() CTMDBG , team 0, req team 3 willSwitch 0, 27.56
+2025-12-05T20:49:21.670Z ClientPutInServer create new player controller [Striker]
+2025-12-05T20:49:21.670Z [Striker] cl_interp_ratio='', LerpTime=0
+2025-12-05T20:49:21.670Z "Striker<2><BOT><Unassigned>" ChangeTeam() CTMDBG , team 0, req team 2 willSwitch 0, 27.56
+2025-12-05T20:49:21.670Z ClientPutInServer create new player controller [Sails]
+2025-12-05T20:49:21.670Z [Sails] cl_interp_ratio='', LerpTime=0
+2025-12-05T20:49:21.670Z "Sails<3><BOT><Unassigned>" ChangeTeam() CTMDBG , team 0, req team 3 willSwitch 0, 27.56
+2025-12-05T20:49:21.670Z ClientPutInServer create new player controller [Bluefish]
+2025-12-05T20:49:21.670Z [Bluefish] cl_interp_ratio='', LerpTime=0
+2025-12-05T20:49:21.670Z "Bluefish<4><BOT><Unassigned>" ChangeTeam() CTMDBG , team 0, req team 2 willSwitch 0, 27.56
+2025-12-05T20:49:21.670Z ClientPutInServer create new player controller [Hau]
+2025-12-05T20:49:21.670Z [Hau] cl_interp_ratio='', LerpTime=0
+2025-12-05T20:49:21.670Z "Hau<5><BOT><Unassigned>" ChangeTeam() CTMDBG , team 0, req team 3 willSwitch 0, 27.56
