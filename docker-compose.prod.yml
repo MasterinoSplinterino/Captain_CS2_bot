@@ -75,56 +75,50 @@ services:
     container_name: cs2-bot
     restart: unless-stopped
     environment:
-      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
-      - ALLOWED_USER_ID=${ALLOWED_USER_ID}
-      - RCON_HOST=172.17.0.1
-      - RCON_PORT=27015
-      - RCON_PASSWORD=${RCON_PASSWORD}
-      - CS2_PASSWORD=${CS2_PASSWORD}
-      - CS2_SERVERNAME=${CS2_SERVERNAME}
-      - CS2_IP=${CS2_IP}
-      - CS2_DOMAIN=${CS2_DOMAIN}
-    dns:
-      - 8.8.8.8
-      - 1.1.1.1
-    volumes:
-      # Mount the same data volume so the bot can access logs/files if needed
-      - /opt/cs2-data:/cs2-data
-      # Mount firewall setup scripts (read-only)
-      - ./setup_firewall.sh:/scripts/setup_firewall.sh:ro
-      - ./check_ports.sh:/scripts/check_ports.sh:ro
-    # Optional: Enable if you want the bot to auto-configure firewall (requires privileged mode)
-    # WARNING: Only enable this if you trust the bot code completely
-    # privileged: true
-    # pid: "host"
-    depends_on:
-      - cs2
+      services:
+        cs2_modded_server:
+          image: ghcr.io/kus/cs2-modded-server:latest
+          container_name: cs2-modded-server
+          restart: unless-stopped
+          env_file:
+            - .env
+          environment:
+            - PUBLIC_IP=${PUBLIC_IP:-0.0.0.0}
+          volumes:
+            - cs2-volume:/home/steam/
+            - type: bind
+              source: ./custom_files
+              target: /home/custom_files/
+            - type: bind
+              source: ./game
+              target: /home/game/
+          ports:
+            - "27015:27015/tcp"
+            - "27015:27015/udp"
+            - "27020:27020/tcp"
+            - "27020:27020/udp"
+          cpu_count: 2
+          mem_limit: 3500m
 
-  # Playit.gg Tunnel for Game Traffic (UDP)
-  # 1. Start the stack.
-  # 2. Check logs: docker logs cs2-playit
-  # 3. Copy the claim URL and visit it in your browser.
-  # 4. Create a UDP tunnel pointing to: cs2:27015
-  playit:
-    image: ghcr.io/playit-cloud/playit-agent:latest
-    container_name: cs2-playit
-    restart: unless-stopped
-    environment:
-      - SECRET_KEY=${PLAYIT_SECRET} # Optional: Add this to Dokploy env vars AFTER you claim the agent to persist it easily
-    volumes:
-      - playit-data:/etc/playit # Persist configuration
-    depends_on:
-      - cs2
-  # Optional: Cloudflare Tunnel for SSH/Management access
-  # This does NOT tunnel the game UDP traffic for players, but allows you to SSH into the container/host
-  # or access internal web services if you add them.
-  # tunnel:
-  #   image: cloudflare/cloudflared:latest
-  #   container_name: cs2-tunnel
-  #   restart: unless-stopped
-  #   command: tunnel run
-  #   environment:
-  #     - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+        bot:
+          build:
+            context: ./bot
+            dockerfile: Dockerfile
+          container_name: cs2-bot
+          restart: unless-stopped
+          env_file:
+            - .env
+          environment:
+            - RCON_HOST=cs2_modded_server
+            - RCON_PORT=27015
+            - RCON_PASSWORD=${RCON_PASSWORD}
+            - CS2_PASSWORD=${CS2_PASSWORD}
+            - CS2_SERVERNAME=${CS2_SERVERNAME}
+          depends_on:
+            - cs2_modded_server
+          volumes:
+            - ./bot:/app
+            - cs2-volume:/cs2-data:ro
 
-volumes:
-  playit-data:
+      volumes:
+        cs2-volume:
