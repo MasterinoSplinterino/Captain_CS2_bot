@@ -45,6 +45,8 @@ read_cached_ip() {
 
 ensure_public_ip() {
     if [[ -n "${PUBLIC_IP:-}" && "${PUBLIC_IP}" != "auto" ]]; then
+        export CS2_IP="$PUBLIC_IP"
+        export IP="$PUBLIC_IP"
         log INFO "Using provided PUBLIC_IP=${PUBLIC_IP}"
         return
     fi
@@ -53,6 +55,8 @@ ensure_public_ip() {
     while (( $(date +%s) <= deadline )); do
         if ip=$(read_cached_ip "$PUBLIC_IP_FILE"); then
             export PUBLIC_IP="$ip"
+            export CS2_IP="$ip"
+            export IP="$ip"
             log INFO "Using cached PUBLIC_IP=${PUBLIC_IP} from ${PUBLIC_IP_FILE}"
             return
         fi
@@ -68,55 +72,64 @@ create_dig_shim() {
         real_dig="$(command -v dig)"
     fi
 
+    # Create wrapper script that will be sourced, not executed
     local shim_dir="/tmp/public-ip-tools"
-    local shim_path="${shim_dir}/dig"
     mkdir -p "$shim_dir"
     
-    # Use direct variable expansion instead of sed to avoid permission issues
+    # Move real dig to backup location
+    if [[ -n "$real_dig" && -x "$real_dig" ]]; then
+        local dig_backup="${shim_dir}/dig.real"
+        if [[ ! -f "$dig_backup" ]]; then
+            cp "$real_dig" "$dig_backup" 2>/dev/null || true
+        fi
+        real_dig="$dig_backup"
+    fi
+    
+    # Create shim that intercepts dig calls
+    local shim_path="${shim_dir}/dig"
     cat >"$shim_path" <<EOF
 #!/bin/bash
-set -euo pipefail
 TARGET_FILE="${PUBLIC_IP_FILE}"
 REAL_DIG="${real_dig}"
-is_ipv4() {
-    local candidate="\$1"
-    if [[ ! "\$candidate" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
-        return 1
-    fi
-    local IFS='.'
-    local -a octets=(\$candidate)
-    for octet in "\${octets[@]}"; do
-        if (( octet > 255 )); then
-            return 1
-        fi
-    done
-    return 0
-}
-read_ip() {
+
+read_cached_ip() {
     if [[ -f "\$TARGET_FILE" ]]; then
         local value
-        value="\$(head -n1 "\$TARGET_FILE" | tr -d '\r\n ')"
-        if is_ipv4 "\$value"; then
+        value="\$(head -n1 "\$TARGET_FILE" 2>/dev/null | tr -d '\r\n ')"
+        if [[ "\$value" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
             echo "\$value"
             return 0
         fi
     fi
     return 1
 }
+
+# Intercept public IP detection queries
 if [[ "\$*" == *"myip.opendns.com"* ]] || [[ "\$*" == *"o-o.myaddr.l.google.com"* ]]; then
-    if ip=\$(read_ip); then
-        printf '%s\n' "\$ip"
+    if cached_ip=\$(read_cached_ip); then
+        echo "\$cached_ip"
         exit 0
     fi
 fi
-if [[ -n "\$REAL_DIG" ]]; then
+
+# Fall back to real dig if available
+if [[ -n "\$REAL_DIG" && -x "\$REAL_DIG" ]]; then
     exec "\$REAL_DIG" "\$@"
 fi
-echo "dig shim: public IP unavailable and real dig missing" >&2
+
+# If no real dig, try to return cached IP as last resort
+if cached_ip=\$(read_cached_ip); then
+    echo "\$cached_ip"
+    exit 0
+fi
+
+echo "dig: command not found and no cached IP available" >&2
 exit 1
 EOF
     chmod +x "$shim_path"
-    export PATH="$shim_dir:$PATH"
+    
+    # Prepend to PATH - this will be inherited by sudo -E
+    export PATH="${shim_dir}:${PATH}"
 }
 
 # Allow the script to default to the image CMD if compose does not pass args
@@ -126,7 +139,18 @@ fi
 
 ensure_public_ip
 
+# Debug: log what we're passing
+log INFO "PUBLIC_IP is set to: ${PUBLIC_IP:-<not set>}"
+log INFO "Command to execute: $*"
+
 # Always create dig shim (it will return empty if file missing)
 create_dig_shim
+
+# Verify shim is in PATH
+if command -v dig >/dev/null 2>&1; then
+    log INFO "dig command found at: $(command -v dig)"
+else
+    log WARN "dig command not found in PATH"
+fi
 
 exec "$@"
