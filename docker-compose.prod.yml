@@ -1,124 +1,47 @@
 services:
-  cs2:
+  cs2_modded_server:
     image: ghcr.io/kus/cs2-modded-server:latest
-    container_name: cs2-server
+    container_name: cs2-modded-server
     restart: unless-stopped
-    network_mode: host
+    env_file:
+      - .env
     environment:
-      - SRCDS_TOKEN=${CS2_GSLT_TOKEN}
-      - SRCDS_PW=${CS2_PASSWORD}
-      - SRCDS_RCONPW=${RCON_PASSWORD}
-      - RCON_PASSWORD=${RCON_PASSWORD}
-      - SRCDS_HOSTNAME=${CS2_SERVERNAME}
-      - STEAM_API_KEY=${STEAM_API_KEY}
-      - LAN=0
       - PUBLIC_IP=${PUBLIC_IP:-0.0.0.0}
-      # Friendly Fire Settings
-      - CS2_CFG_mp_friendlyfire=1
-      - CS2_CFG_ff_damage_reduction_bullets=0.33
-      - CS2_CFG_ff_damage_reduction_grenade=0.85
-      - CS2_CFG_ff_damage_reduction_grenade_self=1
-      - CS2_CFG_ff_damage_reduction_other=0.4
-      # Performance Optimizations
-      - CS2_CFG_sv_maxrate=0
-      - CS2_CFG_sv_minrate=196608
-      - CS2_CFG_sv_maxupdaterate=128
-      - CS2_CFG_sv_minupdaterate=64
-      - CS2_CFG_sv_mincmdrate=64
-      - CS2_CFG_sv_maxcmdrate=128
-      # Network Performance
-      - CS2_CFG_net_maxcleartime=0.001
-      - CS2_CFG_sv_parallel_packentities=1
-      - CS2_CFG_sv_parallel_sendsnapshot=1
-      # Server Performance
-      - CS2_CFG_host_thread_mode=2
-      - CS2_CFG_sv_clockcorrection_msecs=15
-      - CS2_CFG_sv_max_queries_sec_global=60
-      - CS2_CFG_sv_max_queries_window=60
-      - CS2_CFG_sv_max_queries_sec=5
-      # Reduce prediction errors
-      - CS2_CFG_sv_lagcompensation_teleport_dist=64
-      - CS2_CFG_sv_maxunlag=0.4
     volumes:
-      # Mount the data from the host path where you copied the USB files
-      - /opt/cs2-data:/home/steam/cs2/
-    stdin_open: true
-    tty: true
-    # Performance optimizations
-    deploy:
-      resources:
-        limits:
-          cpus: '4'
-          memory: 4g
-        reservations:
-          cpus: '2'
-          memory: 2g
-    ulimits:
-      nofile:
-        soft: 65536
-        hard: 65536
-      nproc:
-        soft: 65536
-        hard: 65536
-    security_opt:
-      - seccomp:unconfined
-    cap_add:
-      - SYS_NICE
-      - SYS_RESOURCE
+      - cs2-volume:/home/steam/
+      - type: bind
+        source: ./custom_files
+        target: /home/custom_files/
+      - type: bind
+        source: ./game
+        target: /home/game/
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+      - "27020:27020/tcp"
+      - "27020:27020/udp"
+    cpu_count: 2
+    mem_limit: 3500m
 
   bot:
-    # In Dokploy, you might need to build this from a git repo or push the image to a registry.
-    # If using "docker-compose" build type in Dokploy, it can build from context if the repo is connected.
     build:
       context: ./bot
       dockerfile: Dockerfile
     container_name: cs2-bot
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
-      services:
-        cs2_modded_server:
-          image: ghcr.io/kus/cs2-modded-server:latest
-          container_name: cs2-modded-server
-          restart: unless-stopped
-          env_file:
-            - .env
-          environment:
-            - PUBLIC_IP=${PUBLIC_IP:-0.0.0.0}
-          volumes:
-            - cs2-volume:/home/steam/
-            - type: bind
-              source: ./custom_files
-              target: /home/custom_files/
-            - type: bind
-              source: ./game
-              target: /home/game/
-          ports:
-            - "27015:27015/tcp"
-            - "27015:27015/udp"
-            - "27020:27020/tcp"
-            - "27020:27020/udp"
-          cpu_count: 2
-          mem_limit: 3500m
+      - RCON_HOST=cs2_modded_server
+      - RCON_PORT=27015
+      - RCON_PASSWORD=${RCON_PASSWORD}
+      - CS2_PASSWORD=${CS2_PASSWORD}
+      - CS2_SERVERNAME=${CS2_SERVERNAME}
+    depends_on:
+      - cs2_modded_server
+    volumes:
+      - ./bot:/app
+      - cs2-volume:/cs2-data:ro
 
-        bot:
-          build:
-            context: ./bot
-            dockerfile: Dockerfile
-          container_name: cs2-bot
-          restart: unless-stopped
-          env_file:
-            - .env
-          environment:
-            - RCON_HOST=cs2_modded_server
-            - RCON_PORT=27015
-            - RCON_PASSWORD=${RCON_PASSWORD}
-            - CS2_PASSWORD=${CS2_PASSWORD}
-            - CS2_SERVERNAME=${CS2_SERVERNAME}
-          depends_on:
-            - cs2_modded_server
-          volumes:
-            - ./bot:/app
-            - cs2-volume:/cs2-data:ro
-
-      volumes:
-        cs2-volume:
+volumes:
+  cs2-volume:
