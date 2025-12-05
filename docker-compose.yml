@@ -34,9 +34,6 @@ services:
       - type: bind
         source: ./custom_files
         target: /home/custom_files/
-      - type: bind
-        source: ./game
-        target: /home/steam/cs2-dedicated/game/
     ports:
       - "27015:27015/tcp"
       - "27015:27015/udp"
