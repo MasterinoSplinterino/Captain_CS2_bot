@@ -1,4 +1,5 @@
 import os
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,6 +20,44 @@ CS2_DOMAIN = os.getenv("CS2_DOMAIN", "")
 
 if not RCON_PASSWORD:
     print("WARNING: RCON_PASSWORD is not set! RCON commands will fail.")
+
+# Function to auto-detect external IP
+def get_external_ip():
+    """
+    Автоматическое определение внешнего IP VPS.
+    Пробует несколько сервисов для надежности.
+    Возвращает IP:PORT или None если не удалось определить.
+    """
+    services = [
+        "https://api.ipify.org",
+        "https://ifconfig.me/ip",
+        "https://icanhazip.com",
+        "https://ipinfo.io/ip",
+    ]
+
+    for service in services:
+        try:
+            response = requests.get(service, timeout=5)
+            if response.status_code == 200:
+                ip = response.text.strip()
+                # Добавляем порт
+                return f"{ip}:27015"
+        except Exception:
+            continue
+
+    return None
+
+# Auto-detect IP if not set in .env
+if not CS2_IP and not CS2_DOMAIN:
+    try:
+        detected_ip = get_external_ip()
+        if detected_ip:
+            CS2_IP = detected_ip
+            print(f"✓ Auto-detected external IP: {CS2_IP}")
+        else:
+            print("⚠ Could not auto-detect external IP. Please set CS2_IP or CS2_DOMAIN in .env")
+    except Exception as e:
+        print(f"⚠ Error auto-detecting IP: {e}")
 
 # Map Catalog
 MAPS = {

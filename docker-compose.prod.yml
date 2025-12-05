@@ -47,6 +47,13 @@ services:
     volumes:
       # Mount the same data volume so the bot can access logs/files if needed
       - /opt/cs2-data:/cs2-data
+      # Mount firewall setup scripts (read-only)
+      - ./setup_firewall.sh:/scripts/setup_firewall.sh:ro
+      - ./check_ports.sh:/scripts/check_ports.sh:ro
+    # Optional: Enable if you want the bot to auto-configure firewall (requires privileged mode)
+    # WARNING: Only enable this if you trust the bot code completely
+    # privileged: true
+    # pid: "host"
     depends_on:
       - cs2
 
