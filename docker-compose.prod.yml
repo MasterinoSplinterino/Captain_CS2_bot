@@ -3,10 +3,7 @@ services:
     image: ghcr.io/kus/cs2-modded-server:latest
     container_name: cs2-server
     restart: unless-stopped
-    ports:
-      - "27015:27015/tcp"
-      - "27015:27015/udp"
-      - "27020:27020/udp"
+    network_mode: host
     environment:
       - SRCDS_TOKEN=${CS2_GSLT_TOKEN}
       - SRCDS_PW=${CS2_PASSWORD}
@@ -15,13 +12,62 @@ services:
       - SRCDS_HOSTNAME=${CS2_SERVERNAME}
       - STEAM_API_KEY=${STEAM_API_KEY}
       - LAN=0
+      # Friendly Fire Settings
+      - CS2_CFG_mp_friendlyfire=1
+      - CS2_CFG_ff_damage_reduction_bullets=0.33
+      - CS2_CFG_ff_damage_reduction_grenade=0.85
+      - CS2_CFG_ff_damage_reduction_grenade_self=1
+      - CS2_CFG_ff_damage_reduction_other=0.4
+      # Performance Optimizations
+      - CS2_CFG_sv_maxrate=0
+      - CS2_CFG_sv_minrate=196608
+      - CS2_CFG_sv_maxupdaterate=128
+      - CS2_CFG_sv_minupdaterate=64
+      - CS2_CFG_sv_mincmdrate=64
+      - CS2_CFG_sv_maxcmdrate=128
+      # Network Performance
+      - CS2_CFG_net_maxcleartime=0.001
+      - CS2_CFG_sv_parallel_packentities=1
+      - CS2_CFG_sv_parallel_sendsnapshot=1
+      # Server Performance
+      - CS2_CFG_host_thread_mode=2
+      - CS2_CFG_sv_clockcorrection_msecs=15
+      - CS2_CFG_sv_max_queries_sec_global=60
+      - CS2_CFG_sv_max_queries_window=60
+      - CS2_CFG_sv_max_queries_sec=5
+      # Reduce prediction errors
+      - CS2_CFG_sv_lagcompensation_teleport_dist=64
+      - CS2_CFG_sv_maxunlag=0.4
     volumes:
       # Mount the data from the host path where you copied the USB files
       - /opt/cs2-data:/home/steam/cs2/
-      # Mount custom config for friendly fire
-      - ./config/custom_competitive.cfg:/home/steam/cs2/custom_files/cfg/custom_competitive.cfg
     stdin_open: true
     tty: true
+    # Performance optimizations
+    cpu_count: 4
+    mem_limit: 4g
+    mem_reservation: 2g
+    cpuset_cpus: "0-3"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+      nproc:
+        soft: 65536
+        hard: 65536
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_NICE
+      - SYS_RESOURCE
+    sysctls:
+      - net.core.rmem_max=16777216
+      - net.core.wmem_max=16777216
+      - net.ipv4.tcp_rmem=4096 87380 16777216
+      - net.ipv4.tcp_wmem=4096 65536 16777216
+      - net.ipv4.tcp_congestion_control=bbr
+      - net.core.netdev_max_backlog=30000
+      - net.ipv4.tcp_max_syn_backlog=8096
 
   bot:
     # In Dokploy, you might need to build this from a git repo or push the image to a registry.
@@ -34,13 +80,15 @@ services:
     environment:
       - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
       - ALLOWED_USER_ID=${ALLOWED_USER_ID}
-      - RCON_HOST=cs2
+      - RCON_HOST=host.docker.internal
       - RCON_PORT=27015
       - RCON_PASSWORD=${RCON_PASSWORD}
       - CS2_PASSWORD=${CS2_PASSWORD}
       - CS2_SERVERNAME=${CS2_SERVERNAME}
       - CS2_IP=${CS2_IP}
       - CS2_DOMAIN=${CS2_DOMAIN}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     dns:
       - 8.8.8.8
       - 1.1.1.1
@@ -54,8 +102,6 @@ services:
     # WARNING: Only enable this if you trust the bot code completely
     # privileged: true
     # pid: "host"
-    depends_on:
-      - cs2
 
   # Playit.gg Tunnel for Game Traffic (UDP)
   # 1. Start the stack.
