@@ -219,6 +219,24 @@ sysctl: setting key "net.core.rmem_max": Read-only file system
 **Решение:**
 Запустите [optimize_system.sh](optimize_system.sh) на хосте, а не в контейнере.
 
+### Проблема: ERROR: Cannot retrieve your public IP address
+
+**Ошибка в логах CS2 сервера:**
+```
+ERROR: Cannot retrieve your public IP address...
+Starting on Steam Runtime: 3...
+With  109 Gb free space...
+```
+
+**Причина:** Docker образ CS2 пытается автоматически определить внешний IP, но не может из-за `network_mode: host`.
+
+**Решение:** Добавлены переменные окружения `IP=0.0.0.0` и `PORT=27015` в docker-compose.prod.yml. Сервер запустится на всех интерфейсах.
+
+После обновления:
+```bash
+docker-compose -f docker-compose.prod.yml up -d cs2
+```
+
 ### Проблема: Бот не может подключиться к серверу (Connection refused)
 
 **Ошибка:**

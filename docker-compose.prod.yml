@@ -12,6 +12,8 @@ services:
       - SRCDS_HOSTNAME=${CS2_SERVERNAME}
       - STEAM_API_KEY=${STEAM_API_KEY}
       - LAN=0
+      - IP=0.0.0.0
+      - PORT=27015
       # Friendly Fire Settings
       - CS2_CFG_mp_friendlyfire=1
       - CS2_CFG_ff_damage_reduction_bullets=0.33
