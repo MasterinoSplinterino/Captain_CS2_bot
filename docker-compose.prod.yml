@@ -44,10 +44,14 @@ services:
     stdin_open: true
     tty: true
     # Performance optimizations
-    cpu_count: 4
-    mem_limit: 4g
-    mem_reservation: 2g
-    cpuset_cpus: "0-3"
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 4g
+        reservations:
+          cpus: '2'
+          memory: 2g
     ulimits:
       nofile:
         soft: 65536
