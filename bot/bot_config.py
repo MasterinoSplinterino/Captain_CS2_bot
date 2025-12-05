@@ -1,4 +1,5 @@
 import os
+import ipaddress
 import requests
 from dotenv import load_dotenv
 
@@ -17,9 +18,53 @@ CS2_PASSWORD = os.getenv("CS2_PASSWORD", "Unknown")
 CS2_SERVERNAME = os.getenv("CS2_SERVERNAME", "Counter-Strike 2")
 CS2_IP = os.getenv("CS2_IP", "")
 CS2_DOMAIN = os.getenv("CS2_DOMAIN", "")
+CS2_GAME_PORT = os.getenv("CS2_GAME_PORT", "27015")
+PUBLIC_IP_FILE = os.getenv("PUBLIC_IP_FILE", "/shared/public_ip.txt")
 
 if not RCON_PASSWORD:
     print("WARNING: RCON_PASSWORD is not set! RCON commands will fail.")
+
+def _format_endpoint(value: str | None) -> str | None:
+    if not value:
+        return None
+    value = value.strip()
+    if not value:
+        return None
+    if ":" in value:
+        return value
+    return f"{value}:{CS2_GAME_PORT}"
+
+def read_public_ip_from_cache() -> str | None:
+    path = PUBLIC_IP_FILE.strip()
+    if not path or not os.path.exists(path):
+        return None
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            value = fh.readline().strip()
+            if not value:
+                return None
+            try:
+                ipaddress.IPv4Address(value)
+            except ipaddress.AddressValueError:
+                return None
+            return value
+    except OSError:
+        return None
+
+def get_cached_ip_endpoint() -> str | None:
+    cached = read_public_ip_from_cache()
+    return _format_endpoint(cached)
+
+def get_configured_ip_endpoint() -> str | None:
+    return _format_endpoint(CS2_IP)
+
+def get_preferred_connect_address() -> str | None:
+    if CS2_DOMAIN:
+        return CS2_DOMAIN.strip()
+    cached_endpoint = get_cached_ip_endpoint()
+    if cached_endpoint:
+        return cached_endpoint
+    return get_configured_ip_endpoint()
 
 # Function to auto-detect external IP
 def get_external_ip():
@@ -41,23 +86,28 @@ def get_external_ip():
             if response.status_code == 200:
                 ip = response.text.strip()
                 # Добавляем порт
-                return f"{ip}:27015"
+                return f"{ip}:{CS2_GAME_PORT}"
         except Exception:
             continue
 
     return None
 
-# Auto-detect IP if not set in .env
+# Auto-detect IP if not set in .env (prefer shared cache -> HTTP fallback)
 if not CS2_IP and not CS2_DOMAIN:
-    try:
-        detected_ip = get_external_ip()
-        if detected_ip:
-            CS2_IP = detected_ip
-            print(f"✓ Auto-detected external IP: {CS2_IP}")
-        else:
-            print("⚠ Could not auto-detect external IP. Please set CS2_IP or CS2_DOMAIN in .env")
-    except Exception as e:
-        print(f"⚠ Error auto-detecting IP: {e}")
+    cached_endpoint = get_cached_ip_endpoint()
+    if cached_endpoint:
+        CS2_IP = cached_endpoint
+        print(f"✓ Loaded shared public IP: {CS2_IP}")
+    else:
+        try:
+            detected_ip = get_external_ip()
+            if detected_ip:
+                CS2_IP = detected_ip
+                print(f"✓ Auto-detected external IP via HTTP: {CS2_IP}")
+            else:
+                print("⚠ Could not auto-detect external IP. Please set CS2_IP or CS2_DOMAIN in .env")
+        except Exception as e:
+            print(f"⚠ Error auto-detecting IP: {e}")
 
 # Map Catalog
 MAPS = {

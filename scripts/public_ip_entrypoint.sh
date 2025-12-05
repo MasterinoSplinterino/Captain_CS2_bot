@@ -1,6 +1,6 @@
 #!/bin/bash
-# Wrapper entrypoint that ensures the CS2 container always starts with a valid
-# PUBLIC_IP value. Falls back to multiple providers if the first lookup fails.
+# Wrapper entrypoint that reads a cached PUBLIC_IP provided by the dedicated
+# detector sidecar. If the cache is unavailable the server still boots.
 set -euo pipefail
 
 log() {
@@ -10,30 +10,113 @@ log() {
 
 is_ipv4() {
     local candidate="$1"
-    [[ "$candidate" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]
-}
-
-detect_public_ip() {
-    local ip=""
-    local attempts=(
-        "dig +short myip.opendns.com @resolver1.opendns.com"
-        "dig +short TXT o-o.myaddr.l.google.com @ns1.google.com | tr -d '\"'"
-        "curl -4 -fsS https://api.ipify.org"
-        "curl -4 -fsS https://ifconfig.me"
-        "curl -4 -fsS https://icanhazip.com"
-        "curl -4 -fsS https://ipinfo.io/ip"
-    )
-
-    for cmd in "${attempts[@]}"; do
-        if ip=$(eval "$cmd" 2>/dev/null | tr -d '\r' | head -n1); then
-            if is_ipv4 "$ip"; then
-                echo "$ip"
-                return 0
-            fi
+    # Validate format and octets are 0-255
+    if [[ ! "$candidate" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+        return 1
+    fi
+    local IFS='.'
+    local -a octets=($candidate)
+    for octet in "${octets[@]}"; do
+        if (( octet > 255 )); then
+            return 1
         fi
     done
+    return 0
+}
 
+PUBLIC_IP_FILE="${PUBLIC_IP_FILE:-/shared/public_ip.txt}"
+PUBLIC_IP_WAIT_SECONDS=${PUBLIC_IP_WAIT_SECONDS:-30}
+if ! [[ "$PUBLIC_IP_WAIT_SECONDS" =~ ^[0-9]+$ ]]; then
+    PUBLIC_IP_WAIT_SECONDS=30
+fi
+
+read_cached_ip() {
+    local file="$1"
+    if [[ -f "$file" ]]; then
+        local value
+        value="$(head -n1 "$file" | tr -d '\r\n ')"
+        if is_ipv4 "$value"; then
+            echo "$value"
+            return 0
+        fi
+    fi
     return 1
+}
+
+ensure_public_ip() {
+    if [[ -n "${PUBLIC_IP:-}" && "${PUBLIC_IP}" != "auto" ]]; then
+        log INFO "Using provided PUBLIC_IP=${PUBLIC_IP}"
+        return
+    fi
+
+    local deadline=$(( $(date +%s) + PUBLIC_IP_WAIT_SECONDS ))
+    while (( $(date +%s) <= deadline )); do
+        if ip=$(read_cached_ip "$PUBLIC_IP_FILE"); then
+            export PUBLIC_IP="$ip"
+            log INFO "Using cached PUBLIC_IP=${PUBLIC_IP} from ${PUBLIC_IP_FILE}"
+            return
+        fi
+        sleep 2
+    done
+
+    log WARN "PUBLIC_IP cache ${PUBLIC_IP_FILE} not ready. Continuing without it."
+}
+
+create_dig_shim() {
+    local real_dig=""
+    if command -v dig >/dev/null 2>&1; then
+        real_dig="$(command -v dig)"
+    fi
+
+    local shim_dir="/tmp/public-ip-tools"
+    local shim_path="${shim_dir}/dig"
+    mkdir -p "$shim_dir"
+    
+    # Use direct variable expansion instead of sed to avoid permission issues
+    cat >"$shim_path" <<EOF
+#!/bin/bash
+set -euo pipefail
+TARGET_FILE="${PUBLIC_IP_FILE}"
+REAL_DIG="${real_dig}"
+is_ipv4() {
+    local candidate="\$1"
+    if [[ ! "\$candidate" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+        return 1
+    fi
+    local IFS='.'
+    local -a octets=(\$candidate)
+    for octet in "\${octets[@]}"; do
+        if (( octet > 255 )); then
+            return 1
+        fi
+    done
+    return 0
+}
+read_ip() {
+    if [[ -f "\$TARGET_FILE" ]]; then
+        local value
+        value="\$(head -n1 "\$TARGET_FILE" | tr -d '\r\n ')"
+        if is_ipv4 "\$value"; then
+            echo "\$value"
+            return 0
+        fi
+    fi
+    return 1
+}
+if [[ "\$*" == *"myip.opendns.com"* ]] || [[ "\$*" == *"o-o.myaddr.l.google.com"* ]]; then
+    if ip=\$(read_ip); then
+        printf '%s\n' "\$ip"
+        exit 0
+    fi
+fi
+if [[ -n "\$REAL_DIG" ]]; then
+    exec "\$REAL_DIG" "\$@"
+fi
+echo "dig shim: public IP unavailable and real dig missing" >&2
+exit 1
+EOF
+    chmod +x "$shim_path"
+    export PATH="$shim_dir:$PATH"
 }
 
 # Allow the script to default to the image CMD if compose does not pass args
@@ -41,40 +124,9 @@ if [[ $# -eq 0 ]]; then
     set -- sudo -E bash /home/cs2-modded-server/install_docker.sh
 fi
 
-if [[ -z "${PUBLIC_IP:-}" || "${PUBLIC_IP}" == "auto" ]]; then
-    if ip=$(detect_public_ip); then
-        export PUBLIC_IP="$ip"
-        log INFO "Auto-detected public IP: ${PUBLIC_IP}"
-    else
-        log ERROR "Unable to detect public IP. Set PUBLIC_IP manually or ensure outbound DNS/HTTPS is allowed."
-        exit 1
-    fi
-else
-    log INFO "Using existing PUBLIC_IP=${PUBLIC_IP}"
-fi
+ensure_public_ip
 
-# Some upstream scripts always call `dig` to determine the public IP and exit if it fails.
-# When we already know the IP (environment variable or auto detection above) we shim `dig`
-# so that specific lookups for `myip.opendns.com` and `o-o.myaddr.l.google.com` simply
-# return the detected value. All other dig queries fall back to the original binary.
-if command -v dig >/dev/null 2>&1; then
-    REAL_DIG_PATH="$(command -v dig)"
-    SHIM_PATH="/usr/local/bin/dig"
-    if [[ -n "${PUBLIC_IP:-}" ]]; then
-        cat >"${SHIM_PATH}" <<EOF
-#!/bin/bash
-PUBLIC_IP_VALUE="${PUBLIC_IP}"
-REAL_DIG="${REAL_DIG_PATH}"
-if [[ "\$*" == *"myip.opendns.com"* ]] || [[ "\$*" == *"o-o.myaddr.l.google.com"* ]]; then
-    if [[ -n "\${PUBLIC_IP_VALUE}" ]]; then
-        echo "\${PUBLIC_IP_VALUE}"
-        exit 0
-    fi
-fi
-exec "\${REAL_DIG}" "\$@"
-EOF
-        chmod +x "${SHIM_PATH}"
-    fi
-fi
+# Always create dig shim (it will return empty if file missing)
+create_dig_shim
 
 exec "$@"

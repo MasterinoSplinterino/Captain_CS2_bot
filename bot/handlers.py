@@ -226,8 +226,12 @@ async def send_status(message: types.Message):
             f"🎮 **Mode:** `{mode_name}`\n"
         )
         
-        if config.CS2_IP:
-            msg += f"🌐 **IP:** `{config.CS2_IP}`\n"
+        cached_endpoint = config.get_cached_ip_endpoint()
+        configured_endpoint = config.get_configured_ip_endpoint()
+        if cached_endpoint:
+            msg += f"🌐 **IP:** `{cached_endpoint}`\n"
+        elif configured_endpoint:
+            msg += f"🌐 **IP:** `{configured_endpoint}`\n"
         if config.CS2_DOMAIN:
             msg += f"🔗 **Domain:** `{config.CS2_DOMAIN}`\n"
             
@@ -240,7 +244,7 @@ async def send_status(message: types.Message):
 
         # Quick Connect Command
         # Prioritize Domain, then IP, then auto-detected IP (if we were still doing that, but we aren't really)
-        connect_address = config.CS2_DOMAIN if config.CS2_DOMAIN else config.CS2_IP
+        connect_address = config.get_preferred_connect_address()
         
         if connect_address:
             connect_cmd = f"connect {connect_address}"

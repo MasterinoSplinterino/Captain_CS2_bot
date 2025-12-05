@@ -8,7 +8,18 @@ log() {
 
 is_ipv4() {
     local candidate="$1"
-    [[ "$candidate" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]
+    # Validate format and octets are 0-255
+    if [[ ! "$candidate" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+        return 1
+    fi
+    local IFS='.'
+    local -a octets=($candidate)
+    for octet in "${octets[@]}"; do
+        if (( octet > 255 )); then
+            return 1
+        fi
+    done
+    return 0
 }
 
 detect_public_ip() {

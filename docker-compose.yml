@@ -3,6 +3,9 @@ services:
     image: ghcr.io/kus/cs2-modded-server:latest
     container_name: cs2-server
     restart: unless-stopped
+    entrypoint:
+      - /bin/bash
+      - /scripts/public_ip_entrypoint.sh
     ports:
       - "27015:27015/tcp"
       - "27015:27015/udp"
@@ -14,10 +17,17 @@ services:
       - RCON_PASSWORD=${RCON_PASSWORD}
       - SRCDS_HOSTNAME=${CS2_SERVERNAME}
       - STEAM_API_KEY=${STEAM_API_KEY}
+      - PUBLIC_IP=${PUBLIC_IP:-auto}
+      - PUBLIC_IP_FETCH=0
+      - PUBLIC_IP_FILE=/shared/public_ip.txt
     volumes:
       - ./cs2-data:/home/steam/cs2/
+      - ./scripts/public_ip_entrypoint.sh:/scripts/public_ip_entrypoint.sh:ro
+      - public-ip-cache:/shared
     stdin_open: true # docker run -i
     tty: true # docker run -t
+    depends_on:
+      - public-ip
 
   bot:
     build: ./bot
@@ -31,11 +41,29 @@ services:
       - RCON_PASSWORD=${RCON_PASSWORD}
       - CS2_PASSWORD=${CS2_PASSWORD}
       - CS2_SERVERNAME=${CS2_SERVERNAME}
+      - PUBLIC_IP_FILE=/shared/public_ip.txt
     dns:
       - 8.8.8.8
       - 1.1.1.1
     volumes:
       - ./bot:/app
       - ./cs2-data:/cs2-data
+      - public-ip-cache:/shared:ro
     depends_on:
       - cs2
+      - public-ip
+
+  public-ip:
+    build:
+      context: ./ip-detector
+    container_name: cs2-public-ip
+    restart: unless-stopped
+    environment:
+      - PUBLIC_IP_REFRESH_SECONDS=60
+      - PUBLIC_IP_PORT=27015
+    volumes:
+      - public-ip-cache:/shared
+
+volumes:
+  cs2-data:
+  public-ip-cache:
