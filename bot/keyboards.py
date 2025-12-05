@@ -98,7 +98,8 @@ def get_main_keyboard():
          InlineKeyboardButton(text="🔥 Warmup Off", callback_data="menu:warmup_end")],
         [InlineKeyboardButton(text="🤖 Add T", callback_data="menu:addt"),
          InlineKeyboardButton(text="🤖 Add CT", callback_data="menu:addct"),
-         InlineKeyboardButton(text="🚫 Clear Bots", callback_data="menu:removebots")]
+         InlineKeyboardButton(text="🚫 Clear Bots", callback_data="menu:removebots")],
+        [InlineKeyboardButton(text="📣 Broadcast", callback_data="menu:broadcast")]
     ]
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 

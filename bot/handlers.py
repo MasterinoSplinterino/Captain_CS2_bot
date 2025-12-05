@@ -1,5 +1,7 @@
 from aiogram import Router, F, types
 from aiogram.filters import Command, CommandObject
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
 import bot_config as config
 from keyboards import get_maps_keyboard, get_modes_keyboard, get_main_keyboard, get_reply_keyboard
 from rcon_client import RCONClient
@@ -12,6 +14,10 @@ from log_parser import generate_report
 
 router = Router()
 rcon = RCONClient()
+
+
+class BroadcastStates(StatesGroup):
+    waiting_for_text = State()
 
 # Middleware / Filter for security
 def is_admin(message: types.Message):
@@ -90,7 +96,7 @@ async def cmd_menu(message: types.Message):
     await message.answer(header, reply_markup=get_main_keyboard(), parse_mode="HTML")
 
 @router.callback_query(lambda c: c.data.startswith("menu:"))
-async def process_menu_callback(callback: types.CallbackQuery):
+async def process_menu_callback(callback: types.CallbackQuery, state: FSMContext):
     if not is_admin(callback): return
     
     parts = callback.data.split(":")
@@ -145,6 +151,11 @@ async def process_menu_callback(callback: types.CallbackQuery):
         await send_status(callback.message)
     elif action == "logs":
         await send_logs(callback.message)
+    elif action == "broadcast":
+        await state.set_state(BroadcastStates.waiting_for_text)
+        await callback.message.answer(
+            "📣 Напиши текст для баннера и я отправлю его всем игрокам.\n"
+            "Отправь /cancel чтобы отменить.")
     elif action == "enable_rr":
         cmd = config.GAME_MODES.get("🎲 Random Rounds")
         if cmd:
@@ -256,6 +267,45 @@ async def send_status(message: types.Message):
         await message.answer(msg, parse_mode="Markdown")
     except Exception as e:
         await message.answer(f"❌ Error fetching status: {e}")
+
+
+@router.message(Command("cancel"))
+async def cmd_cancel(message: types.Message, state: FSMContext):
+    if not is_admin(message):
+        return
+
+    current_state = await state.get_state()
+    if current_state == BroadcastStates.waiting_for_text.state:
+        await state.clear()
+        await message.answer("🚫 Отправка сообщения отменена.")
+    else:
+        await message.answer("Нечего отменять.")
+
+
+@router.message(BroadcastStates.waiting_for_text, F.text)
+async def handle_broadcast_message(message: types.Message, state: FSMContext):
+    if not is_admin(message):
+        await state.clear()
+        return
+
+    text = (message.text or "").strip()
+    if not text:
+        await message.answer("⚠️ Сообщение не может быть пустым. Попробуй ещё раз или отправь /cancel.")
+        return
+
+    if text.lower() in {"/cancel", "cancel", "отмена"}:
+        await state.clear()
+        await message.answer("🚫 Отправка сообщения отменена.")
+        return
+
+    await message.answer("📡 Отправляю сообщение на сервер...")
+    response = rcon.broadcast_center(text)
+    await state.clear()
+
+    if response.startswith("Error"):
+        await message.answer(f"❌ Не удалось отправить сообщение.\nRCON: `{response}`", parse_mode="Markdown")
+    else:
+        await message.answer("✅ Сообщение показано всем игрокам." )
 
 async def send_logs(message: types.Message):
     # Search for logs in /cs2-data/game/csgo and /cs2-data/game/csgo/logs

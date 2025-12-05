@@ -129,6 +129,11 @@ class RCONClient:
     def remove_bots(self) -> str:
         return self.execute("bot_kick")
 
+    def broadcast_center(self, message: str) -> str:
+        """Sends text to the CounterStrikeSharp broadcast plugin."""
+        sanitized = message.replace('"', "'").replace(';', ',')
+        return self.execute(f'css_broadcast_center "{sanitized}"')
+
     def get_status(self) -> str:
         return self.execute("status")
 
