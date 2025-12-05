@@ -1,0 +1,2 @@
+# Enforce LF endings for shell scripts so entrypoints remain executable in containers
+*.sh text eol=lf
