@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hE7ZKxT+iOw=",
+  "dgSpecHash": "AhAYvuWecZQ=",
   "success": true,
-  "projectFilePath": "/workspace/counterstrikesharp/BroadcastCenter/BroadcastCenterPlugin.csproj",
+  "projectFilePath": "/src/BroadcastCenter/BroadcastCenterPlugin.csproj",
   "expectedPackageFiles": [
-    "/root/.nuget/packages/counterstrikesharp.api/1.0.228/counterstrikesharp.api.1.0.228.nupkg.sha512",
+    "/root/.nuget/packages/counterstrikesharp.api/1.0.347/counterstrikesharp.api.1.0.347.nupkg.sha512",
     "/root/.nuget/packages/mcmaster.netcore.plugins/1.4.0/mcmaster.netcore.plugins.1.4.0.nupkg.sha512",
     "/root/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/root/.nuget/packages/microsoft.dotnet.apicompat.task/8.0.203/microsoft.dotnet.apicompat.task.8.0.203.nupkg.sha512",
@@ -50,7 +50,8 @@
     "/root/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
     "/root/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/root/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
-    "/root/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512"
+    "/root/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512",
+    "/root/.nuget/packages/tomlyn/0.19.0/tomlyn.0.19.0.nupkg.sha512"
   ],
   "logs": []
 }

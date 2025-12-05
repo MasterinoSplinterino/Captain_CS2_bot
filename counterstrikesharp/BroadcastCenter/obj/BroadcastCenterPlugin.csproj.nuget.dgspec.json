@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/workspace/counterstrikesharp/BroadcastCenter/BroadcastCenterPlugin.csproj": {}
+    "/src/BroadcastCenter/BroadcastCenterPlugin.csproj": {}
   },
   "projects": {
-    "/workspace/counterstrikesharp/BroadcastCenter/BroadcastCenterPlugin.csproj": {
+    "/src/BroadcastCenter/BroadcastCenterPlugin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspace/counterstrikesharp/BroadcastCenter/BroadcastCenterPlugin.csproj",
+        "projectUniqueName": "/src/BroadcastCenter/BroadcastCenterPlugin.csproj",
         "projectName": "BroadcastCenterPlugin",
-        "projectPath": "/workspace/counterstrikesharp/BroadcastCenter/BroadcastCenterPlugin.csproj",
+        "projectPath": "/src/BroadcastCenter/BroadcastCenterPlugin.csproj",
         "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/workspace/counterstrikesharp/BroadcastCenter/obj/",
+        "outputPath": "/src/BroadcastCenter/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/root/.nuget/NuGet/NuGet.Config"
@@ -45,7 +45,7 @@
           "dependencies": {
             "CounterStrikeSharp.API": {
               "target": "Package",
-              "version": "[1.0.228, )"
+              "version": "[1.0.347, )"
             }
           },
           "imports": [

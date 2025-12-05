@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "CounterStrikeSharp.API/1.0.228": {
+      "CounterStrikeSharp.API/1.0.347": {
         "type": "package",
         "dependencies": {
           "McMaster.NETCore.Plugins": "1.4.0",
@@ -16,7 +16,8 @@
           "Serilog.Extensions.Logging": "8.0.0",
           "Serilog.Sinks.Console": "5.0.0",
           "Serilog.Sinks.File": "5.0.0",
-          "System.Data.DataSetExtensions": "4.5.0"
+          "System.Data.DataSetExtensions": "4.5.0",
+          "Tomlyn": "0.19.0"
         },
         "compile": {
           "lib/net8.0/CounterStrikeSharp.API.dll": {
@@ -738,18 +739,27 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "Tomlyn/0.19.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Tomlyn.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Tomlyn.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "CounterStrikeSharp.API/1.0.228": {
-      "sha512": "oJWeMCJt/uQZEOXucgugu3u+QBYBqxzONf/rHjBetIZCeqgUMilo3s10GgyRMhHBDS0nBO5POUcg6K96aTxwLg==",
+    "CounterStrikeSharp.API/1.0.347": {
+      "sha512": "KRYzFCT+k1vnnC941p3pZjc5qw+YKOCLlzGkUhm+DVSFWnbnL14j89S9SZbQ4+UJVtObnxGUJ/65bAUXlEJ57A==",
       "type": "package",
-      "path": "counterstrikesharp.api/1.0.228",
+      "path": "counterstrikesharp.api/1.0.347",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "counterstrikesharp.api.1.0.228.nupkg.sha512",
+        "counterstrikesharp.api.1.0.347.nupkg.sha512",
         "counterstrikesharp.api.nuspec",
         "lib/net8.0/CounterStrikeSharp.API.dll",
         "lib/net8.0/CounterStrikeSharp.API.runtimeconfig.json"
@@ -2124,11 +2134,26 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Tomlyn/0.19.0": {
+      "sha512": "GlI2o8R8jbZIaE+YX6uA/VoAOH7zIxYeqxDm7jHW2hqUhuB+q19oKold35FkMuv8IZDoCqsTMolaBv2eBLBmrQ==",
+      "type": "package",
+      "path": "tomlyn/0.19.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net8.0/Tomlyn.dll",
+        "lib/netstandard2.0/Tomlyn.dll",
+        "logo.png",
+        "readme.md",
+        "tomlyn.0.19.0.nupkg.sha512",
+        "tomlyn.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "CounterStrikeSharp.API >= 1.0.228"
+      "CounterStrikeSharp.API >= 1.0.347"
     ]
   },
   "packageFolders": {
@@ -2137,11 +2162,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/workspace/counterstrikesharp/BroadcastCenter/BroadcastCenterPlugin.csproj",
+      "projectUniqueName": "/src/BroadcastCenter/BroadcastCenterPlugin.csproj",
       "projectName": "BroadcastCenterPlugin",
-      "projectPath": "/workspace/counterstrikesharp/BroadcastCenter/BroadcastCenterPlugin.csproj",
+      "projectPath": "/src/BroadcastCenter/BroadcastCenterPlugin.csproj",
       "packagesPath": "/root/.nuget/packages/",
-      "outputPath": "/workspace/counterstrikesharp/BroadcastCenter/obj/",
+      "outputPath": "/src/BroadcastCenter/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/root/.nuget/NuGet/NuGet.Config"
@@ -2175,7 +2200,7 @@
         "dependencies": {
           "CounterStrikeSharp.API": {
             "target": "Package",
-            "version": "[1.0.228, )"
+            "version": "[1.0.347, )"
           }
         },
         "imports": [
