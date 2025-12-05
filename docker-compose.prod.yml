@@ -76,15 +76,13 @@ services:
     environment:
       - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
       - ALLOWED_USER_ID=${ALLOWED_USER_ID}
-      - RCON_HOST=host.docker.internal
+      - RCON_HOST=172.17.0.1
       - RCON_PORT=27015
       - RCON_PASSWORD=${RCON_PASSWORD}
       - CS2_PASSWORD=${CS2_PASSWORD}
       - CS2_SERVERNAME=${CS2_SERVERNAME}
       - CS2_IP=${CS2_IP}
       - CS2_DOMAIN=${CS2_DOMAIN}
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     dns:
       - 8.8.8.8
       - 1.1.1.1

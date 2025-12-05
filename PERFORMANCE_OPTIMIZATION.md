@@ -9,6 +9,7 @@
 - Убирает прослойку Docker NAT для минимальных задержек
 - Сервер работает с сетью напрямую, без виртуализации
 - **Важно:** Сетевые параметры (BBR, буферы) настраиваются через [optimize_system.sh](optimize_system.sh) на хосте
+- Бот подключается к серверу через Docker bridge IP (`172.17.0.1`)
 
 #### Capabilities
 - `SYS_NICE` - возможность изменять приоритет процессов
@@ -218,14 +219,46 @@ sysctl: setting key "net.core.rmem_max": Read-only file system
 **Решение:**
 Запустите [optimize_system.sh](optimize_system.sh) на хосте, а не в контейнере.
 
-### Проблема: Все еще есть tick errors
+### Проблема: Бот не может подключиться к серверу (Connection refused)
 
-**Возможные причины:**
+**Ошибка:**
+```
+RCON: Error executing RCON command: ConnectionRefusedError: [Errno 111] Connection refused
+```
+
+**Причина:** С `network_mode: host` изменился способ подключения бота к серверу.
+
+**Решение:** RCON_HOST уже настроен на `172.17.0.1` (Docker bridge IP). Если не работает:
+
+```bash
+# Проверьте что сервер слушает на 27015
+docker exec cs2-server netstat -tlnp | grep 27015
+
+# Если нужно, можно попробовать localhost
+# В docker-compose.prod.yml измените:
+# - RCON_HOST=127.0.0.1
+```
+
+После изменений пересоберите бота:
+```bash
+docker-compose -f docker-compose.prod.yml up -d --build bot
+```
+
+### Проблема: Сообщение "медленная смена тиков на сервере"
+
+**Это нормально!** Если сообщение появляется **редко** (1-2 раза за матч):
+- ✅ Это приемлемо и не влияет на игру
+- ✅ Может быть связано с пиковыми нагрузками (много одновременных действий)
+- ✅ Намного лучше чем постоянные tick prediction errors
+
+**Если появляется часто (каждую минуту):**
 
 1. **Недостаточно CPU** - проверьте `docker stats`, если CPU > 80% - нужен более мощный VPS
 2. **Shared CPU VPS** - перейдите на Dedicated CPU VPS
 3. **Проблемы сети** - проверьте ping и packet loss до VPS
 4. **Много игроков** - уменьшите `sv_maxplayers`
+
+### Проблема: Все еще есть tick prediction errors
 
 **Дополнительные шаги:**
 
