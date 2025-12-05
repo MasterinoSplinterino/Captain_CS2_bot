@@ -244,7 +244,7 @@ async def send_status(message: types.Message):
 
         # Quick Connect Command
         # Prioritize Domain, then IP, then auto-detected IP (if we were still doing that, but we aren't really)
-        connect_address = config.get_preferred_connect_address()
+        connect_address = config.get_cached_ip_endpoint() or config.get_preferred_connect_address()
         
         if connect_address:
             connect_cmd = f"connect {connect_address}"
