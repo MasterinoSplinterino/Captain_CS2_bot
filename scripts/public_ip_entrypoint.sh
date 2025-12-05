@@ -53,4 +53,28 @@ else
     log INFO "Using existing PUBLIC_IP=${PUBLIC_IP}"
 fi
 
+# Some upstream scripts always call `dig` to determine the public IP and exit if it fails.
+# When we already know the IP (environment variable or auto detection above) we shim `dig`
+# so that specific lookups for `myip.opendns.com` and `o-o.myaddr.l.google.com` simply
+# return the detected value. All other dig queries fall back to the original binary.
+if command -v dig >/dev/null 2>&1; then
+    REAL_DIG_PATH="$(command -v dig)"
+    SHIM_PATH="/usr/local/bin/dig"
+    if [[ -n "${PUBLIC_IP:-}" ]]; then
+        cat >"${SHIM_PATH}" <<EOF
+#!/bin/bash
+PUBLIC_IP_VALUE="${PUBLIC_IP}"
+REAL_DIG="${REAL_DIG_PATH}"
+if [[ "\$*" == *"myip.opendns.com"* ]] || [[ "\$*" == *"o-o.myaddr.l.google.com"* ]]; then
+    if [[ -n "\${PUBLIC_IP_VALUE}" ]]; then
+        echo "\${PUBLIC_IP_VALUE}"
+        exit 0
+    fi
+fi
+exec "\${REAL_DIG}" "\$@"
+EOF
+        chmod +x "${SHIM_PATH}"
+    fi
+fi
+
 exec "$@"
