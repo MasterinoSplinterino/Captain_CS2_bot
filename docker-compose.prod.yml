@@ -12,6 +12,7 @@ services:
       - SRCDS_HOSTNAME=${CS2_SERVERNAME}
       - STEAM_API_KEY=${STEAM_API_KEY}
       - LAN=0
+      - PUBLIC_IP=${PUBLIC_IP:-0.0.0.0}
       # Friendly Fire Settings
       - CS2_CFG_mp_friendlyfire=1
       - CS2_CFG_ff_damage_reduction_bullets=0.33

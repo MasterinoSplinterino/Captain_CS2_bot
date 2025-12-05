@@ -14,6 +14,7 @@ services:
       - RCON_PASSWORD=${RCON_PASSWORD}
       - SRCDS_HOSTNAME=${CS2_SERVERNAME}
       - STEAM_API_KEY=${STEAM_API_KEY}
+      - PUBLIC_IP=${PUBLIC_IP:-0.0.0.0}
     volumes:
       - ./cs2-data:/home/steam/cs2/
     stdin_open: true # docker run -i
