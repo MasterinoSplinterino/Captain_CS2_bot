@@ -230,7 +230,14 @@ With  109 Gb free space...
 
 **Причина:** Docker образ CS2 пытается автоматически определить внешний IP, но не может из-за `network_mode: host`.
 
-**Решение:** Добавлены переменные окружения `IP=0.0.0.0` и `PORT=27015` в docker-compose.prod.yml. Сервер запустится на всех интерфейсах.
+**Решение:** Добавлены переменные окружения в docker-compose.prod.yml:
+```yaml
+- IP=0.0.0.0              # Слушать на всех интерфейсах
+- PORT=27015              # Порт сервера
+- SRCDS_IP=0.0.0.0        # Source Dedicated Server IP
+- SRCDS_PORT=27015        # Source Dedicated Server Port
+- PUBLIC_IP_FETCH=0       # Отключить автоопределение IP
+```
 
 После обновления:
 ```bash
