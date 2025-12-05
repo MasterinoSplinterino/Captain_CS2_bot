@@ -20,6 +20,8 @@ CS2_IP = os.getenv("CS2_IP", "")
 CS2_DOMAIN = os.getenv("CS2_DOMAIN", "")
 CS2_GAME_PORT = os.getenv("CS2_GAME_PORT", "27015")
 
+_DETECTED_IP_ENDPOINT: str | None = None
+
 if not RCON_PASSWORD:
     print("WARNING: RCON_PASSWORD is not set! RCON commands will fail.")
 
@@ -36,10 +38,16 @@ def _format_endpoint(value: str | None) -> str | None:
 def get_configured_ip_endpoint() -> str | None:
     return _format_endpoint(CS2_IP)
 
+def get_cached_ip_endpoint() -> str | None:
+    return _DETECTED_IP_ENDPOINT
+
 def get_preferred_connect_address() -> str | None:
     if CS2_DOMAIN:
         return CS2_DOMAIN.strip()
-    return get_configured_ip_endpoint()
+    configured = get_configured_ip_endpoint()
+    if configured:
+        return configured
+    return get_cached_ip_endpoint()
 
 # Function to auto-detect external IP
 def get_external_ip():
@@ -67,17 +75,24 @@ def get_external_ip():
 
     return None
 
+def refresh_external_ip_cache() -> str | None:
+    global _DETECTED_IP_ENDPOINT
+    ip = get_external_ip()
+    if ip:
+        _DETECTED_IP_ENDPOINT = ip
+    return _DETECTED_IP_ENDPOINT
+
 # Auto-detect IP if not set in .env
-if not CS2_IP and not CS2_DOMAIN:
-    try:
-        detected_ip = get_external_ip()
-        if detected_ip:
-            CS2_IP = detected_ip
-            print(f"✓ Auto-detected external IP via HTTP: {CS2_IP}")
-        else:
-            print("⚠ Could not auto-detect external IP. Please set CS2_IP or CS2_DOMAIN in .env")
-    except Exception as e:
-        print(f"⚠ Error auto-detecting IP: {e}")
+try:
+    detected_ip = refresh_external_ip_cache()
+    if detected_ip:
+        print(f"✓ Detected external IP: {detected_ip}")
+except Exception as e:
+    print(f"⚠ Error auto-detecting IP: {e}")
+
+if not CS2_IP and not CS2_DOMAIN and _DETECTED_IP_ENDPOINT:
+    CS2_IP = _DETECTED_IP_ENDPOINT
+    print("ℹ Using detected IP as CS2_IP fallback")
 
 # Map Catalog
 MAPS = {
