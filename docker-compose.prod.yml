@@ -12,12 +12,6 @@ services:
       - SRCDS_HOSTNAME=${CS2_SERVERNAME}
       - STEAM_API_KEY=${STEAM_API_KEY}
       - LAN=0
-      - IP=0.0.0.0
-      - PORT=27015
-      - SRCDS_IP=0.0.0.0
-      - SRCDS_PORT=27015
-      - PUBLIC_IP=0.0.0.0
-      - PUBLIC_IP_FILE=/shared/public_ip.txt
       # Friendly Fire Settings
       - CS2_CFG_mp_friendlyfire=1
       - CS2_CFG_ff_damage_reduction_bullets=0.33
@@ -47,7 +41,6 @@ services:
     volumes:
       # Mount the data from the host path where you copied the USB files
       - /opt/cs2-data:/home/steam/cs2/
-      - public-ip-cache:/shared:ro
     stdin_open: true
     tty: true
     # Performance optimizations
@@ -71,8 +64,6 @@ services:
     cap_add:
       - SYS_NICE
       - SYS_RESOURCE
-    depends_on:
-      - public-ip
 
   bot:
     # In Dokploy, you might need to build this from a git repo or push the image to a registry.
@@ -92,7 +83,6 @@ services:
       - CS2_SERVERNAME=${CS2_SERVERNAME}
       - CS2_IP=${CS2_IP}
       - CS2_DOMAIN=${CS2_DOMAIN}
-      - PUBLIC_IP_FILE=/shared/public_ip.txt
     dns:
       - 8.8.8.8
       - 1.1.1.1
@@ -102,25 +92,12 @@ services:
       # Mount firewall setup scripts (read-only)
       - ./setup_firewall.sh:/scripts/setup_firewall.sh:ro
       - ./check_ports.sh:/scripts/check_ports.sh:ro
-      - public-ip-cache:/shared:ro
     # Optional: Enable if you want the bot to auto-configure firewall (requires privileged mode)
     # WARNING: Only enable this if you trust the bot code completely
     # privileged: true
     # pid: "host"
     depends_on:
-      - public-ip
-
-  public-ip:
-    build:
-      context: ./ip-detector
-      dockerfile: Dockerfile
-    container_name: cs2-public-ip
-    restart: unless-stopped
-    environment:
-      - PUBLIC_IP_REFRESH_SECONDS=60
-      - PUBLIC_IP_PORT=27015
-    volumes:
-      - public-ip-cache:/shared
+      - cs2
 
   # Playit.gg Tunnel for Game Traffic (UDP)
   # 1. Start the stack.
@@ -150,4 +127,3 @@ services:
 
 volumes:
   playit-data:
-  public-ip-cache:
