@@ -1,123 +1,118 @@
-# 🌐 Автоматическое определение внешнего IP
+# Automatic Public IP Detection - Simplified Architecture
 
-## ✨ Что нового
-- Добавлен sidecar-контейнер `public-ip`, который постоянно определяет внешний IP и сохраняет его в общий том.
-- Серверный контейнер больше не обращается к внешним сервисам на старте и не падает из-за ошибки `Cannot retrieve your public IP address`.
-- Telegram‑бот читает тот же кэш и всегда показывает актуальный адрес в статусе.
+## TL;DR
+CS2 server **does not require PUBLIC_IP** to function. The upstream image only uses it for console logging. We disabled auto-detection (`PUBLIC_IP_FETCH=0`) and use a separate detector container purely for bot display purposes.
 
----
+## Architecture
 
-## 🎯 Как это работает
-1. **`public-ip`** (директория `ip-detector/`)
-   - Базируется на `alpine`. Скрипт `public_ip_detector.sh` каждые `PUBLIC_IP_REFRESH_SECONDS` секунд пробует `dig` и несколько HTTPS‑сервисов.
-   - Успешный результат пишется в `/shared/public_ip.txt` и `/shared/public_ip.json` (общий именованный том `public-ip-cache`).
-2. **`scripts/public_ip_entrypoint.sh`**
-   - Исполняется внутри контейнера `cs2` перед `install_docker.sh`.
-   - Ждёт появления файла (до `PUBLIC_IP_WAIT_SECONDS`), экспортирует `PUBLIC_IP`, вешает shim для `dig`, который возвращает данные из кэша.
-   - Если файл отсутствует, просто выводит предупреждение и продолжает запуск.
-3. **`bot`**
-   - Монтирует `/shared` в режиме read-only и использует функции `read_public_ip_from_cache()` / `get_preferred_connect_address()` из `bot_config.py`.
-   - В статусе сначала показывает IP из кэша, затем домен / ручной IP из `.env`, и только в самом конце обращается к HTTP‑сервисам для резервного определения.
-
----
-
-## ⚙️ Конфигурация
-### Автоматический режим (по умолчанию)
-В `.env` оставьте поля пустыми:
-```env
-CS2_IP=
-CS2_DOMAIN=
 ```
-`public-ip` заполнит кэш, `cs2` и `bot` подхватят его автоматически.
-
-### Ручной режим
-```env
-CS2_IP=123.45.67.89:27015
-CS2_DOMAIN=cs2.example.com:27015
+┌─────────────────┐       ┌──────────────────┐       ┌─────────────┐
+│  ip-detector    │──────▶│  shared volume   │◀──────│     bot     │
+│  (sidecar)      │ write │ /shared/         │ read  │  (display)  │
+│  Alpine + curl  │       │ public_ip.txt    │       │  status cmd │
+└─────────────────┘       └──────────────────┘       └─────────────┘
+                                                             
+                          ┌──────────────────┐
+                          │   cs2-server     │
+                          │ PUBLIC_IP_FETCH=0│ (no IP needed)
+                          │  runs normally   │
+                          └──────────────────┘
 ```
-Приоритет: `CS2_DOMAIN` → `CS2_IP` → кэш (`/shared/public_ip.txt`) → HTTP‑fallback у бота.
 
----
+## Components
 
-## 🔧 Технические детали
-| Файл / Сервис | Изменение |
-|---------------|-----------|
-| `docker-compose*.yml` | Добавлен сервис `public-ip`, общий том `public-ip-cache`, проброшен `/shared` и переменная `PUBLIC_IP_FILE`. |
-| `ip-detector/Dockerfile` + `public_ip_detector.sh` | Новый образ, который крутится в фоне и обновляет кэш (txt + json). |
-| `scripts/public_ip_entrypoint.sh` | Перешёл на чтение готового файла, добавил ожидание и безопасный shim `dig` в `/tmp/public-ip-tools`. |
-| `bot/bot_config.py` | Появились функции `read_public_ip_from_cache()`, `get_cached_ip_endpoint()`, `get_preferred_connect_address()`. Бот теперь читает `/shared/public_ip.txt`. |
-| `bot/handlers.py` | Статус и Quick Connect используют новые хелперы; приоритет адресов обновлён. |
+### 1. IP Detector Container
+**Purpose**: Continuously polls public IP and writes to shared volume  
+**Image**: Alpine 3.20 + bash/curl/bind-tools  
+**Refresh**: Every 60 seconds  
+**Output**: `/shared/public_ip.txt` (plain text) and `public_ip.json` (with timestamp)  
+**Failure**: Silent - bot falls back to domain/manual IP
 
-Общий том объявлен так:
+### 2. CS2 Server Container
+**Entrypoint**: `scripts/public_ip_entrypoint.sh`  
+**Environment**: `PUBLIC_IP_FETCH=0` (disables upstream auto-detection)  
+**Behavior**: Starts immediately without IP validation  
+**Logging**: No more "Cannot retrieve your public IP address" errors
+
+### 3. Bot Container
+**Config**: `bot/bot_config.py`  
+**Priority**: Domain → Cache → Manual IP → HTTP fallback  
+**Command**: `!status` reads `/shared/public_ip.txt` for display
+
+## Why This Works
+
+1. **CS2 server doesn't need PUBLIC_IP**: Only used for console log message "Starting server on X.X.X.X:27015"
+2. **No upstream modification**: Set `PUBLIC_IP_FETCH=0` instead of patching install_docker.sh
+3. **Bot reads cache**: Players see correct IP in status command
+4. **Fail-safe**: If detector fails, server still runs, bot uses fallback chain
+
+## Configuration
+
+### docker-compose.yml
 ```yaml
+services:
+  public-ip:
+    build: ./ip-detector
+    volumes:
+      - public-ip-cache:/shared
+
+  cs2:
+    depends_on:
+      - public-ip
+    environment:
+      PUBLIC_IP_FETCH: "0"  # Disable auto-detection
+    volumes:
+      - public-ip-cache:/shared:ro
+      - ./scripts:/scripts:ro
+    entrypoint: ["/bin/bash", "/scripts/public_ip_entrypoint.sh"]
+
+  bot:
+    volumes:
+      - public-ip-cache:/shared:ro
+    environment:
+      PUBLIC_IP_FILE: /shared/public_ip.txt
+
 volumes:
   public-ip-cache:
 ```
-и монтируется как `/shared` (rw в `public-ip`, ro в остальных контейнерах).
 
----
+## Testing
 
-## 📊 Примеры
-### Свежая установка VPS
 ```bash
-git clone <repo>
-cd cs2
-cp .env.example .env
-# CS2_IP и CS2_DOMAIN оставить пустыми
-docker compose -f docker-compose.prod.yml up -d public-ip cs2 bot
-```
-Проверяем журналы:
-```bash
-docker logs cs2-public-ip | tail -n5
-[public-ip-detector][INFO] Detected public IP: 79.137.206.223
-```
-Как только файл `/shared/public_ip.txt` заполнен, `cs2` перестаёт повторять ошибку, а бот показывает IP в статусе.
+# Check detector is running
+docker logs public-ip --tail 20
 
-### Переезд на новую VPS
-1. Перенесите `/opt/cs2-data`.
-2. Запустите только `public-ip`: `docker compose up -d public-ip`.
-3. После появления кэша поднимайте `cs2` и `bot` — сервер не упадёт, даже если детектор ещё не успел отработать (будет лишь предупреждение).
+# Verify cache file exists
+docker exec cs2-server cat /shared/public_ip.txt
 
-### Playit.gg / Кастомный домен
-Если используете туннель или домен, пропишите его в `.env`. Кэш продолжит обновляться, но `bot` и `cs2` будут использовать ваш домен / IP с наивысшим приоритетом.
+# Check bot reads it
+docker exec cs2-bot python -c "from bot_config import read_public_ip_from_cache; print(read_public_ip_from_cache())"
 
----
-
-## 🛠️ Устранение неполадок
-| Симптом | Проверка | Решение |
-|---------|----------|---------|
-| `cs2` снова пишет `Cannot retrieve your public IP address` | `docker logs cs2-public-ip` показывает ошибки `dig`/`curl`? | Убедитесь, что контейнер `cs2-public-ip` запущен и имеет доступ в интернет/DNS. |
-| В статусе нет IP | `docker exec -it cs2-bot ls /shared`? файл отсутствует? | Проверьте, что том `public-ip-cache` смонтирован в `bot` и переменная `PUBLIC_IP_FILE` указывает на `/shared/public_ip.txt`. |
-| Нужен статичный IP | Задайте `CS2_IP` или `CS2_DOMAIN`, затем перезапустите `bot`. Кэш останется как резерв. |
-
-Полезные команды:
-```bash
-# Содержимое кэша
-docker exec -it cs2-public-ip cat /shared/public_ip.txt
-# Форсировать новое определение
-docker restart cs2-public-ip
-# Проверить доступ бота к файлу
-docker exec -it cs2-bot cat /shared/public_ip.txt
+# Verify server started without IP errors
+docker logs cs2-server | grep -E "PUBLIC_IP|Cannot retrieve"
+# Should see: "[cs2-entrypoint] Disabling PUBLIC_IP auto-detection"
+# Should NOT see: "ERROR: Cannot retrieve your public IP address"
 ```
 
----
+## Troubleshooting
 
-## ✅ Преимущества
-- **Изоляция** — сбой автоопределения не блокирует запуск сервера.
-- **Единый источник** — IP доступен ботам, скриптам и мониторингу через общий том.
-- **Гибкость** — легко добавить свои потребители (например, send-to-Discord) просто смонтировав `public-ip-cache`.
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| Server loop "Cannot retrieve..." | `PUBLIC_IP_FETCH` not set | Check env var in docker-compose.yml |
+| Bot shows wrong IP | Cache file empty/outdated | Check `docker logs public-ip` |
+| Detector fails silently | Network issues | Check logs for curl/dig errors |
+| Cache file missing | Volume mount issue | Verify `public-ip-cache` volume exists |
 
----
+## Fallback Chain
 
-## 🚀 После деплоя
-1. `docker ps` — убедитесь, что `cs2-public-ip`, `cs2-server`, `cs2-bot` работают.
-2. `docker logs cs2-public-ip` — минимум одна запись `Detected public IP`.
-3. `docker logs cs2-server` — нет циклических ошибок `Cannot retrieve your public IP address`.
-4. В Telegram `/start → Status` — отображается IP/домен и корректная команда `connect`.
+Bot connection address priority:
+1. **CS2_DOMAIN** (if set) - best for DNS
+2. **Cached IP** (`/shared/public_ip.txt`) - preferred
+3. **CS2_IP** (manual) - static configuration
+4. **HTTP detection** - last resort (blocks bot startup)
 
----
+## References
 
-## 📞 Поддержка
-- Смотрите логи `cs2-public-ip` и `cs2-bot` (`docker logs -f ...`).
-- Проверяйте доступ к DNS/HTTPS из контейнера `public-ip` (команды `dig`, `curl`).
-- При необходимости задайте IP вручную и откройте issue с логами всех трёх контейнеров.
+- CS2 server docs: https://github.com/kus/cs2-modded-server
+- Environment variables: IP is optional ("Not required. Allows the server IP to be set...")
+- `PUBLIC_IP_FETCH=0` disables install_docker.sh IP detection logic
