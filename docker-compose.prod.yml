@@ -1,8 +1,26 @@
+version: "3.9"
 services:
+  broadcast_plugin_builder:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    container_name: broadcast-plugin-builder
+    working_dir: /workspace/counterstrikesharp/BroadcastCenter
+    restart: "no"
+    volumes:
+      - ./counterstrikesharp:/workspace/counterstrikesharp
+      - cs2-volume:/cs2-data
+    command: >
+      /bin/bash -c "set -euo pipefail && \
+      dotnet build -c Release && \
+      mkdir -p /cs2-data/cs2-dedicated/game/csgo/addons/counterstrikesharp/plugins && \
+      cp bin/Release/net8.0/BroadcastCenterPlugin.dll \
+        /cs2-data/cs2-dedicated/game/csgo/addons/counterstrikesharp/plugins/BroadcastCenterPlugin.dll"
   cs2_modded_server:
     image: ghcr.io/kus/cs2-modded-server:latest
     container_name: cs2-modded-server
     restart: unless-stopped
+    depends_on:
+      broadcast_plugin_builder:
+        condition: service_completed_successfully
     env_file:
       - .env
     environment:
