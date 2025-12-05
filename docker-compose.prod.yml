@@ -4,9 +4,6 @@ services:
     container_name: cs2-server
     restart: unless-stopped
     network_mode: host
-    entrypoint:
-      - /bin/bash
-      - /scripts/public_ip_entrypoint.sh
     environment:
       - SRCDS_TOKEN=${CS2_GSLT_TOKEN}
       - SRCDS_PW=${CS2_PASSWORD}
@@ -19,8 +16,7 @@ services:
       - PORT=27015
       - SRCDS_IP=0.0.0.0
       - SRCDS_PORT=27015
-      - PUBLIC_IP=${PUBLIC_IP:-auto}
-      - CS2_IP=${PUBLIC_IP:-auto}
+      - PUBLIC_IP=0.0.0.0
       - PUBLIC_IP_FILE=/shared/public_ip.txt
       # Friendly Fire Settings
       - CS2_CFG_mp_friendlyfire=1
@@ -51,9 +47,7 @@ services:
     volumes:
       # Mount the data from the host path where you copied the USB files
       - /opt/cs2-data:/home/steam/cs2/
-      # Inject custom entrypoint that resolves PUBLIC_IP before server boot
-      - ./scripts/public_ip_entrypoint.sh:/scripts/public_ip_entrypoint.sh:ro
-      - public-ip-cache:/shared
+      - public-ip-cache:/shared:ro
     stdin_open: true
     tty: true
     # Performance optimizations

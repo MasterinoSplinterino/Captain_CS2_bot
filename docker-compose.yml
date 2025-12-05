@@ -5,7 +5,6 @@ services:
     restart: unless-stopped
     entrypoint:
       - /bin/bash
-      - /scripts/public_ip_entrypoint.sh
     ports:
       - "27015:27015/tcp"
       - "27015:27015/udp"
@@ -17,13 +16,11 @@ services:
       - RCON_PASSWORD=${RCON_PASSWORD}
       - SRCDS_HOSTNAME=${CS2_SERVERNAME}
       - STEAM_API_KEY=${STEAM_API_KEY}
-      - PUBLIC_IP=${PUBLIC_IP:-auto}
-      - CS2_IP=${PUBLIC_IP:-auto}
+      - PUBLIC_IP=0.0.0.0
       - PUBLIC_IP_FILE=/shared/public_ip.txt
     volumes:
       - ./cs2-data:/home/steam/cs2/
-      - ./scripts/public_ip_entrypoint.sh:/scripts/public_ip_entrypoint.sh:ro
-      - public-ip-cache:/shared
+      - public-ip-cache:/shared:ro
     stdin_open: true # docker run -i
     tty: true # docker run -t
     depends_on:
