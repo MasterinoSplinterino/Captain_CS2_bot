@@ -19,7 +19,6 @@ services:
       - STEAM_API_KEY=${STEAM_API_KEY}
       - PUBLIC_IP=${PUBLIC_IP:-auto}
       - CS2_IP=${PUBLIC_IP:-auto}
-      - PUBLIC_IP_FETCH=0
       - PUBLIC_IP_FILE=/shared/public_ip.txt
     volumes:
       - ./cs2-data:/home/steam/cs2/

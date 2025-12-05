@@ -1,7 +1,7 @@
-# Automatic Public IP Detection - Simplified Architecture
+# Automatic Public IP Detection - Architecture
 
 ## TL;DR
-CS2 server **does not require PUBLIC_IP** to function. The upstream image only uses it for console logging. We disabled auto-detection (`PUBLIC_IP_FETCH=0`) and use a separate detector container purely for bot display purposes.
+CS2 upstream image **requires PUBLIC_IP** for install_docker.sh to start. We read it from a shared cache populated by a detector sidecar. If cache unavailable, use `0.0.0.0` fallback to prevent restart loops.
 
 ## Architecture
 
@@ -9,13 +9,15 @@ CS2 server **does not require PUBLIC_IP** to function. The upstream image only u
 ┌─────────────────┐       ┌──────────────────┐       ┌─────────────┐
 │  ip-detector    │──────▶│  shared volume   │◀──────│     bot     │
 │  (sidecar)      │ write │ /shared/         │ read  │  (display)  │
-│  Alpine + curl  │       │ public_ip.txt    │       │  status cmd │
+│  Alpine + curl  │       │ public_ip.txt    │       │  !status    │
 └─────────────────┘       └──────────────────┘       └─────────────┘
-                                                             
+                                    │                        
+                                    │ read (at startup)      
+                                    ▼                        
                           ┌──────────────────┐
                           │   cs2-server     │
-                          │ PUBLIC_IP_FETCH=0│ (no IP needed)
-                          │  runs normally   │
+                          │  export PUBLIC_IP │ ✅ starts with cached IP
+                          │  (or 0.0.0.0)    │    or fallback, no crash
                           └──────────────────┘
 ```
 
@@ -26,25 +28,26 @@ CS2 server **does not require PUBLIC_IP** to function. The upstream image only u
 **Image**: Alpine 3.20 + bash/curl/bind-tools  
 **Refresh**: Every 60 seconds  
 **Output**: `/shared/public_ip.txt` (plain text) and `public_ip.json` (with timestamp)  
-**Failure**: Silent - bot falls back to domain/manual IP
+**Failure**: Silent - writes nothing, consumers use fallback
 
-### 2. CS2 Server Container
-**Entrypoint**: `scripts/public_ip_entrypoint.sh`  
-**Environment**: `PUBLIC_IP_FETCH=0` (disables upstream auto-detection)  
-**Behavior**: Starts immediately without IP validation  
-**Logging**: No more "Cannot retrieve your public IP address" errors
+### 2. CS2 Server Entrypoint
+**Script**: `scripts/public_ip_entrypoint.sh`  
+**Logic**: Reads `/shared/public_ip.txt` → validates IPv4 → exports `PUBLIC_IP`  
+**Fallback**: If cache unavailable, exports `PUBLIC_IP=0.0.0.0`  
+**Result**: Upstream `install_docker.sh` finds `PUBLIC_IP` set, skips dig check, starts server
 
 ### 3. Bot Container
 **Config**: `bot/bot_config.py`  
-**Priority**: Domain → Cache → Manual IP → HTTP fallback  
-**Command**: `!status` reads `/shared/public_ip.txt` for display
+**Priority**: Domain → Cache (`/shared/public_ip.txt`) → Manual IP → HTTP fallback  
+**Command**: `!status` reads cache for display
 
 ## Why This Works
 
-1. **CS2 server doesn't need PUBLIC_IP**: Only used for console log message "Starting server on X.X.X.X:27015"
-2. **No upstream modification**: Set `PUBLIC_IP_FETCH=0` instead of patching install_docker.sh
-3. **Bot reads cache**: Players see correct IP in status command
-4. **Fail-safe**: If detector fails, server still runs, bot uses fallback chain
+1. **Upstream requires PUBLIC_IP**: `install_docker.sh` line 73-76 checks `PUBLIC_IP` variable and exits if empty
+2. **Cache provides real IP**: Detector runs independently, updates every 60s
+3. **Fallback prevents loops**: If detector fails, `0.0.0.0` satisfies upstream check
+4. **Server doesn't need real IP**: Only used for console log "Starting server on X.X.X.X:27015"
+5. **Bot sees real IP**: Reads cache directly, shows correct IP to players
 
 ## Configuration
 
@@ -60,7 +63,7 @@ services:
     depends_on:
       - public-ip
     environment:
-      PUBLIC_IP_FETCH: "0"  # Disable auto-detection
+      PUBLIC_IP_FILE: /shared/public_ip.txt
     volumes:
       - public-ip-cache:/shared:ro
       - ./scripts:/scripts:ro
@@ -76,6 +79,15 @@ volumes:
   public-ip-cache:
 ```
 
+## Flow
+
+1. **Detector boots**: Immediately starts polling (first result ~2-5 seconds)
+2. **CS2 starts**: Entrypoint reads `/shared/public_ip.txt`
+3. **Cache found**: Exports `PUBLIC_IP=79.137.206.223`
+4. **Cache missing**: Exports `PUBLIC_IP=0.0.0.0`
+5. **Upstream runs**: Sees `PUBLIC_IP` set, skips dig, starts server
+6. **Bot queries**: Reads cache for status display
+
 ## Testing
 
 ```bash
@@ -85,23 +97,38 @@ docker logs public-ip --tail 20
 # Verify cache file exists
 docker exec cs2-server cat /shared/public_ip.txt
 
-# Check bot reads it
-docker exec cs2-bot python -c "from bot_config import read_public_ip_from_cache; print(read_public_ip_from_cache())"
+# Check entrypoint behavior
+docker logs cs2-server | grep -E "\[cs2-entrypoint\]"
+# Should see: "Using cached PUBLIC_IP=79.137.206.223"
+# OR: "WARNING: No cached IP found, using fallback PUBLIC_IP=0.0.0.0"
 
-# Verify server started without IP errors
-docker logs cs2-server | grep -E "PUBLIC_IP|Cannot retrieve"
-# Should see: "[cs2-entrypoint] Disabling PUBLIC_IP auto-detection"
-# Should NOT see: "ERROR: Cannot retrieve your public IP address"
+# Verify no restart loop
+docker logs cs2-server | grep -c "ERROR: Cannot retrieve your public IP address"
+# Should be: 0
+
+# Check bot reads cache
+docker exec cs2-bot python -c "from bot_config import read_public_ip_from_cache; print(read_public_ip_from_cache())"
 ```
 
 ## Troubleshooting
 
 | Issue | Cause | Solution |
 |-------|-------|----------|
-| Server loop "Cannot retrieve..." | `PUBLIC_IP_FETCH` not set | Check env var in docker-compose.yml |
-| Bot shows wrong IP | Cache file empty/outdated | Check `docker logs public-ip` |
-| Detector fails silently | Network issues | Check logs for curl/dig errors |
+| Server restart loop | Entrypoint not exporting PUBLIC_IP | Check entrypoint logs, verify cache mount |
+| Server shows 0.0.0.0 in logs | Detector not writing cache | Check `docker logs public-ip` |
+| Bot shows wrong IP | Cache file outdated | Restart detector container |
 | Cache file missing | Volume mount issue | Verify `public-ip-cache` volume exists |
+
+## Failure Scenarios
+
+| Scenario | Behavior |
+|----------|----------|
+| Detector fails to start | ⚠️ CS2 uses `0.0.0.0`, bot uses fallback chain |
+| Cache file invalid/empty | ⚠️ CS2 uses `0.0.0.0`, bot uses fallback chain |
+| Network unavailable | ⚠️ Detector retries 6 endpoints, writes nothing, CS2 uses `0.0.0.0` |
+| Cache outdated (IP changed) | ⚠️ CS2 shows old IP in logs, bot shows old IP (updates in 60s) |
+
+**Critical**: Server **never crashes** due to IP issues - always falls back to `0.0.0.0`
 
 ## Fallback Chain
 
@@ -113,6 +140,6 @@ Bot connection address priority:
 
 ## References
 
-- CS2 server docs: https://github.com/kus/cs2-modded-server
-- Environment variables: IP is optional ("Not required. Allows the server IP to be set...")
-- `PUBLIC_IP_FETCH=0` disables install_docker.sh IP detection logic
+- CS2 server repo: https://github.com/kus/cs2-modded-server
+- install_docker.sh: Lines 73-76 require PUBLIC_IP (no disable flag exists)
+- Upstream check: `if [ -z "$PUBLIC_IP" ]; then echo "ERROR: Cannot retrieve..."; exit 1; fi`
