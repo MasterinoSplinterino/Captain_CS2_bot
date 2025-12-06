@@ -131,15 +131,9 @@ class RCONClient:
 
     def broadcast_center(self, message: str) -> str:
         """Sends center-screen text using CS2-SimpleAdmin commands."""
-        # Try different center-screen commands in order of preference
         sanitized = message.replace('"', '\\"')
         
-        # Try css_center (center of screen, large text)
-        result = self.execute(f'css_center "{sanitized}"')
-        if "Unknown command" not in result and "not have access" not in result:
-            return result
-        
-        # Try css_hsay (HUD message at bottom)
+        # Try css_hsay (HUD message, usually shows at bottom center or middle)
         result = self.execute(f'css_hsay "{sanitized}"')
         if "Unknown command" not in result and "not have access" not in result:
             return result
