@@ -301,6 +301,9 @@ async def handle_broadcast_message(message: types.Message, state: FSMContext):
     await message.answer("📡 Отправляю сообщение на сервер...")
     response = rcon.broadcast_center(text)
     await state.clear()
+    
+    # Log server response for debugging
+    print(f"[BROADCAST] User: {message.from_user.id}, Text: {text}, Response: {response}")
 
     if not response:
         await message.answer("❌ Сервер ничего не ответил. Проверь плагин и повтори попытку.")

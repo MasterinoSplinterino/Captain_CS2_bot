@@ -130,16 +130,9 @@ class RCONClient:
         return self.execute("bot_kick")
 
     def broadcast_center(self, message: str) -> str:
-        """Sends center-screen text using CS2-SimpleAdmin commands."""
+        """Sends HUD message using CS2-SimpleAdmin css_hsay command."""
         sanitized = message.replace('"', '\\"')
-        
-        # Try css_hsay (HUD message, usually shows at bottom center or middle)
-        result = self.execute(f'css_hsay "{sanitized}"')
-        if "Unknown command" not in result and "not have access" not in result:
-            return result
-        
-        # Fallback to regular say in chat
-        return self.execute(f'say "{sanitized}"')
+        return self.execute(f'css_hsay "{sanitized}"')
 
     def get_status(self) -> str:
         return self.execute("status")
