@@ -1,0 +1,51 @@
+services:
+  cs2_vanilla_server:
+    image: cm2network/cs2:latest
+    container_name: cs2-vanilla-server
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - SRCDS_TOKEN=${STEAM_ACCOUNT}
+      - SRCDS_PORT=27015
+      - SRCDS_TV_PORT=27020
+      - SRCDS_MAXPLAYERS=${MAXPLAYERS:-32}
+      - SRCDS_STARTMAP=de_dust2
+      - SRCDS_RCONPW=${RCON_PASSWORD}
+      - SRCDS_PW=${SERVER_PASSWORD:-}
+      - SRCDS_GAMETYPE=0
+      - SRCDS_GAMEMODE=1
+      - SRCDS_MAPGROUP=mg_active
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+      - "27020:27020/udp"
+    volumes:
+      - cs2-vanilla-data:/home/steam/cs2-dedicated
+    stdin_open: true
+    tty: true
+
+  bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: cs2-bot
+    restart: unless-stopped
+    entrypoint:
+      - /bin/bash
+      - /app/entrypoint.sh
+    env_file:
+      - .env
+    environment:
+      - RCON_HOST=cs2_vanilla_server
+      - RCON_PORT=27015
+      - RCON_PASSWORD=${RCON_PASSWORD}
+      - CS2_PASSWORD=${CS2_PASSWORD}
+      - CS2_SERVERNAME=${CS2_SERVERNAME}
+    depends_on:
+      - cs2_vanilla_server
+    volumes:
+      - ./bot:/app
+
+volumes:
+  cs2-vanilla-data:
