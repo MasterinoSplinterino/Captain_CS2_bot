@@ -1,6 +1,6 @@
 services:
   cs2_modded_server:
-    image: cs2-modded-server
+    image: ghcr.io/kus/cs2-modded-server:latest
     container_name: cs2-modded-server
     env_file:
       - .env
