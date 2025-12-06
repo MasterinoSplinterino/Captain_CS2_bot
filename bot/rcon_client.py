@@ -130,17 +130,22 @@ class RCONClient:
         return self.execute("bot_kick")
 
     def broadcast_center(self, message: str) -> str:
-        """Sends center-screen text using CS2-SimpleAdmin css_csay command."""
-        # css_csay requires admin rights, try both csay and say as fallback
+        """Sends center-screen text using CS2-SimpleAdmin commands."""
+        # Try different center-screen commands in order of preference
         sanitized = message.replace('"', '\\"')
-        result = self.execute(f'css_csay "{sanitized}"')
         
-        # Check if command failed due to permissions or not found
-        if "Unknown command" in result or "not have access" in result:
-            # Fallback to regular say command
-            return self.execute(f'say "{sanitized}"')
+        # Try css_center (center of screen, large text)
+        result = self.execute(f'css_center "{sanitized}"')
+        if "Unknown command" not in result and "not have access" not in result:
+            return result
         
-        return result
+        # Try css_hsay (HUD message at bottom)
+        result = self.execute(f'css_hsay "{sanitized}"')
+        if "Unknown command" not in result and "not have access" not in result:
+            return result
+        
+        # Fallback to regular say in chat
+        return self.execute(f'say "{sanitized}"')
 
     def get_status(self) -> str:
         return self.execute("status")
