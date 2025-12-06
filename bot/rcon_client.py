@@ -131,8 +131,16 @@ class RCONClient:
 
     def broadcast_center(self, message: str) -> str:
         """Sends center-screen text using CS2-SimpleAdmin css_csay command."""
-        sanitized = message.replace('"', "'").replace(';', ',')
-        return self.execute(f'css_csay {sanitized}')
+        # css_csay requires admin rights, try both csay and say as fallback
+        sanitized = message.replace('"', '\\"')
+        result = self.execute(f'css_csay "{sanitized}"')
+        
+        # Check if command failed due to permissions or not found
+        if "Unknown command" in result or "not have access" in result:
+            # Fallback to regular say command
+            return self.execute(f'say "{sanitized}"')
+        
+        return result
 
     def get_status(self) -> str:
         return self.execute("status")

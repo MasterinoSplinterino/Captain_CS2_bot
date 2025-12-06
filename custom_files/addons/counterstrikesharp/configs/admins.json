@@ -1,0 +1,8 @@
+{
+  "CONSOLE": {
+    "identity": "CONSOLE",
+    "flags": [
+      "@css/root"
+    ]
+  }
+}
