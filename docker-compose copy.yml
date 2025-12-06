@@ -1,0 +1,45 @@
+services:
+  cs2_modded_server:
+    image: ghcr.io/kus/cs2-modded-server:latest
+    container_name: cs2-modded-server
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - cs2-volume:/home/steam/
+      - type: bind
+        source: ./custom_files
+        target: /home/custom_files/
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+      - "27020:27020/tcp"
+      - "27020:27020/udp"
+    cpu_count: 2
+    mem_limit: 3500m
+
+  bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: cs2-bot
+    restart: unless-stopped
+    entrypoint:
+      - /bin/bash
+      - /app/entrypoint.sh
+    env_file:
+      - .env
+    environment:
+      - RCON_HOST=cs2_modded_server
+      - RCON_PORT=27015
+      - RCON_PASSWORD=${RCON_PASSWORD}
+      - CS2_PASSWORD=${CS2_PASSWORD}
+      - CS2_SERVERNAME=${CS2_SERVERNAME}
+    depends_on:
+      - cs2_modded_server
+    volumes:
+      - ./bot:/app
+      - cs2-volume:/cs2-data:ro
+
+volumes:
+  cs2-volume:
