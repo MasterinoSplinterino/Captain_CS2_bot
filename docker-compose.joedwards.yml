@@ -1,0 +1,55 @@
+services:
+  cs2_server:
+    image: joedwards32/cs2:latest
+    container_name: cs2-server
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - SRCDS_TOKEN=${STEAM_ACCOUNT}
+      - CS2_SERVERNAME=${CS2_SERVERNAME}
+      - CS2_PORT=27015
+      - CS2_RCONPW=${RCON_PASSWORD}
+      - CS2_PW=${CS2_PASSWORD}
+      - CS2_MAXPLAYERS=${MAXPLAYERS:-32}
+      - CS2_GAMEALIAS=competitive
+      - CS2_STARTMAP=de_dust2
+      - CS2_LAN=0
+      - CS2_BOT_DIFFICULTY=1
+      - CS2_BOT_QUOTA=0
+      - CS2_BOT_QUOTA_MODE=normal
+      - TV_ENABLE=0
+      - CS2_LOG=on
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+      - "27020:27020/udp"
+    volumes:
+      - cs2-data:/home/steam/cs2-dedicated/
+    stdin_open: true
+    tty: true
+
+  bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: cs2-bot
+    restart: unless-stopped
+    entrypoint:
+      - /bin/bash
+      - /app/entrypoint.sh
+    env_file:
+      - .env
+    environment:
+      - RCON_HOST=cs2_server
+      - RCON_PORT=27015
+      - RCON_PASSWORD=${RCON_PASSWORD}
+      - CS2_PASSWORD=${CS2_PASSWORD}
+      - CS2_SERVERNAME=${CS2_SERVERNAME}
+    depends_on:
+      - cs2_server
+    volumes:
+      - ./bot:/app
+
+volumes:
+  cs2-data:
