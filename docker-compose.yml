@@ -5,6 +5,16 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    environment:
+      - CS2_GAMETYPE=0
+      - CS2_GAMEMODE=0
+      - CS2_MAPGROUP=mg_active
+      - CS2_STARTMAP=de_dust2
+      - CS2_RCON_PORT=27015
+      - CS2_PORT=27015
+      - CS2_MAXPLAYERS=32
+      - CS2_ADDITIONAL_ARGS=-nohltv
+      - INSTALL_PLUGINS=false
     volumes:
       - cs2-volume:/home/steam/
       - type: bind
