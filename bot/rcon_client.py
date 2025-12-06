@@ -95,6 +95,10 @@ class RCONClient:
             if sock:
                 sock.close()
 
+    def send(self, command: str) -> str:
+        """Alias for execute() - sends RCON command directly."""
+        return self.execute(command)
+
     def change_map(self, map_name: str) -> str:
         return self.execute(f"changelevel {map_name}")
 
@@ -130,9 +134,8 @@ class RCONClient:
         return self.execute("bot_kick")
 
     def broadcast_center(self, message: str) -> str:
-        """Sends HUD message using CS2-SimpleAdmin css_hsay command."""
-        sanitized = message.replace('"', '\\"')
-        return self.execute(f'css_hsay "{sanitized}"')
+        """Sends center-screen message using CS2-SimpleAdmin css_hsay command."""
+        return self.send(f'css_hsay "{message}"')
 
     def get_status(self) -> str:
         return self.execute("status")
