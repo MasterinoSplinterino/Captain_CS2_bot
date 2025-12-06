@@ -6,7 +6,7 @@ services:
     env_file:
       - .env
     environment:
-      - STEAMAPPVALIDATE=0
+      - SRCDS_TOKEN=${STEAM_ACCOUNT}
       - CS2_SERVERNAME=${CS2_SERVERNAME:-CS2 Server}
       - CS2_PORT=27015
       - CS2_RCONPW=${RCON_PASSWORD}
@@ -17,7 +17,6 @@ services:
       - CS2_MAPGROUP=mg_active
       - CS2_STARTMAP=de_dust2
       - CS2_LAN=0
-      - CS2_GSLT=${CS2_GSLT_TOKEN}
     ports:
       - "27015:27015/tcp"
       - "27015:27015/udp"
