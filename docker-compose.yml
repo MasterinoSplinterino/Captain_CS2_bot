@@ -6,6 +6,8 @@ services:
     env_file:
       - .env
     environment:
+      - STEAM_ACCOUNT=${STEAM_ACCOUNT}
+      - API_KEY=${STEAM_API_KEY}
       - CS2_GAMETYPE=0
       - CS2_GAMEMODE=0
       - CS2_MAPGROUP=mg_active
