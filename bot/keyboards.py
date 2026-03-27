@@ -1,110 +1,119 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
-import bot_config as config
+import config
 
-def get_maps_keyboard(mode, page=0):
-    if mode in config.MODE_MAPS:
+PAGE_SIZE = 18
+
+
+def reply_menu():
+    return ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text="Menu")]],
+        resize_keyboard=True,
+    )
+
+
+# ── Main: server list ──────────────────────────────────────────────
+
+def servers_list(servers: list[dict]):
+    rows = []
+    for s in servers:
+        rows.append([InlineKeyboardButton(
+            text=f"{s['name']}  ({s['host']}:{s['port']})",
+            callback_data=f"srv:{s['id']}",
+        )])
+    rows.append([InlineKeyboardButton(text="+ Добавить сервер", callback_data="add_server")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def no_servers():
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="+ Добавить сервер", callback_data="add_server")]
+    ])
+
+
+# ── Server control panel ───────────────────────────────────────────
+
+def server_panel(server_id: int):
+    p = f"s:{server_id}"
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="Status", callback_data=f"{p}:status"),
+         InlineKeyboardButton(text="RCON cmd", callback_data=f"{p}:rcon")],
+        [InlineKeyboardButton(text="Change Map", callback_data=f"{p}:maps"),
+         InlineKeyboardButton(text="Change Mode", callback_data=f"{p}:modes")],
+        [InlineKeyboardButton(text="Restart", callback_data=f"{p}:restart"),
+         InlineKeyboardButton(text="Warmup On", callback_data=f"{p}:warmup_on"),
+         InlineKeyboardButton(text="Warmup Off", callback_data=f"{p}:warmup_off")],
+        [InlineKeyboardButton(text="+ Bot T", callback_data=f"{p}:addt"),
+         InlineKeyboardButton(text="+ Bot CT", callback_data=f"{p}:addct"),
+         InlineKeyboardButton(text="Kick bots", callback_data=f"{p}:kickbots")],
+        [InlineKeyboardButton(text="Broadcast", callback_data=f"{p}:broadcast"),
+         InlineKeyboardButton(text="Kick player", callback_data=f"{p}:kick")],
+        [InlineKeyboardButton(text="Delete server", callback_data=f"{p}:delete")],
+        [InlineKeyboardButton(text="<< Back to servers", callback_data="back_servers")],
+    ])
+
+
+# ── Maps keyboard ──────────────────────────────────────────────────
+
+def maps_keyboard(server_id: int, mode: str | None, page: int = 0):
+    if mode and mode in config.MODE_MAPS:
         all_maps = config.MODE_MAPS[mode]
     else:
-        # Fallback to all maps (values of MAPS dict)
-        all_maps = list(config.MAPS.values())
-        
-    # Build lookup dictionaries
-    NAME_TO_CODE = {**config.MAPS, **config.WORKSHOP_MAPS}
-    CODE_TO_NAME = {v: k for k, v in NAME_TO_CODE.items()}
-    
+        all_maps = list(config.MAPS.keys())
 
-    # Custom pagination for Competitive/Random Rounds
-    if mode in ["Competitive", "🎲 Random Rounds"]:
-        if page == 0:
-            start = 0
-            end = 8
-        else:
-            # Page 1 starts after the first 8 maps
-            # Page 1: 8 to 8+18=26
-            # Page 2: 26 to 26+18=44
-            start = 8 + (page - 1) * 18
-            end = start + 18
-    else:
-        PAGE_SIZE = 18
-        start = page * PAGE_SIZE
-        end = start + PAGE_SIZE
-        
-    current_maps = all_maps[start:end]
-    
-    keyboard = []
+    start = page * PAGE_SIZE
+    end = start + PAGE_SIZE
+    current = all_maps[start:end]
+
+    rows = []
     row = []
-    for item in current_maps:
-        # Determine Name and Code
-        if item in NAME_TO_CODE:
-            # Item is a Name
-            map_name = item
-            map_code = NAME_TO_CODE[item]
-        elif item in CODE_TO_NAME:
-            # Item is a Code
-            map_name = CODE_TO_NAME[item]
-            map_code = item
-        else:
-            # Fallback
-            map_name = item
-            map_code = item
-            
-        # Truncate name
-        display_name = map_name[:20] + "..." if len(map_name) > 20 else map_name
-        
-        row.append(InlineKeyboardButton(text=display_name, callback_data=f"map:{map_code}"))
+    for name in current:
+        code = config.MAPS.get(name, name)
+        display = name[:22] + ".." if len(name) > 24 else name
+        row.append(InlineKeyboardButton(text=display, callback_data=f"map:{server_id}:{code}"))
         if len(row) == 2:
-            keyboard.append(row)
+            rows.append(row)
             row = []
-    if row: keyboard.append(row)
-    
-    # Navigation
-    nav_row = []
+    if row:
+        rows.append(row)
+
+    nav = []
     if page > 0:
-        nav_row.append(InlineKeyboardButton(text="⬅️ Prev", callback_data=f"maps:page:{page-1}:{mode}"))
+        nav.append(InlineKeyboardButton(text="<< Prev", callback_data=f"mpage:{server_id}:{page - 1}:{mode or ''}"))
     if end < len(all_maps):
-        nav_row.append(InlineKeyboardButton(text="Next ➡️", callback_data=f"maps:page:{page+1}:{mode}"))
-    
-    if nav_row:
-        keyboard.append(nav_row)
-        
-    return InlineKeyboardMarkup(inline_keyboard=keyboard)
+        nav.append(InlineKeyboardButton(text="Next >>", callback_data=f"mpage:{server_id}:{page + 1}:{mode or ''}"))
+    if nav:
+        rows.append(nav)
 
-def get_modes_keyboard():
-    keyboard = []
+    rows.append([InlineKeyboardButton(text="<< Back", callback_data=f"srv:{server_id}")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+# ── Modes keyboard ─────────────────────────────────────────────────
+
+def modes_keyboard(server_id: int):
+    rows = []
     row = []
-    for mode in config.GAME_MODES:
-        row.append(InlineKeyboardButton(text=mode, callback_data=f"mode:{mode}"))
+    for mode_name in config.GAME_MODES:
+        row.append(InlineKeyboardButton(text=mode_name, callback_data=f"mode:{server_id}:{mode_name}"))
         if len(row) == 2:
-            keyboard.append(row)
+            rows.append(row)
             row = []
-    if row: keyboard.append(row)
-    
-    # Add RR On/Off buttons at the bottom
-    keyboard.append([
-        InlineKeyboardButton(text="🎲 RR On", callback_data="menu:enable_rr"),
-        InlineKeyboardButton(text="🎲 RR Off", callback_data="menu:disable_rr")
+    if row:
+        rows.append(row)
+    rows.append([InlineKeyboardButton(text="<< Back", callback_data=f"srv:{server_id}")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+# ── Confirm delete ──────────────────────────────────────────────────
+
+def confirm_delete(server_id: int):
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="Yes, delete", callback_data=f"del_yes:{server_id}"),
+         InlineKeyboardButton(text="Cancel", callback_data=f"srv:{server_id}")],
     ])
-    
-    return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
-def get_main_keyboard():
-    keyboard = [
-        [InlineKeyboardButton(text="📊 Status", callback_data="menu:status"),
-         InlineKeyboardButton(text="📂 Logs", callback_data="menu:logs")],
-        [InlineKeyboardButton(text="🎮 Change Mode", callback_data="menu:mode"),
-         InlineKeyboardButton(text="🗺 Change Map", callback_data="menu:map")],
-        [InlineKeyboardButton(text="🔄 Restart", callback_data="menu:restart"),
-         InlineKeyboardButton(text="⏳ Warmup On", callback_data="menu:warmup_start"),
-         InlineKeyboardButton(text="🔥 Warmup Off", callback_data="menu:warmup_end")],
-        [InlineKeyboardButton(text="🤖 Add T", callback_data="menu:addt"),
-         InlineKeyboardButton(text="🤖 Add CT", callback_data="menu:addct"),
-         InlineKeyboardButton(text="🚫 Clear Bots", callback_data="menu:removebots")],
-        [InlineKeyboardButton(text="📣 Broadcast", callback_data="menu:broadcast")]
-    ]
-    return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
-def get_reply_keyboard():
-    keyboard = [
-        [KeyboardButton(text="☰ Menu")]
-    ]
-    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
+def cancel_keyboard():
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="Cancel", callback_data="cancel_input")],
+    ])
